@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -245,7 +246,7 @@ public class Principal extends javax.swing.JFrame {
 
     //05 Subrutina para eliminar registros
     public void EliminarRegistro(Scanner sc, String file_name, JTable tabla) {
-File original = new File(file_name + ".txt");
+        File original = new File(file_name + ".txt");
         try {
             FileReader FR = new FileReader(file_name + ".txt");
             BufferedReader BR = new BufferedReader(FR);
@@ -274,7 +275,7 @@ File original = new File(file_name + ".txt");
                     } else {
                         JOptionPane.showMessageDialog(null, "Ha ocurrido un error al renombrar el archivo temporal.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
-                     LeerNormal(sc, file_name, tabla);
+                    LeerNormal(sc, file_name, tabla);
                 } else {
                     JOptionPane.showMessageDialog(null, "Ha ocurrido un error al eliminar el archivo original.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -290,8 +291,6 @@ File original = new File(file_name + ".txt");
         }
 
     }
-
-
 
     //06 Subrutina para limpiar campos
     public void Limpiar() {
@@ -474,6 +473,7 @@ File original = new File(file_name + ".txt");
         PanelVentas.setEnabled(true);
         PanelInventario.setEnabled(false);
         Actual = PanelVentas;
+        Nocturno = false;
         CambiarBotones("PanelVentas");
         TituloPanel.setText("|  Ventas");
         //ARCHIVO EMPLEADOS
@@ -512,7 +512,7 @@ File original = new File(file_name + ".txt");
         });
         //No visible
         FrameAgregar.setVisible(false);
-         FrameEliminar.setVisible(false);
+        FrameEliminar.setVisible(false);
         LabelFondoBorroso.setVisible(false);
         error1.setVisible(false);
         error2.setVisible(false);
@@ -552,15 +552,15 @@ File original = new File(file_name + ".txt");
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        TituloPanel = new javax.swing.JLabel();
         Boton_Empleados = new javax.swing.JButton();
         Boton_Ventas = new javax.swing.JButton();
         Boton_Inventario = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Modo = new javax.swing.JButton();
+        InfoBTN = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        TituloPanel = new javax.swing.JLabel();
         PanelEmpleados = new javax.swing.JPanel();
         FrameEliminar = new javax.swing.JInternalFrame();
         PanelEliminarEmpleado = new javax.swing.JPanel();
@@ -653,6 +653,12 @@ File original = new File(file_name + ".txt");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        TituloPanel.setFont(new java.awt.Font("Adobe Gothic Std B", 0, 48)); // NOI18N
+        TituloPanel.setForeground(new java.awt.Color(51, 0, 0));
+        TituloPanel.setText("|      Empleados");
+        TituloPanel.setAlignmentY(0.0F);
+        getContentPane().add(TituloPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
+
         Boton_Empleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/empleadosinfondo x53.png"))); // NOI18N
         Boton_Empleados.setBorderPainted(false);
         Boton_Empleados.setContentAreaFilled(false);
@@ -662,7 +668,7 @@ File original = new File(file_name + ".txt");
                 Boton_EmpleadosActionPerformed(evt);
             }
         });
-        getContentPane().add(Boton_Empleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 60, 60));
+        getContentPane().add(Boton_Empleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 80, 70));
 
         Boton_Ventas.setBackground(new java.awt.Color(51, 0, 0));
         Boton_Ventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/ventassinfondox53.png"))); // NOI18N
@@ -674,7 +680,7 @@ File original = new File(file_name + ".txt");
                 Boton_VentasActionPerformed(evt);
             }
         });
-        getContentPane().add(Boton_Ventas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 60, 60));
+        getContentPane().add(Boton_Ventas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 80, 70));
 
         Boton_Inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/inventarriosinfondox53.png"))); // NOI18N
         Boton_Inventario.setBorderPainted(false);
@@ -685,18 +691,27 @@ File original = new File(file_name + ".txt");
                 Boton_InventarioActionPerformed(evt);
             }
         });
-        getContentPane().add(Boton_Inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 60, 60));
+        getContentPane().add(Boton_Inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 80, 70));
 
-        jButton1.setText("N");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 53, 53));
-
-        jButton2.setText("Info.");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53.png"))); // NOI18N
+        Modo.setContentAreaFilled(false);
+        Modo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53brillo.png"))); // NOI18N
+        Modo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                ModoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, 60, 53));
+        getContentPane().add(Modo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 60, 60));
+
+        InfoBTN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/infosinfondox53.png"))); // NOI18N
+        InfoBTN.setContentAreaFilled(false);
+        InfoBTN.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/infosinfondox53brillo.png"))); // NOI18N
+        InfoBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InfoBTNActionPerformed(evt);
+            }
+        });
+        getContentPane().add(InfoBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 623, 60, 60));
 
         jLabel2.setBackground(new java.awt.Color(255, 204, 204));
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 2, 36)); // NOI18N
@@ -711,12 +726,6 @@ File original = new File(file_name + ".txt");
         jLabel13.setBackground(new java.awt.Color(51, 0, 0));
         jLabel13.setOpaque(true);
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 80, 660));
-
-        TituloPanel.setFont(new java.awt.Font("Adobe Gothic Std B", 0, 48)); // NOI18N
-        TituloPanel.setForeground(new java.awt.Color(51, 0, 0));
-        TituloPanel.setText("|      Empleados");
-        TituloPanel.setAlignmentY(0.0F);
-        getContentPane().add(TituloPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
 
         PanelEmpleados.setBackground(new java.awt.Color(255, 255, 255));
         PanelEmpleados.setPreferredSize(new java.awt.Dimension(1240, 700));
@@ -1267,7 +1276,7 @@ File original = new File(file_name + ".txt");
             PanelEmpleados.setEnabled(true);
             CambiaEstadoPANEL(Actual);
             Actual = PanelEmpleados;
-           
+
             //System.out.println(Actual); } *
             TituloPanel.setText("|  Empleados");
 //             Boton_Inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/inventarriosinfondox53.png")));
@@ -1291,7 +1300,7 @@ File original = new File(file_name + ".txt");
             PanelVentas.setEnabled(true);
             CambiaEstadoPANEL(Actual);
             Actual = PanelVentas;
-           
+
             TituloPanel.setText("|  Ventas");
             CambiarBotones("PanelVentas");
 //             Boton_Inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/inventarriosinfondox53.png")));
@@ -1318,9 +1327,9 @@ File original = new File(file_name + ".txt");
         }
     }//GEN-LAST:event_Boton_InventarioActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void InfoBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoBTNActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_InfoBTNActionPerformed
 
     private void BotonOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonOrdenarActionPerformed
 
@@ -1373,7 +1382,7 @@ File original = new File(file_name + ".txt");
         Limpiar();        Limpiar();    }//GEN-LAST:event_BotonLimpiarActionPerformed
 
     private void BotonparaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonparaEliminarActionPerformed
-FrameEliminar.setVisible(true);
+        FrameEliminar.setVisible(true);
         LabelFondoBorroso.setVisible(true);
         TablaEMPLEADOS.setVisible(false);
         jScrollPane1.setVisible(false);
@@ -1405,7 +1414,7 @@ FrameEliminar.setVisible(true);
     }//GEN-LAST:event_cerrar1ActionPerformed
 //BOTON ELIMINAR EMPLEADOS
     private void BotonEliminarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarEmpleadosActionPerformed
-         Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         EliminarRegistro(sc, "Empleados", TablaEMPLEADOS);
         LeerNormal(sc, "Empleados", TablaEMPLEADOS);
         sc.close();
@@ -1415,6 +1424,38 @@ FrameEliminar.setVisible(true);
         Limpiar();
         Limpiar();
     }//GEN-LAST:event_BotonLimpiar1ActionPerformed
+
+    boolean Nocturno;
+    Color fondoclaro = Color.decode("#FFFFFF");//blanco
+    Color fondooscuro = Color.decode("#2A2333");
+    Color rojooscuro = Color.decode("#330000");
+
+    private void ModoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModoActionPerformed
+        if (Nocturno == true) {//esta oscuro
+            System.out.println("Pasar Modo claro");
+            TituloPanel.setForeground(rojooscuro);
+            PanelEmpleados.setBackground(fondoclaro);
+            PanelVentas.setBackground(fondoclaro);
+            PanelInventario.setBackground(fondoclaro);
+
+            Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53.png")));
+            
+          
+            Nocturno = false;
+        } else {//estaclaro
+            System.out.println("Pasar Modo oscuro");
+            TituloPanel.setForeground(fondoclaro);
+            
+            PanelEmpleados.setBackground(fondooscuro);
+            PanelVentas.setBackground(fondooscuro);
+            PanelInventario.setBackground(fondooscuro);
+
+            Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/solsinfondpx53.png")));
+            
+            Nocturno = true;
+        }
+        TituloPanel.repaint();
+    }//GEN-LAST:event_ModoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1477,7 +1518,9 @@ FrameEliminar.setVisible(true);
     private javax.swing.JLabel CantVendidaToyota;
     private javax.swing.JInternalFrame FrameAgregar;
     private javax.swing.JInternalFrame FrameEliminar;
+    private javax.swing.JButton InfoBTN;
     private javax.swing.JLabel LabelFondoBorroso;
+    private javax.swing.JButton Modo;
     private javax.swing.JPanel PanelAgregarEmpleado;
     private javax.swing.JPanel PanelEliminarEmpleado;
     private javax.swing.JPanel PanelEmpleados;
@@ -1514,8 +1557,6 @@ FrameEliminar.setVisible(true);
     private javax.swing.JTextField fsalariocomisiones;
     private javax.swing.JTextField fsalariofijo;
     private javax.swing.JTextField ftelefono;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
