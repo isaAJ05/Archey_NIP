@@ -2,6 +2,8 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -242,9 +244,54 @@ public class Principal extends javax.swing.JFrame {
     }
 
     //05 Subrutina para eliminar registros
-    public void EliminarRegistro() {
+    public void EliminarRegistro(Scanner sc, String file_name, JTable tabla) {
+File original = new File(file_name + ".txt");
+        try {
+            FileReader FR = new FileReader(file_name + ".txt");
+            BufferedReader BR = new BufferedReader(FR);
+            FileWriter FW = new FileWriter("EmpleadosTemp.txt", true);
+            BufferedWriter BW = new BufferedWriter(FW);
+            String linea, borrar_nombre = fnombreE.getText();
+            boolean encontrado = false;
+            while ((linea = BR.readLine()) != null) {
+                String[] campos = linea.split("\t");
+                if (!campos[0].equalsIgnoreCase(borrar_nombre)) {
+                    BW.write(linea); // si el nombre no es el que se busca, se escribe en el archivo temporal
+                    BW.newLine();
+                } else {
+                    encontrado = true;
+                    System.out.println("ENCONTRADO");
+                }
+
+            }
+            BR.close();
+            BW.close();
+            if (encontrado) {
+                if (original.delete()) {
+                    File temporal = new File("EmpleadosTemp.txt");
+                    if (temporal.renameTo(original)) {
+                        JOptionPane.showMessageDialog(null, "Los datos se han eliminado satisfactoriamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ha ocurrido un error al renombrar el archivo temporal.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                     LeerNormal(sc, file_name, tabla);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ha ocurrido un error al eliminar el archivo original.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró el empleado con ese nombre.", "Error", JOptionPane.ERROR_MESSAGE);
+
+            }
+
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al eliminar el empleado.", "Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
 
     }
+
+
 
     //06 Subrutina para limpiar campos
     public void Limpiar() {
@@ -465,6 +512,7 @@ public class Principal extends javax.swing.JFrame {
         });
         //No visible
         FrameAgregar.setVisible(false);
+         FrameEliminar.setVisible(false);
         LabelFondoBorroso.setVisible(false);
         error1.setVisible(false);
         error2.setVisible(false);
@@ -514,6 +562,15 @@ public class Principal extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         TituloPanel = new javax.swing.JLabel();
         PanelEmpleados = new javax.swing.JPanel();
+        FrameEliminar = new javax.swing.JInternalFrame();
+        PanelEliminarEmpleado = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        fnombreE = new javax.swing.JTextField();
+        cerrar1 = new javax.swing.JButton();
+        BotonEliminarEmpleados = new javax.swing.JButton();
+        BotonLimpiar1 = new javax.swing.JButton();
+        jLabel33 = new javax.swing.JLabel();
+        error9 = new javax.swing.JLabel();
         FrameAgregar = new javax.swing.JInternalFrame();
         PanelAgregarEmpleado = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -665,6 +722,58 @@ public class Principal extends javax.swing.JFrame {
         PanelEmpleados.setPreferredSize(new java.awt.Dimension(1240, 700));
         PanelEmpleados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        FrameEliminar.setVisible(true);
+        FrameEliminar.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        PanelEliminarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+        PanelEliminarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel32.setText("Nombre:");
+        PanelEliminarEmpleado.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+
+        fnombreE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fnombreEActionPerformed(evt);
+            }
+        });
+        PanelEliminarEmpleado.add(fnombreE, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 280, -1));
+
+        cerrar1.setText("Cerrar");
+        cerrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrar1ActionPerformed(evt);
+            }
+        });
+        PanelEliminarEmpleado.add(cerrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, -1, -1));
+
+        BotonEliminarEmpleados.setText("Eliminar");
+        BotonEliminarEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEliminarEmpleadosActionPerformed(evt);
+            }
+        });
+        PanelEliminarEmpleado.add(BotonEliminarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 404, -1, -1));
+
+        BotonLimpiar1.setText("Limpiar");
+        BotonLimpiar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonLimpiar1ActionPerformed(evt);
+            }
+        });
+        PanelEliminarEmpleado.add(BotonLimpiar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 404, -1, -1));
+
+        jLabel33.setText("Poner Imagen de Empleado");
+        PanelEliminarEmpleado.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 170, 210));
+
+        error9.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error9.setForeground(new java.awt.Color(255, 0, 0));
+        error9.setText("(!) El nombre no debe contener números ni caracteres especiales.");
+        PanelEliminarEmpleado.add(error9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 290, -1));
+
+        FrameEliminar.getContentPane().add(PanelEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        PanelEmpleados.add(FrameEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 700, -1));
+
         FrameAgregar.setVisible(true);
 
         PanelAgregarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
@@ -795,7 +904,6 @@ public class Principal extends javax.swing.JFrame {
         TablaEMPLEADOS.setBackground(new java.awt.Color(255, 204, 204));
         TablaEMPLEADOS.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
         TablaEMPLEADOS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        TablaEMPLEADOS.setForeground(new java.awt.Color(0, 0, 0));
         TablaEMPLEADOS.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null}
@@ -888,7 +996,6 @@ public class Principal extends javax.swing.JFrame {
         TablaVENTAS.setBackground(new java.awt.Color(255, 204, 204));
         TablaVENTAS.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
         TablaVENTAS.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        TablaVENTAS.setForeground(new java.awt.Color(0, 0, 0));
         TablaVENTAS.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -1266,9 +1373,48 @@ public class Principal extends javax.swing.JFrame {
         Limpiar();        Limpiar();    }//GEN-LAST:event_BotonLimpiarActionPerformed
 
     private void BotonparaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonparaEliminarActionPerformed
-
+FrameEliminar.setVisible(true);
+        LabelFondoBorroso.setVisible(true);
+        TablaEMPLEADOS.setVisible(false);
+        jScrollPane1.setVisible(false);
+        BotonparaAgregar.setVisible(false);
+        BotonparaEliminar.setVisible(false);
+        BotonOrdenar.setVisible(false);
+        BotonOrdenarSalario.setVisible(false);
+        BotonSinOrdenar.setVisible(false);
 
     }//GEN-LAST:event_BotonparaEliminarActionPerformed
+
+    private void fnombreEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnombreEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fnombreEActionPerformed
+
+    private void cerrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrar1ActionPerformed
+        LabelFondoBorroso.setVisible(false);
+        jScrollPane1.setVisible(true);
+        TablaEMPLEADOS.setVisible(true);
+        FrameAgregar.setVisible(false);
+        FrameEliminar.setVisible(false);
+        LabelFondoBorroso.setVisible(false);
+        BotonparaAgregar.setVisible(true);
+        BotonparaEliminar.setVisible(true);
+        BotonOrdenar.setVisible(true);
+        BotonOrdenarSalario.setVisible(true);
+        BotonSinOrdenar.setVisible(true);
+        Limpiar();
+    }//GEN-LAST:event_cerrar1ActionPerformed
+
+    private void BotonEliminarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarEmpleadosActionPerformed
+        Scanner sc = new Scanner(System.in);
+        EliminarRegistro(sc, "Empleados", TablaEMPLEADOS);
+        LeerNormal(sc, "Empleados", TablaEMPLEADOS);
+        sc.close();
+    }//GEN-LAST:event_BotonEliminarEmpleadosActionPerformed
+
+    private void BotonLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonLimpiar1ActionPerformed
+        Limpiar();
+        Limpiar();
+    }//GEN-LAST:event_BotonLimpiar1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1313,7 +1459,9 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonAgregarEmpleados;
+    private javax.swing.JButton BotonEliminarEmpleados;
     private javax.swing.JButton BotonLimpiar;
+    private javax.swing.JButton BotonLimpiar1;
     private javax.swing.JRadioButton BotonOrdenar;
     private javax.swing.JRadioButton BotonOrdenarSalario;
     private javax.swing.JRadioButton BotonSinOrdenar;
@@ -1328,8 +1476,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel CantVendidaMercedes;
     private javax.swing.JLabel CantVendidaToyota;
     private javax.swing.JInternalFrame FrameAgregar;
+    private javax.swing.JInternalFrame FrameEliminar;
     private javax.swing.JLabel LabelFondoBorroso;
     private javax.swing.JPanel PanelAgregarEmpleado;
+    private javax.swing.JPanel PanelEliminarEmpleado;
     private javax.swing.JPanel PanelEmpleados;
     private javax.swing.JPanel PanelInventario;
     private javax.swing.JPanel PanelVentas;
@@ -1347,6 +1497,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel TotalMercedes;
     private javax.swing.JLabel TotalToyota;
     private javax.swing.JButton cerrar;
+    private javax.swing.JButton cerrar1;
     private javax.swing.JLabel error1;
     private javax.swing.JLabel error2;
     private javax.swing.JLabel error3;
@@ -1354,10 +1505,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel error5;
     private javax.swing.JLabel error6;
     private javax.swing.JLabel error7;
+    private javax.swing.JLabel error9;
     private javax.swing.JTextField fcargo;
     private javax.swing.JTextField fcedula;
     private javax.swing.JTextField ffechaingreso;
     private javax.swing.JTextField fnombre;
+    private javax.swing.JTextField fnombreE;
     private javax.swing.JTextField fsalariocomisiones;
     private javax.swing.JTextField fsalariofijo;
     private javax.swing.JTextField ftelefono;
@@ -1388,6 +1541,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
