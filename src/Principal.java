@@ -30,15 +30,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Principal extends javax.swing.JFrame {
 
-    //SUBRUTINAS: EMPLEADOS
+//SUBRUTINAS: EMPLEADOS
     //01 Subrutina para llenar el archivo Empleados
-   
     public static void agregarDatosEmpleados(String file_name) {
         try {
-            FileWriter outFile = new FileWriter(file_name + ".txt", false);
+            FileWriter outFile = new FileWriter(file_name + ".txt", false); ///Se crea un archivo donde se le escribiran los registros
             PrintWriter registro = new PrintWriter(outFile);
 
-            //Matriz para crear Archivo Existente 
+            //Matriz para crear Archivo Existente (EMPLEADOS]
             String[][] empleados = {
                 {"Ana López", "123456789", "Vendedor", "3101234567", "05-01-2023", "2500000", "3000000"},
                 {"Carlos Pérez", "234567890", "Gerente", "3112345678", "15-11-2022", "4000000", "5500000"},
@@ -64,7 +63,7 @@ public class Principal extends javax.swing.JFrame {
             };
 
             //Agregar datos de la matriz al registro
-            for (String[] fila : empleados) {
+            for (String[] fila : empleados) { //Llenar cada campo con cada columna
                 String Nombre = fila[0];
                 String Cedula = fila[1];
                 String Cargo = fila[2];
@@ -94,7 +93,7 @@ public class Principal extends javax.swing.JFrame {
                 BufferedReader br = new BufferedReader(new FileReader(file_name + ".txt"));
                 String line = null;
                 DefaultTableModel model = (DefaultTableModel) tabla.getModel();
-                model.setRowCount(0);
+                model.setRowCount(0); //Vacia todas las filas de la tabla 
 
                 while ((line = br.readLine()) != null) {
                     String temp[] = line.split("\t");
@@ -118,12 +117,12 @@ public class Principal extends javax.swing.JFrame {
         boolean hay = false;
         while (hay == false) {
             try {
-                BufferedReader br = new BufferedReader(new FileReader(file_name + ".txt"));
-                String line = null;
+                BufferedReader br = new BufferedReader(new FileReader(file_name + ".txt"));//Leer archivo
+                String line = null; 
                 DefaultTableModel model = (DefaultTableModel) tabla.getModel();
-                model.setRowCount(0);
+                model.setRowCount(0);//Limpliar la tabla
 
-                while ((line = br.readLine()) != null) {
+                while ((line = br.readLine()) != null) {//Hasta que no llegue a EOF
                     String temp[] = line.split("\t");
                     model.addRow(temp); //Agregar datos del archivo a la tabla
                 }
@@ -162,6 +161,7 @@ public class Principal extends javax.swing.JFrame {
                      * = Double.parseDouble(o2); return Double.compare(salario2,
                      * salario1); } }); *
                      */
+                    
                     //Ordenamiento Burbuja
                     int salarioColumna = 6;
                     int contador = model.getRowCount();
@@ -241,16 +241,19 @@ public class Principal extends javax.swing.JFrame {
 
     //05 Subrutina para eliminar registros de empleados
     public void EliminarRegistro(Scanner sc, String file_name, JTable tabla) {
-        File original = new File(file_name + ".txt");
+        File original = new File(file_name + ".txt"); //lamar archivo
+        //Se hace una copiar del original, haciendo una excepcion de registro que se dese eliminar
         try {
-            FileReader FR = new FileReader(file_name + ".txt");
-            BufferedReader BR = new BufferedReader(FR);
-            FileWriter FW = new FileWriter("EmpleadosTemp.txt", true);
-            BufferedWriter BW = new BufferedWriter(FW);
-            String linea, borrar_nombre = fnombreE.getText();
-            boolean encontrado = false;
+            FileReader FR = new FileReader(file_name + ".txt"); 
+            BufferedReader BR = new BufferedReader(FR); //LEER
+            FileWriter FW = new FileWriter("EmpleadosTemp.txt", true);//Copia temporal
+            BufferedWriter BW = new BufferedWriter(FW); //Leer copiar temporal
+            String linea, borrar_nombre = fnombreE.getText(); //Se le pide por el nombre del empleado
+            boolean encontrado = false;//Indicador
+            
+            //Se escriben los que no sean ese nombre en le temporal
             while ((linea = BR.readLine()) != null) {
-                String[] campos = linea.split("\t");
+                String[] campos = linea.split("\t"); 
                 if (!campos[0].equalsIgnoreCase(borrar_nombre)) {
                     BW.write(linea); // si el nombre no es el que se busca, se escribe en el archivo temporal
                     BW.newLine();
@@ -260,8 +263,10 @@ public class Principal extends javax.swing.JFrame {
                 }
 
             }
+            //Cerrar 
             BR.close();
             BW.close();
+            //Si se encontro renombrar el temporal como si fuera el ooriginal
             if (encontrado) {
                 if (original.delete()) {
                     File temporal = new File("EmpleadosTemp.txt");
@@ -286,16 +291,19 @@ public class Principal extends javax.swing.JFrame {
         }
 
     }
-    //SUBRUTINAS VENTAS
+    
 
-//06 Subrutina para Agregar Datos de Ventas
+//SUBRUTINAS VENTAS
+
+    //06 Subrutina para Agregar Datos de Ventas (Segun codigo de carro)
     //Variables Globales
     String CodigoAux;
     boolean existecod= false;
+    
     public void AgregarVentas(String file_name) {
         /**
-         * (Nombre, cédula, cargo, teléfono de contacto, fecha de ingreso,
-         * salario fijo mensual y salario más comisiones *
+         * (Nombre del empleado, cédula empleado, tipo o marca del auto, Codigo del auto
+         *  monto o precio por el auto)
          */
         String Nombre, Cedula, Tipo, Codigo, Monto;
 
@@ -303,7 +311,7 @@ public class Principal extends javax.swing.JFrame {
             FileWriter outFile = new FileWriter(file_name + ".txt", true);  //Archivo.txt
             // if false the file will be deleted and created everytime
             // if true the registers will be appended to the end of the file
-            PrintWriter registrar_ventas = new PrintWriter(outFile);
+            PrintWriter registrar_ventas = new PrintWriter(outFile); //Se escribira en el archivo de ventas
             Nombre = fvendedor.getText();
             Cedula = fcedulav.getText();
             Tipo = ComboBox.getSelectedItem().toString();
@@ -311,10 +319,10 @@ public class Principal extends javax.swing.JFrame {
             Monto = fmonto.getText();
 
             //Llamar a funciones de validaciones
-            //Validacion1: verifica que no haya campos vacios
-            //Validacion2: verifica que cada campo no tenga algun error de formato
-            if (validacionventa1(Nombre, Cedula, Tipo, Codigo, Monto)) {
-                if (validacionventa2(Nombre, Cedula, Codigo, Monto)) {
+            //Validacion1: verifica que no haya campos vacios: devuelven un bool
+            if (validacionventa1(Nombre, Cedula, Tipo, Codigo, Monto)) {//if true
+                //Validacion2: verifica que cada campo no tenga algun error de formato: devuelve un bool
+                if (validacionventa2(Nombre, Cedula, Codigo, Monto)) {//If true
                     CodigoAux=Codigo;//Asignar codigo ingresado a variable global
                     Scanner sc = new Scanner (System.in);
                     LeerVentasC(sc,file_name);//llamar subrutina que leea registro y compare los codigos
@@ -332,6 +340,7 @@ public class Principal extends javax.swing.JFrame {
                     sonido("/Sonidos/error.wav");
                 }
             }
+            //Cerrar
             registrar_ventas.close();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error al agregar los datos.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -341,14 +350,15 @@ public class Principal extends javax.swing.JFrame {
         }
 
     }
-    //07 Subrutina PARA CONFIRMAR QUE NO EXISTA CODIGO
+   
+    //07 Subrutina PARA CONFIRMAR QUE NO EXISTA CODIGO DEL AUTO
     public void LeerVentasC(Scanner sc, String file_name) {
         boolean hay = false;
         while (hay == false) {
             try {
-                BufferedReader br = new BufferedReader(new FileReader(file_name + ".txt"));
+                BufferedReader br = new BufferedReader(new FileReader(file_name + ".txt")); //Leer archivo
                 String line = null;
-
+                //Verifica que el codigo este en el archivo
                 while ((line = br.readLine()) != null && existecod==false) {
                     String temp[] = line.split("\t");
                     if (temp[2]==CodigoAux){
@@ -365,17 +375,20 @@ public class Principal extends javax.swing.JFrame {
             }
         }
     }
+    
     //Variables Globales
     int cantT , cantF, cantH, cantB, cantM;
     double MontoT , MontoF, MontoH, MontoB, MontoM;
+    JPanel Actual;
+    
     //08 Subrutina para relacionar autos vendidos con el inventario
     public void RelacionAutos(String Tipo, String Monto){
                 switch (Tipo) {
                     case "Toyota":
-                        cantT++;
-                        CantVendidaToyota.setText(String.valueOf(cantT));
-                        MontoT+=Double.parseDouble(Monto);
-                        TotalToyota.setText(String.valueOf(MontoT));
+                        cantT++; //cONTADOR
+                        CantVendidaToyota.setText(String.valueOf(cantT)); //IMPRIMIR
+                        MontoT+=Double.parseDouble(Monto); //ACUMULADOR
+                        TotalToyota.setText(String.valueOf(MontoT)); //IMPRIMIR
                         break;
                     case "Ford":
                         cantF++;
@@ -402,7 +415,7 @@ public class Principal extends javax.swing.JFrame {
                         TotalMercedes.setText(String.valueOf(MontoM));
                         break;
                     default:
-                        
+                        //La empresa no maneja este tipo de auto
                         break;
                 }
             }
@@ -411,7 +424,7 @@ public class Principal extends javax.swing.JFrame {
     //Actualizar el campo salario más comisiones en el archivo de Empleados, 
     //teniendo en cuenta que si realizó una venta superior a $30 millones en el mes, recibirá un 2% de comisiones sobre la venta total. 
 
-    //06 Subrutina para limpiar campos
+    //10 Subrutina para limpiar campos
     public void Limpiar() {
         fnombre.setText("");
         fcedula.setText("");
@@ -422,7 +435,7 @@ public class Principal extends javax.swing.JFrame {
         fsalariocomisiones.setText("");
     }
 
-    //06 SUBRUTINA PARA APLICAR SONIDO
+    //11 SUBRUTINA PARA APLICAR SONIDO
     private void sonido(String cadena) {
         try {
             Clip clip = AudioSystem.getClip();
@@ -669,22 +682,24 @@ public class Principal extends javax.swing.JFrame {
 
     }
 
+    //INICIO PRINCIPAL
     public Principal() {
         initComponents();
         //INTERFAZ
         //setIconImage(new ImageIcon(getClass().getResource("Imagenes/icon.png")).getImage());
         //this.setTitle(" ");
         this.setLocationRelativeTo(null); //centrar ventana
-        PanelEmpleados.setVisible(false);
+        PanelEmpleados.setVisible(false); //Visibilidad de paneles
         PanelInventario.setVisible(false);
         PanelVentas.setVisible(true);
         PanelEmpleados.setEnabled(false);
         PanelVentas.setEnabled(true);
-        Nocturno = false;
+        Nocturno = false; //Modo nocturno off
         PanelInventario.setEnabled(false);
-        Actual = PanelVentas;
-        CambiarBotones("PanelVentas");
-        TituloPanel.setText("|  Ventas");
+        Actual = PanelVentas; //Conteo de panel visible
+        CambiarBotones("PanelVentas"); //Subrutina para los botones
+        TituloPanel.setText("|  Ventas"); //Titulo del panel principal 
+        
         //ARCHIVO EMPLEADOS
         //Crear
         agregarDatosEmpleados("Empleados");
@@ -698,27 +713,29 @@ public class Principal extends javax.swing.JFrame {
         buttonGroup.add(BotonOrdenar);
         buttonGroup.add(BotonOrdenarSalario);
         buttonGroup.add(BotonSinOrdenar);
+        //Si se da click al boton se llama a la funcion de ordenar
         BotonOrdenar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LeerOrdenado(sc, "Empleados", TablaEMPLEADOS, "Nombre");
+                LeerOrdenado(sc, "Empleados", TablaEMPLEADOS, "Nombre"); //Se ordena por Nombre
                 sc.close();
             }
         });
         BotonOrdenarSalario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LeerOrdenado(sc, "Empleados", TablaEMPLEADOS, "Salario");
+                LeerOrdenado(sc, "Empleados", TablaEMPLEADOS, "Salario"); //Se ordena por salario
                 sc.close();
             }
         });
-        BotonSinOrdenar.addActionListener(new ActionListener() {
+        BotonSinOrdenar.addActionListener(new ActionListener() { //SIn orden en especifico
             @Override
             public void actionPerformed(ActionEvent e) {
                 LeerNormal(sc, "Empleados", TablaEMPLEADOS);
                 sc.close();
             }
         });
+       
         //No visible
         FrameAgregar.setVisible(false);
         FrameEliminar.setVisible(false);
@@ -733,12 +750,16 @@ public class Principal extends javax.swing.JFrame {
         error7.setVisible(false);
 
     }
-
+    
+    //DECORACION 
+    
+    //Subrutina para el cambio de paneles, que cambien al lo contrario de que estan
     public static void CambiaEstadoPANEL(JPanel p) {
         p.setVisible(!p.isVisible());
         p.setEnabled(!p.isEnabled());
     }
 
+    //Subrutina para que los botones tengan en cuenta el panel que se este mostrando
     public void CambiarBotones(String Actual) {
         if (Actual.equalsIgnoreCase("PanelInventario")) {
             Boton_Inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/inventarriosinfondox70.png")));
@@ -762,7 +783,6 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        TituloPanel = new javax.swing.JLabel();
         Boton_Empleados = new javax.swing.JButton();
         Boton_Ventas = new javax.swing.JButton();
         Boton_Inventario = new javax.swing.JButton();
@@ -771,6 +791,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        TituloPanel = new javax.swing.JLabel();
         PanelVentas = new javax.swing.JPanel();
         FrameAgregarVenta = new javax.swing.JInternalFrame();
         jPanel2 = new javax.swing.JPanel();
@@ -884,12 +905,6 @@ public class Principal extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        TituloPanel.setFont(new java.awt.Font("Adobe Gothic Std B", 0, 48)); // NOI18N
-        TituloPanel.setForeground(new java.awt.Color(51, 0, 0));
-        TituloPanel.setText("|      Empleados");
-        TituloPanel.setAlignmentY(0.0F);
-        getContentPane().add(TituloPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
-
         Boton_Empleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/empleadosinfondo x53.png"))); // NOI18N
         Boton_Empleados.setBorderPainted(false);
         Boton_Empleados.setContentAreaFilled(false);
@@ -960,6 +975,12 @@ public class Principal extends javax.swing.JFrame {
         jLabel13.setBackground(new java.awt.Color(51, 0, 0));
         jLabel13.setOpaque(true);
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 80, 660));
+
+        TituloPanel.setFont(new java.awt.Font("Adobe Gothic Std B", 0, 48)); // NOI18N
+        TituloPanel.setForeground(new java.awt.Color(51, 0, 0));
+        TituloPanel.setText("|      Empleados");
+        TituloPanel.setAlignmentY(0.0F);
+        getContentPane().add(TituloPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
 
         PanelVentas.setBackground(new java.awt.Color(255, 255, 255));
         PanelVentas.setPreferredSize(new java.awt.Dimension(1240, 700));
@@ -1392,7 +1413,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         TablaEMPLEADOS.setColumnSelectionAllowed(true);
-        TablaEMPLEADOS.setGridColor(new java.awt.Color(255, 255, 255));
         TablaEMPLEADOS.setIntercellSpacing(new java.awt.Dimension(5, 5));
         TablaEMPLEADOS.setRowHeight(40);
         TablaEMPLEADOS.setSelectionBackground(new java.awt.Color(255, 153, 153));
@@ -1408,6 +1428,7 @@ public class Principal extends javax.swing.JFrame {
         PanelEmpleados.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 244, 1101, -1));
         jScrollPane1.getAccessibleContext().setAccessibleName("");
 
+        BotonOrdenar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         BotonOrdenar.setText("Ordenar por nombre");
         BotonOrdenar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1416,6 +1437,7 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelEmpleados.add(BotonOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 180, -1, -1));
 
+        BotonOrdenarSalario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         BotonOrdenarSalario.setText("Ordenar por Salario");
         BotonOrdenarSalario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1424,24 +1446,36 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelEmpleados.add(BotonOrdenarSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 200, -1, -1));
 
+        BotonSinOrdenar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         BotonSinOrdenar.setText("Sin ordenar");
         PanelEmpleados.add(BotonSinOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 220, -1, -1));
 
-        BotonparaAgregar.setText("+ (Agregar nuevo registro)");
+        BotonparaAgregar.setBackground(new java.awt.Color(204, 0, 0));
+        BotonparaAgregar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonparaAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        BotonparaAgregar.setText("+ (Nuevo Registro)");
+        BotonparaAgregar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BotonparaAgregar.setBorderPainted(false);
         BotonparaAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonparaAgregarActionPerformed(evt);
             }
         });
-        PanelEmpleados.add(BotonparaAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, -1, -1));
+        PanelEmpleados.add(BotonparaAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 191, 130, 40));
 
-        BotonparaEliminar.setText("- (Eliminar registro)");
+        BotonparaEliminar.setBackground(new java.awt.Color(204, 0, 0));
+        BotonparaEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonparaEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        BotonparaEliminar.setText("- (Eliminar Registro)");
+        BotonparaEliminar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BotonparaEliminar.setBorderPainted(false);
+        BotonparaEliminar.setFocusPainted(false);
         BotonparaEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonparaEliminarActionPerformed(evt);
             }
         });
-        PanelEmpleados.add(BotonparaEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 210, 140, -1));
+        PanelEmpleados.add(BotonparaEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 191, 140, 40));
 
         LabelFondoBorroso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/desenfocadobeta.png"))); // NOI18N
         PanelEmpleados.add(LabelFondoBorroso, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 1340, 590));
@@ -1651,59 +1685,47 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    JPanel Actual;
-
+    
+    //BOTONES MENU
     private void Boton_EmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_EmpleadosActionPerformed
-
+        //si el que se muestra actualemte no es el de empleados que cambie a empleados
         if (Actual != PanelEmpleados) {
             PanelEmpleados.setVisible(true);
             PanelEmpleados.setEnabled(true);
-            CambiaEstadoPANEL(Actual);
-            Actual = PanelEmpleados;
-
+            CambiaEstadoPANEL(Actual); //Llama subrutina
+            Actual = PanelEmpleados;//Actualiza el actual
             //System.out.println(Actual); } *
-            TituloPanel.setText("|  Empleados");
-//            
-            CambiarBotones("PanelEmpleados");
-        }
-        /**
-         * *
-         * PanelVentas.setVisible(false); PanelInventario.setVisible(false);
-         * PanelEmpleados.setVisible(true); *
-         */
-
-
+            TituloPanel.setText("|  Empleados"); //Actualizar titulo del panel           
+            CambiarBotones("PanelEmpleados");//Actualizar botones
+        } //SI si es, que no haga nada, pues ya se muestra
     }//GEN-LAST:event_Boton_EmpleadosActionPerformed
 
     private void Boton_VentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_VentasActionPerformed
-        if (Actual != PanelVentas) {
+        if (Actual != PanelVentas) {//si el que se muestra actualemte no es el de ventas que cambie a ventas
             PanelVentas.setVisible(true);
             PanelVentas.setEnabled(true);
-            CambiaEstadoPANEL(Actual);
-            Actual = PanelVentas;
-
+            CambiaEstadoPANEL(Actual);//llama subrutina
+            Actual = PanelVentas;//Actualizar
             TituloPanel.setText("|  Ventas");
             CambiarBotones("PanelVentas");
-//            
             //System.out.println(Actual);
         }
     }//GEN-LAST:event_Boton_VentasActionPerformed
 
     private void Boton_InventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_InventarioActionPerformed
-        if (Actual != PanelInventario) {
+        if (Actual != PanelInventario) {//si el que se muestra actualemte no es el de inventario que cambie a inventario
             PanelInventario.setVisible(true);
             PanelInventario.setEnabled(true);
             CambiaEstadoPANEL(Actual);
             Actual = PanelInventario;
             TituloPanel.setText("|  Inventario");
             CambiarBotones("PanelInventario");
-//           
             //System.out.println(Actual);
         }
     }//GEN-LAST:event_Boton_InventarioActionPerformed
 
     private void InfoBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoBTNActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_InfoBTNActionPerformed
 
     private void BotonOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonOrdenarActionPerformed
@@ -1714,6 +1736,7 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BotonOrdenarSalarioActionPerformed
 
+    //AGREGAR EMPLEADOS NUEVA VENTANA
     private void BotonparaAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonparaAgregarActionPerformed
         FrameAgregar.setVisible(true);
         TablaEMPLEADOS.setVisible(false);
@@ -1727,7 +1750,7 @@ public class Principal extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_BotonparaAgregarActionPerformed
-
+    //Cerra nueva ventana
     private void cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarActionPerformed
         LabelFondoBorroso.setVisible(false);
         jScrollPane1.setVisible(true);
@@ -1745,17 +1768,18 @@ public class Principal extends javax.swing.JFrame {
     private void fnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fnombreActionPerformed
-
+    // Activacion para agregar empleados 
     private void BotonAgregarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarEmpleadosActionPerformed
-        AgregarEmpleados("Empleados");
+        AgregarEmpleados("Empleados");//Lamma subrutina
         Scanner sc = new Scanner(System.in);
-        LeerNormal(sc, "Empleados", TablaEMPLEADOS);
+        LeerNormal(sc, "Empleados", TablaEMPLEADOS);//Llama subrutina
         sc.close();
     }//GEN-LAST:event_BotonAgregarEmpleadosActionPerformed
 
     private void BotonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonLimpiarActionPerformed
         Limpiar();        Limpiar();    }//GEN-LAST:event_BotonLimpiarActionPerformed
 
+    //Ventasn Emergente para eliminar
     private void BotonparaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonparaEliminarActionPerformed
         FrameEliminar.setVisible(true);
         LabelFondoBorroso.setVisible(true);
@@ -1772,7 +1796,7 @@ public class Principal extends javax.swing.JFrame {
     private void fnombreEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnombreEActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fnombreEActionPerformed
-
+    //Cerrar ventana emergente
     private void cerrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrar1ActionPerformed
         LabelFondoBorroso.setVisible(false);
         jScrollPane1.setVisible(true);
@@ -1787,11 +1811,11 @@ public class Principal extends javax.swing.JFrame {
         BotonSinOrdenar.setVisible(true);
         Limpiar();
     }//GEN-LAST:event_cerrar1ActionPerformed
-//BOTON ELIMINAR EMPLEADOS
+    //BOTON ELIMINAR EMPLEADOS
     private void BotonEliminarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarEmpleadosActionPerformed
         Scanner sc = new Scanner(System.in);
-        EliminarRegistro(sc, "Empleados", TablaEMPLEADOS);
-        LeerNormal(sc, "Empleados", TablaEMPLEADOS);
+        EliminarRegistro(sc, "Empleados", TablaEMPLEADOS);//Llama a la funcion 
+        LeerNormal(sc, "Empleados", TablaEMPLEADOS); //Llama nuevamenta par actualizar
         sc.close();
     }//GEN-LAST:event_BotonEliminarEmpleadosActionPerformed
 
@@ -1799,7 +1823,7 @@ public class Principal extends javax.swing.JFrame {
         Limpiar();
         Limpiar();
     }//GEN-LAST:event_BotonLimpiar1ActionPerformed
-
+    //abre ventan emergente para REGISTRAR
     private void BotonRegistrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarVentaActionPerformed
         FrameAgregarVenta.setVisible(true);
     }//GEN-LAST:event_BotonRegistrarVentaActionPerformed
@@ -1812,44 +1836,64 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboBoxActionPerformed
 
+    //MODO NOCTURNO
     boolean Nocturno;
+    //Colores
     Color fondoclaro = Color.decode("#FFFFFF");//blanco
-    Color fondooscuro = Color.decode("#2A2333");
-    Color rojooscuro = Color.decode("#330000");
-
+    Color fondooscuro = Color.decode("#2A2333"); //Azul oscuro
+    Color rojooscuro = Color.decode("#330000");//Rojo Oscuro Fuerte
+    Color negro=Color.decode("000000");
+    Color ooo=Color.decode("#604A4A");
+    Color rojoclaro=Color.decode("#FFCCCC");
     private void ModoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModoActionPerformed
-        if (Nocturno == true) {//esta oscuro
-            System.out.println("Pasar Modo claro");
+        if (Nocturno == true) {//esta oscuro ON
+            System.out.println("Pasar Modo claro");//Se debe pasar a modo claro
+            //Cambiar colores e imagenes
             TituloPanel.setForeground(rojooscuro);
             PanelEmpleados.setBackground(fondoclaro);
             PanelVentas.setBackground(fondoclaro);
             PanelInventario.setBackground(fondoclaro);
             InventarioSubPanel.setBackground(fondoclaro);
+            BotonOrdenar.setForeground(negro);
+            BotonOrdenarSalario.setForeground(negro);
+            BotonSinOrdenar.setForeground(negro);
+            TablaEMPLEADOS.setBackground(rojoclaro);
+            TablaEMPLEADOS.setBorder(new javax.swing.border.LineBorder(fondoclaro, 3, true));
+            jScrollPane1.setBorder(new javax.swing.border.LineBorder(fondoclaro, 3, true));
+            TablaEMPLEADOS.setForeground(negro);
             Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53.png")));
             Modo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53brillo.png"))); 
-       
-            Nocturno = false;
-        } else {//estaclaro
-            System.out.println("Pasar Modo oscuro");
+            //Actualizar Modo Actual
+            Nocturno = false; //OFF
+        } else {//estaclaro  OFF
+            System.out.println("Pasar Modo oscuro");//Se debe pasar a modo oscuro
+            //Cambiar colores
             TituloPanel.setForeground(fondoclaro);
-
             PanelEmpleados.setBackground(fondooscuro);
             PanelVentas.setBackground(fondooscuro);
             PanelInventario.setBackground(fondooscuro);
             InventarioSubPanel.setBackground(fondooscuro);
-
+            BotonOrdenar.setForeground(fondoclaro);
+            BotonOrdenarSalario.setForeground(fondoclaro);
+            BotonSinOrdenar.setForeground(fondoclaro);
+            TablaEMPLEADOS.setBackground(ooo);//Esto se debe cambiar que feo
+            TablaEMPLEADOS.setBorder(new javax.swing.border.LineBorder(fondooscuro, 3, true));
+            jScrollPane1.setBorder(new javax.swing.border.LineBorder(fondooscuro, 3, true));
+            TablaEMPLEADOS.setForeground(fondoclaro);
             Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/solsinfondpx53.png")));
             Modo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/solsinfondpx53brillo.png"))); 
-       
-            Nocturno = true;
-        }
-//       
+            //Actulizar Modo Actual 
+            Nocturno = true;//ON
+        } 
+        TituloPanel.setVisible(true);
     }//GEN-LAST:event_ModoActionPerformed
-
+    
+//Cerrar Ventada emergente DE VENTAS
     private void cerraragregarventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerraragregarventaActionPerformed
         FrameAgregarVenta.setVisible(false);
     }//GEN-LAST:event_cerraragregarventaActionPerformed
 
+    //Main
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1931,7 +1975,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel TitHonda;
     private javax.swing.JLabel TitMercedes;
     private javax.swing.JLabel TitToyota;
-    private javax.swing.JLabel TituloPanel;
+    public javax.swing.JLabel TituloPanel;
     private javax.swing.JLabel TotalBMW;
     private javax.swing.JLabel TotalFord;
     private javax.swing.JLabel TotalHonda;
