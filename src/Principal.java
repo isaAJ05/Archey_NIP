@@ -30,14 +30,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Principal extends javax.swing.JFrame {
 
-    //SUBRUTINAS
+    //SUBRUTINAS: EMPLEADOS
     //01 Subrutina para llenar el archivo Empleados
-    /**
-     * * INSTRUCCION 1: PARA EMPLEADOS (DESPUES BORRAR) Los datos de sus
-     * empleados (Nombre, cédula, cargo, teléfono de contacto, fecha de ingreso,
-     * salario fijo mensual y salario más comisiones) se encuentran en un
-     * archivo de texto llamado Empleados, sin ningún orden específico.
-     */
+   
     public static void agregarDatosEmpleados(String file_name) {
         try {
             FileWriter outFile = new FileWriter(file_name + ".txt", false);
@@ -200,7 +195,7 @@ public class Principal extends javax.swing.JFrame {
         }
     }
 
-    //04 Subrutina para Agregar Datos de Empleados(si quieren se puede hacer así)
+    //04 Subrutina para Agregar Datos de Empleados
     public void AgregarEmpleados(String file_name) {
         /**
          * (Nombre, cédula, cargo, teléfono de contacto, fecha de ingreso,
@@ -244,9 +239,9 @@ public class Principal extends javax.swing.JFrame {
 
     }
 
-    //05 Subrutina para eliminar registros
+    //05 Subrutina para eliminar registros de empleados
     public void EliminarRegistro(Scanner sc, String file_name, JTable tabla) {
-File original = new File(file_name + ".txt");
+        File original = new File(file_name + ".txt");
         try {
             FileReader FR = new FileReader(file_name + ".txt");
             BufferedReader BR = new BufferedReader(FR);
@@ -275,7 +270,7 @@ File original = new File(file_name + ".txt");
                     } else {
                         JOptionPane.showMessageDialog(null, "Ha ocurrido un error al renombrar el archivo temporal.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
-                     LeerNormal(sc, file_name, tabla);
+                    LeerNormal(sc, file_name, tabla);
                 } else {
                     JOptionPane.showMessageDialog(null, "Ha ocurrido un error al eliminar el archivo original.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -291,8 +286,130 @@ File original = new File(file_name + ".txt");
         }
 
     }
+    //SUBRUTINAS VENTAS
 
+//06 Subrutina para Agregar Datos de Ventas
+    //Variables Globales
+    String CodigoAux;
+    boolean existecod= false;
+    public void AgregarVentas(String file_name) {
+        /**
+         * (Nombre, cédula, cargo, teléfono de contacto, fecha de ingreso,
+         * salario fijo mensual y salario más comisiones *
+         */
+        String Nombre, Cedula, Tipo, Codigo, Monto;
 
+        try {
+            FileWriter outFile = new FileWriter(file_name + ".txt", true);  //Archivo.txt
+            // if false the file will be deleted and created everytime
+            // if true the registers will be appended to the end of the file
+            PrintWriter registrar_ventas = new PrintWriter(outFile);
+            Nombre = fvendedor.getText();
+            Cedula = fcedulav.getText();
+            Tipo = ComboBox.getSelectedItem().toString();
+            Codigo = fcodigo.getText();
+            Monto = fmonto.getText();
+
+            //Llamar a funciones de validaciones
+            //Validacion1: verifica que no haya campos vacios
+            //Validacion2: verifica que cada campo no tenga algun error de formato
+            if (validacionventa1(Nombre, Cedula, Tipo, Codigo, Monto)) {
+                if (validacionventa2(Nombre, Cedula, Codigo, Monto)) {
+                    CodigoAux=Codigo;//Asignar codigo ingresado a variable global
+                    Scanner sc = new Scanner (System.in);
+                    LeerVentasC(sc,file_name);//llamar subrutina que leea registro y compare los codigos
+                    sc.close();
+                    if(existecod==true){//si el codigo existe mostrar mensaje de error
+                        error3v.setText("(!) Codigo existente");
+                    }else{//si no existe registrar la venta
+                       registrar_ventas.println(Nombre + "\t" + Cedula + "\t" + Tipo + "\t" + Codigo + "\t" + Monto);
+                       RelacionAutos(Tipo,Monto);
+                    sonido("/Sonidos/correcto.wav");//implementacion de sonidos
+                    JOptionPane.showMessageDialog(null, "Los datos se han agregado satisfactoriamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE); 
+                    }
+                    
+                } else {
+                    sonido("/Sonidos/error.wav");
+                }
+            }
+            registrar_ventas.close();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al agregar los datos.", "Error", JOptionPane.ERROR_MESSAGE);
+
+            System.out.println("Error creando el archivo");
+            ex.printStackTrace();
+        }
+
+    }
+    //07 Subrutina PARA CONFIRMAR QUE NO EXISTA CODIGO
+    public void LeerVentasC(Scanner sc, String file_name) {
+        boolean hay = false;
+        while (hay == false) {
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(file_name + ".txt"));
+                String line = null;
+
+                while ((line = br.readLine()) != null && existecod==false) {
+                    String temp[] = line.split("\t");
+                    if (temp[2]==CodigoAux){
+                        existecod=true;
+                    }
+                }
+                br.close();
+                hay = true;
+
+            } catch (IOException ex) {
+                System.out.println("No se encontro archivo");
+                hay = false;
+                file_name = sc.nextLine(); // Archivo
+            }
+        }
+    }
+    //Variables Globales
+    int cantT , cantF, cantH, cantB, cantM;
+    double MontoT , MontoF, MontoH, MontoB, MontoM;
+    //08 Subrutina para relacionar autos vendidos con el inventario
+    public void RelacionAutos(String Tipo, String Monto){
+                switch (Tipo) {
+                    case "Toyota":
+                        cantT++;
+                        CantVendidaToyota.setText(String.valueOf(cantT));
+                        MontoT+=Double.parseDouble(Monto);
+                        TotalToyota.setText(String.valueOf(MontoT));
+                        break;
+                    case "Ford":
+                        cantF++;
+                        CantVendidaFord.setText(String.valueOf(cantF));
+                        MontoF+=Double.parseDouble(Monto);
+                        TotalFord.setText(String.valueOf(MontoF));
+                        break;
+                    case "Honda":
+                        cantH++;
+                        CantVendidaHonda.setText(String.valueOf(cantH));
+                        MontoH+=Double.parseDouble(Monto);
+                        TotalHonda.setText(String.valueOf(MontoH));
+                        break;
+                        case "BMW":
+                        cantB++;
+                        CantVendidaBMW.setText(String.valueOf(cantB));
+                        MontoB+=Double.parseDouble(Monto);
+                        TotalBMW.setText(String.valueOf(MontoB));
+                        break;
+                        case "Mercedes":
+                        cantM++;
+                        CantVendidaMercedes.setText(String.valueOf(cantM));
+                        MontoM+=Double.parseDouble(Monto);
+                        TotalMercedes.setText(String.valueOf(MontoM));
+                        break;
+                    default:
+                        
+                        break;
+                }
+            }
+
+    //09 Subrutina para agregar lo del porcentaje
+    //Actualizar el campo salario más comisiones en el archivo de Empleados, 
+    //teniendo en cuenta que si realizó una venta superior a $30 millones en el mes, recibirá un 2% de comisiones sobre la venta total. 
 
     //06 Subrutina para limpiar campos
     public void Limpiar() {
@@ -320,7 +437,7 @@ File original = new File(file_name + ".txt");
     }
 
 //FUNCIONES - Total 2
-    // 01 funcion para validar si estan vacios los campos
+    // 01 funcion para validar si estan vacios los campos EMPLEADOS
     public boolean validacion1(String c1, String c2, String c3, String c4, String c5, String c6, String c7) {
         if (!c1.isEmpty() && !c2.isEmpty() && !c3.isEmpty() && !c4.isEmpty() && !c5.isEmpty() && !c6.isEmpty() && !c7.isEmpty()) {
             return true;
@@ -330,7 +447,17 @@ File original = new File(file_name + ".txt");
         }
     }
 
-    //02 Funcion para validar 2
+    // 01.1 funcion para validar si estan vacios los campos VENTAS
+    public boolean validacionventa1(String c1, String c2, String c3, String c4, String c5) {
+        if (!c1.isEmpty() && !c2.isEmpty() && !c3.isEmpty() && !c4.isEmpty() && !c5.isEmpty()) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+    }
+
+    //02 Funcion para validar 2 EMPLEADOS
     // Nombre, Cedula, Cargo, Telefono, FechaIngreso, SalarioFijo, SalarioComisiones
     public boolean validacion2(String c1, String c2, String c3, String c4, String c5, String c6, String c7) {
 
@@ -462,6 +589,86 @@ File original = new File(file_name + ".txt");
 
     }
 
+    //02 Funcion para validar 2 VENTAS
+    // Nombre, Cedula, Codigo, Monto
+    public boolean validacionventa2(String c1, String c2, String c4, String c5) {
+
+        // Validacion Nombre
+        boolean validon = true;
+        for (char c : c1.toCharArray()) {
+            if (!Character.isLetter(c) && !Character.isSpaceChar(c)) {
+                validon = false;
+                break;
+            }
+        }
+        if (!validon) {
+            error1v.setVisible(true);
+            return false;
+        } else {
+            error1v.setVisible(false);
+        }
+
+        //Validacion Cedula
+        boolean validoc = true;
+        for (char c : c2.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                validoc = false;
+                break;
+            }
+        }
+        if (!validoc) {
+            error2v.setVisible(true); // Mostrar mensaje de error
+            return false;
+        } else {
+            error2v.setVisible(false); // Ocultar mensaje de error
+        }
+        //Validacion Codigo
+        boolean validocod = true;
+        for (char c : c4.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                validoc = false;
+                break;
+            }
+        }
+        if (!validocod) {
+            error3v.setText("El código debe tener solo numeros");
+            error3v.setVisible(true); // Mostrar mensaje de error
+            return false;
+        } else {
+            error3v.setVisible(false); // Ocultar mensaje de error
+        }
+
+        // Validación salario
+        boolean validomonto = true;
+        for (char c : c5.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                validomonto = false;
+                break;
+            }
+        }
+
+        try {
+            double monto = Double.parseDouble(c5);
+            if (monto < 0) {
+                error4v.setVisible(false);
+            }
+        } catch (NumberFormatException e) {
+            error4v.setVisible(true); // Mostrar mensaje de error
+            return false;
+        }
+
+        if (!validomonto) {
+            error4v.setVisible(true); // Mostrar mensaje de error
+            return false;
+        } else {
+            error4v.setVisible(false); // Ocultar mensaje de error  
+
+        }
+
+        return true;
+
+    }
+
     public Principal() {
         initComponents();
         //INTERFAZ
@@ -473,7 +680,7 @@ File original = new File(file_name + ".txt");
         PanelVentas.setVisible(true);
         PanelEmpleados.setEnabled(false);
         PanelVentas.setEnabled(true);
-        Nocturno=false;
+        Nocturno = false;
         PanelInventario.setEnabled(false);
         Actual = PanelVentas;
         CambiarBotones("PanelVentas");
@@ -514,7 +721,8 @@ File original = new File(file_name + ".txt");
         });
         //No visible
         FrameAgregar.setVisible(false);
-         FrameEliminar.setVisible(false);
+        FrameEliminar.setVisible(false);
+        FrameAgregarVenta.setVisible(false);
         LabelFondoBorroso.setVisible(false);
         error1.setVisible(false);
         error2.setVisible(false);
@@ -571,14 +779,18 @@ File original = new File(file_name + ".txt");
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        fmonto = new javax.swing.JTextField();
+        fvendedor = new javax.swing.JTextField();
+        fcedulav = new javax.swing.JTextField();
+        fcodigo = new javax.swing.JTextField();
+        ComboBox = new javax.swing.JComboBox<>();
+        cerraragregarventa = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        error1v = new javax.swing.JLabel();
+        error2v = new javax.swing.JLabel();
+        error3v = new javax.swing.JLabel();
+        error4v = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         TablaVENTAS = new javax.swing.JTable();
         BotonRegistrarVenta = new javax.swing.JButton();
@@ -764,24 +976,45 @@ File original = new File(file_name + ".txt");
 
         jLabel38.setText("Código del auto:");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        fvendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                fvendedorActionPerformed(evt);
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Toyota", "Ford", "Honda", "Mercedes" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Toyota", "Ford", "Honda", "Mercedes" }));
+        ComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                ComboBoxActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Cerrar");
+        cerraragregarventa.setText("Cerrar");
+        cerraragregarventa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerraragregarventaActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Agregar");
 
         jButton3.setText("Limpiar");
+
+        error1v.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error1v.setForeground(new java.awt.Color(255, 0, 0));
+        error1v.setText("(!) El nombre no debe contener números ni caracteres especiales.");
+
+        error2v.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error2v.setForeground(new java.awt.Color(255, 0, 0));
+        error2v.setText("(!) La cédula debe contener solo números.");
+
+        error3v.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error3v.setForeground(new java.awt.Color(255, 0, 0));
+        error3v.setText("(!) Depende");
+
+        error4v.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error4v.setForeground(new java.awt.Color(255, 0, 0));
+        error4v.setText("(!)Monto debe contener solo numeros mayores a cero");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -794,24 +1027,30 @@ File original = new File(file_name + ".txt");
                         .addGap(3, 3, 3)
                         .addComponent(jLabel35)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel36)
-                        .addGap(100, 100, 100)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel34)
-                        .addGap(41, 41, 41)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(fvendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel38)
                             .addComponent(jLabel37))
                         .addGap(52, 52, 52)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(152, 178, Short.MAX_VALUE))
+                            .addComponent(ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(error3v, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel36)
+                        .addGap(100, 100, 100)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(error1v, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fcedulav, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(error2v, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel34)
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(error4v, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fmonto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(78, 78, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -819,39 +1058,47 @@ File original = new File(file_name + ".txt");
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
                         .addComponent(jButton3))
-                    .addComponent(jButton1))
+                    .addComponent(cerraragregarventa))
                 .addGap(24, 24, 24))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jButton1)
+                .addComponent(cerraragregarventa)
                 .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel35)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(fvendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(error1v)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fcedulav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel36))
-                .addGap(23, 23, 23)
+                .addGap(1, 1, 1)
+                .addComponent(error2v, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel37)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel38))
-                .addGap(29, 29, 29)
+                .addGap(1, 1, 1)
+                .addComponent(error3v, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fmonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel34))
-                .addGap(35, 35, 35)
+                .addGap(3, 3, 3)
+                .addComponent(error4v)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout FrameAgregarVentaLayout = new javax.swing.GroupLayout(FrameAgregarVenta.getContentPane());
@@ -888,7 +1135,7 @@ File original = new File(file_name + ".txt");
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -902,6 +1149,7 @@ File original = new File(file_name + ".txt");
                 return canEdit [columnIndex];
             }
         });
+        TablaVENTAS.setColumnSelectionAllowed(true);
         TablaVENTAS.setDoubleBuffered(true);
         TablaVENTAS.setGridColor(new java.awt.Color(255, 255, 255));
         TablaVENTAS.setOpaque(false);
@@ -1409,7 +1657,7 @@ File original = new File(file_name + ".txt");
             PanelEmpleados.setEnabled(true);
             CambiaEstadoPANEL(Actual);
             Actual = PanelEmpleados;
-           
+
             //System.out.println(Actual); } *
             TituloPanel.setText("|  Empleados");
 //             Boton_Inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/inventarriosinfondox53.png")));
@@ -1433,7 +1681,7 @@ File original = new File(file_name + ".txt");
             PanelVentas.setEnabled(true);
             CambiaEstadoPANEL(Actual);
             Actual = PanelVentas;
-           
+
             TituloPanel.setText("|  Ventas");
             CambiarBotones("PanelVentas");
 //             Boton_Inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/inventarriosinfondox53.png")));
@@ -1515,7 +1763,7 @@ File original = new File(file_name + ".txt");
         Limpiar();        Limpiar();    }//GEN-LAST:event_BotonLimpiarActionPerformed
 
     private void BotonparaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonparaEliminarActionPerformed
-FrameEliminar.setVisible(true);
+        FrameEliminar.setVisible(true);
         LabelFondoBorroso.setVisible(true);
         TablaEMPLEADOS.setVisible(false);
         jScrollPane1.setVisible(false);
@@ -1547,7 +1795,7 @@ FrameEliminar.setVisible(true);
     }//GEN-LAST:event_cerrar1ActionPerformed
 //BOTON ELIMINAR EMPLEADOS
     private void BotonEliminarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarEmpleadosActionPerformed
-         Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         EliminarRegistro(sc, "Empleados", TablaEMPLEADOS);
         LeerNormal(sc, "Empleados", TablaEMPLEADOS);
         sc.close();
@@ -1559,22 +1807,22 @@ FrameEliminar.setVisible(true);
     }//GEN-LAST:event_BotonLimpiar1ActionPerformed
 
     private void BotonRegistrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarVentaActionPerformed
-        // TODO add your handling code here:
+        FrameAgregarVenta.setVisible(true);
     }//GEN-LAST:event_BotonRegistrarVentaActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void fvendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fvendedorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_fvendedorActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_ComboBoxActionPerformed
 
-     boolean Nocturno;
+    boolean Nocturno;
     Color fondoclaro = Color.decode("#FFFFFF");//blanco
     Color fondooscuro = Color.decode("#2A2333");
     Color rojooscuro = Color.decode("#330000");
-    
+
     private void ModoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModoActionPerformed
         if (Nocturno == true) {//esta oscuro
             System.out.println("Pasar Modo claro");
@@ -1611,6 +1859,10 @@ FrameEliminar.setVisible(true);
 //        PanelInventario.revalidate();
 //        PanelInventario.repaint();
     }//GEN-LAST:event_ModoActionPerformed
+
+    private void cerraragregarventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerraragregarventaActionPerformed
+        FrameAgregarVenta.setVisible(false);
+    }//GEN-LAST:event_cerraragregarventaActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1673,6 +1925,7 @@ FrameEliminar.setVisible(true);
     private javax.swing.JLabel CantVendidaHonda;
     private javax.swing.JLabel CantVendidaMercedes;
     private javax.swing.JLabel CantVendidaToyota;
+    private javax.swing.JComboBox<String> ComboBox;
     private javax.swing.JInternalFrame FrameAgregar;
     private javax.swing.JInternalFrame FrameAgregarVenta;
     private javax.swing.JInternalFrame FrameEliminar;
@@ -1700,26 +1953,33 @@ FrameEliminar.setVisible(true);
     private javax.swing.JLabel TotalToyota;
     private javax.swing.JButton cerrar;
     private javax.swing.JButton cerrar1;
+    private javax.swing.JButton cerraragregarventa;
     private javax.swing.JLabel error1;
+    private javax.swing.JLabel error1v;
     private javax.swing.JLabel error2;
+    private javax.swing.JLabel error2v;
     private javax.swing.JLabel error3;
+    private javax.swing.JLabel error3v;
     private javax.swing.JLabel error4;
+    private javax.swing.JLabel error4v;
     private javax.swing.JLabel error5;
     private javax.swing.JLabel error6;
     private javax.swing.JLabel error7;
     private javax.swing.JLabel error9;
     private javax.swing.JTextField fcargo;
     private javax.swing.JTextField fcedula;
+    private javax.swing.JTextField fcedulav;
+    private javax.swing.JTextField fcodigo;
     private javax.swing.JTextField ffechaingreso;
+    private javax.swing.JTextField fmonto;
     private javax.swing.JTextField fnombre;
     private javax.swing.JTextField fnombreE;
     private javax.swing.JTextField fsalariocomisiones;
     private javax.swing.JTextField fsalariofijo;
     private javax.swing.JTextField ftelefono;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField fvendedor;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1762,9 +2022,5 @@ FrameEliminar.setVisible(true);
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }
