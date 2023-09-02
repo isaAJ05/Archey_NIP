@@ -1403,9 +1403,9 @@ FrameEliminar.setVisible(true);
         BotonSinOrdenar.setVisible(true);
         Limpiar();
     }//GEN-LAST:event_cerrar1ActionPerformed
-
+//BOTON ELIMINAR EMPLEADOS
     private void BotonEliminarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarEmpleadosActionPerformed
-        Scanner sc = new Scanner(System.in);
+         Scanner sc = new Scanner(System.in);
         EliminarRegistro(sc, "Empleados", TablaEMPLEADOS);
         LeerNormal(sc, "Empleados", TablaEMPLEADOS);
         sc.close();
