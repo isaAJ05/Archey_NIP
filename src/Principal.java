@@ -32,7 +32,6 @@ public class Principal extends javax.swing.JFrame {
 
     //SUBRUTINAS: EMPLEADOS
     //01 Subrutina para llenar el archivo Empleados
-   
     public static void agregarDatosEmpleados(String file_name) {
         try {
             FileWriter outFile = new FileWriter(file_name + ".txt", false);
@@ -86,7 +85,7 @@ public class Principal extends javax.swing.JFrame {
         }
     }
 
-    //02 SUBRUTINA PARA MOSTRAR LOS CAMPOS ARCHIVO EMPLEADOS
+    //02 SUBRUTINA PARA MOSTRAR LOS CAMPOS ARCHIVO EMPLEADOS-VENTAS
     public static void LeerNormal(Scanner sc, String file_name, JTable tabla) {
         boolean hay = false;
         while (hay == false) {
@@ -290,8 +289,9 @@ public class Principal extends javax.swing.JFrame {
 
 //06 Subrutina para Agregar Datos de Ventas
     //Variables Globales
-    String CodigoAux;
-    boolean existecod= false;
+    boolean existeempleado;
+    boolean existecod;
+
     public void AgregarVentas(String file_name) {
         /**
          * (Nombre, cédula, cargo, teléfono de contacto, fecha de ingreso,
@@ -315,21 +315,18 @@ public class Principal extends javax.swing.JFrame {
             //Validacion2: verifica que cada campo no tenga algun error de formato
             if (validacionventa1(Nombre, Cedula, Tipo, Codigo, Monto)) {
                 if (validacionventa2(Nombre, Cedula, Codigo, Monto)) {
-                    CodigoAux=Codigo;//Asignar codigo ingresado a variable global
-                    Scanner sc = new Scanner (System.in);
-                    LeerVentasC(sc,file_name);//llamar subrutina que leea registro y compare los codigos
-                    sc.close();
-                    if(existecod==true){//si el codigo existe mostrar mensaje de error
-                        error3v.setText("(!) Codigo existente");
-                    }else{//si no existe registrar la venta
-                       registrar_ventas.println(Nombre + "\t" + Cedula + "\t" + Tipo + "\t" + Codigo + "\t" + Monto);
-                       RelacionAutos(Tipo,Monto);
-                    sonido("/Sonidos/correcto.wav");//implementacion de sonidos
-                    JOptionPane.showMessageDialog(null, "Los datos se han agregado satisfactoriamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE); 
+                    if (ValidarExistenciaEmpleado(Nombre, Cedula) && ValidarNoExistenciaCodigo(file_name, Codigo)) {//si no existe codigo y si existe empleado registrar la venta
+                        registrar_ventas.println(Nombre + "\t" + Cedula + "\t" + Tipo + "\t" + Codigo + "\t" + Monto);
+                        RelacionAutos(Tipo, Monto);//Relacionar en el inventario los autos vendidos
+                        if (Double.parseDouble(Monto) > 30000000) {// actualizar comision empleado si este vendio vehiculo superio a 30 millones
+                            actualizarSalarioConComisiones("Empleados", Nombre, Monto, TablaEMPLEADOS);
+                        }
+                        sonido("/Sonidos/correcto.wav");//implementacion de sonidos
+                        JOptionPane.showMessageDialog(null, "Los datos se han agregado satisfactoriamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                     }
-                    
+                    sonido("/Sonidos/error.wav");//los mensajes van incluidos en las funciones
                 } else {
-                    sonido("/Sonidos/error.wav");
+                    sonido("/Sonidos/error.wav");//los mensajes van incluidos en las funciones
                 }
             }
             registrar_ventas.close();
@@ -341,18 +338,52 @@ public class Principal extends javax.swing.JFrame {
         }
 
     }
-    //07 Subrutina PARA CONFIRMAR QUE NO EXISTA CODIGO
-    public void LeerVentasC(Scanner sc, String file_name) {
+
+    //07 Subrutina PARA CONFIRMAR QUE EXISTA EMPLEADO
+    public void LeerEmpleados(Scanner sc, String file_name, String Nombre, String Cedula) {
+        existeempleado = false;
+        boolean hay = false;
+        while (!hay) {
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(file_name + ".txt"));
+                String line = null;
+
+                while ((line = br.readLine()) != null && !existeempleado) {
+                    String temp[] = line.split("\t");
+                    System.out.println("Estos son los temp[0]: " + temp[0] + "\t" + "Los temp1: " + temp[1]);
+                    if (temp[0].equals(Nombre) && temp[1].equals(Cedula)) {
+                        System.out.println("NOMBRE encontrado: " + temp[0]);
+                        System.out.println("Cedula encontrada: " + temp[1]);
+                        existeempleado = true;
+                        System.out.println("Existe empleado es true");
+                    }
+                }
+                br.close();
+                hay = true;
+            } catch (IOException ex) {
+                System.out.println("No se encontró archivo");
+                hay = false;
+                file_name = sc.nextLine(); // Archivo
+            }
+        }
+    }
+
+    //08 Subrutina PARA CONFIRMAR QUE NO EXISTA CODIGO
+    public void LeerVentasC(Scanner sc, String file_name, String Codigo) {
+        existecod = false;
         boolean hay = false;
         while (hay == false) {
             try {
                 BufferedReader br = new BufferedReader(new FileReader(file_name + ".txt"));
                 String line = null;
-
-                while ((line = br.readLine()) != null && existecod==false) {
+                System.out.println("Este es el codigo a buscar: " + Codigo);
+                while ((line = br.readLine()) != null && existecod == false) {
                     String temp[] = line.split("\t");
-                    if (temp[2]==CodigoAux){
-                        existecod=true;
+                    System.out.println("Estos son los temp2 codigo: " + temp[3]);
+                    if (temp[3].equals(Codigo)) {
+                        System.out.println("CODIGO ENCONTRADO: " + temp[3]);
+                        existecod = true;
+                        System.out.println("Existe codigo es true");
                     }
                 }
                 br.close();
@@ -366,52 +397,114 @@ public class Principal extends javax.swing.JFrame {
         }
     }
     //Variables Globales
-    int cantT , cantF, cantH, cantB, cantM;
-    double MontoT , MontoF, MontoH, MontoB, MontoM;
-    //08 Subrutina para relacionar autos vendidos con el inventario
-    public void RelacionAutos(String Tipo, String Monto){
-                switch (Tipo) {
-                    case "Toyota":
-                        cantT++;
-                        CantVendidaToyota.setText(String.valueOf(cantT));
-                        MontoT+=Double.parseDouble(Monto);
-                        TotalToyota.setText(String.valueOf(MontoT));
-                        break;
-                    case "Ford":
-                        cantF++;
-                        CantVendidaFord.setText(String.valueOf(cantF));
-                        MontoF+=Double.parseDouble(Monto);
-                        TotalFord.setText(String.valueOf(MontoF));
-                        break;
-                    case "Honda":
-                        cantH++;
-                        CantVendidaHonda.setText(String.valueOf(cantH));
-                        MontoH+=Double.parseDouble(Monto);
-                        TotalHonda.setText(String.valueOf(MontoH));
-                        break;
-                        case "BMW":
-                        cantB++;
-                        CantVendidaBMW.setText(String.valueOf(cantB));
-                        MontoB+=Double.parseDouble(Monto);
-                        TotalBMW.setText(String.valueOf(MontoB));
-                        break;
-                        case "Mercedes":
-                        cantM++;
-                        CantVendidaMercedes.setText(String.valueOf(cantM));
-                        MontoM+=Double.parseDouble(Monto);
-                        TotalMercedes.setText(String.valueOf(MontoM));
-                        break;
-                    default:
-                        
-                        break;
+    int cantT, cantF, cantH, cantB, cantM;//contador de autos
+    double MontoT, MontoF, MontoH, MontoB, MontoM;//contador de monto
+    //09 Subrutina para relacionar autos vendidos con el inventario
+
+    public void RelacionAutos(String Tipo, String Monto) {
+        switch (Tipo) {
+            case "Toyota":
+                cantT++;
+                CantVendidaToyota.setText(String.valueOf(cantT));
+                MontoT += Double.parseDouble(Monto);
+                TotalToyota.setText("$"+String.valueOf(MontoT));
+                break;
+            case "Ford":
+                cantF++;
+                CantVendidaFord.setText(String.valueOf(cantF));
+                MontoF += Double.parseDouble(Monto);
+                TotalFord.setText("$"+String.valueOf(MontoF));
+                break;
+            case "Honda":
+                cantH++;
+                CantVendidaHonda.setText(String.valueOf(cantH));
+                MontoH += Double.parseDouble(Monto);
+                TotalHonda.setText("$"+String.valueOf(MontoH));
+                break;
+            case "BMW":
+                cantB++;
+                CantVendidaBMW.setText(String.valueOf(cantB));
+                MontoB += Double.parseDouble(Monto);
+                TotalBMW.setText("$"+String.valueOf(MontoB));
+                break;
+            case "Mercedes":
+                cantM++;
+                CantVendidaMercedes.setText(String.valueOf(cantM));
+                MontoM += Double.parseDouble(Monto);
+                TotalMercedes.setText("$"+String.valueOf(MontoM));
+                break;
+            default:
+
+                break;
+        }
+    }
+//10 Subrutina para actualizar el salario+comisiones
+
+    public void actualizarSalarioConComisiones(String file_name, String NombreVendedor, String Monto, JTable tabla) {
+        try {
+            File archivoOriginal = new File(file_name + ".txt");
+            File archivoTemporal = new File("EmpleadosTemp.txt");
+
+            FileReader fr = new FileReader(archivoOriginal);
+            BufferedReader br = new BufferedReader(fr);
+            FileWriter fw = new FileWriter(archivoTemporal);
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            model.setRowCount(0);
+
+            String linea;
+            boolean cambiosRealizados = false; // Variable para rastrear si se realizaron cambios
+
+            while ((linea = br.readLine()) != null) {
+                String[] campos = linea.split("\t");
+                String nombre = campos[0];
+                double SalarioF = Double.parseDouble(campos[5]); // Índice del salario fijo+comisiones
+                double SalarioC = Double.parseDouble(campos[6]); // Índice del salario fijo+comisiones
+
+                // Solo calcular comisiones y actualizar salario si el nombre coincide
+                if (nombre.equalsIgnoreCase(NombreVendedor)) {
+                    double comisiones = Double.parseDouble(Monto) * 0.02;
+                    // Calcular el salario total
+                    double salarioTotal;
+                    if (SalarioC == 0) {
+                        salarioTotal = SalarioF + comisiones;
+                    } else {
+                        salarioTotal = SalarioC + comisiones;
+                    }
+
+                    // Actualizar la línea con el nuevo salario más comisiones
+                    campos[6] = String.valueOf(salarioTotal); // Índice del salario más comisiones
+                    cambiosRealizados = true; // Se realizó un cambio
                 }
+                model.addRow(campos); // Agregar a la tabla
+                // Reconstruir la línea (incluso si no se actualiza)
+                String nuevaLinea = String.join("\t", campos);
+
+                // Escribir la línea actualizada o no en el archivo temporal
+                bw.write(nuevaLinea);
+                bw.newLine();
             }
 
-    //09 Subrutina para agregar lo del porcentaje
-    //Actualizar el campo salario más comisiones en el archivo de Empleados, 
-    //teniendo en cuenta que si realizó una venta superior a $30 millones en el mes, recibirá un 2% de comisiones sobre la venta total. 
+            br.close();
+            bw.close();
 
-    //06 Subrutina para limpiar campos
+            if (cambiosRealizados) {
+                // Renombrar el archivo temporal al archivo original solo si se realizaron cambios
+                if (archivoOriginal.delete() && archivoTemporal.renameTo(archivoOriginal)) {
+                    System.out.println("Salario más comisiones actualizado con éxito.");
+                } else {
+                    System.out.println("Error al actualizar el salario más comisiones.");
+                }
+            } else {
+                System.out.println("No se realizaron cambios en el salario más comisiones.");
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    //11 Subrutina para limpiar campos de Empleados
     public void Limpiar() {
         fnombre.setText("");
         fcedula.setText("");
@@ -421,8 +514,15 @@ public class Principal extends javax.swing.JFrame {
         fsalariofijo.setText("");
         fsalariocomisiones.setText("");
     }
+    //12 Subrutina para limpiar campos de Ventas
+    public void LimpiarCamposVentas(){
+        fvendedor.setText("");
+        fcedulav.setText("");
+        fcodigo.setText("");
+        fmonto.setText("");
+    }
 
-    //06 SUBRUTINA PARA APLICAR SONIDO
+    //13 SUBRUTINA PARA APLICAR SONIDO
     private void sonido(String cadena) {
         try {
             Clip clip = AudioSystem.getClip();
@@ -436,7 +536,7 @@ public class Principal extends javax.swing.JFrame {
         }
     }
 
-//FUNCIONES - Total 2
+//FUNCIONES 
     // 01 funcion para validar si estan vacios los campos EMPLEADOS
     public boolean validacion1(String c1, String c2, String c3, String c4, String c5, String c6, String c7) {
         if (!c1.isEmpty() && !c2.isEmpty() && !c3.isEmpty() && !c4.isEmpty() && !c5.isEmpty() && !c6.isEmpty() && !c7.isEmpty()) {
@@ -457,7 +557,7 @@ public class Principal extends javax.swing.JFrame {
         }
     }
 
-    //02 Funcion para validar 2 EMPLEADOS
+    //02 Funcion para validar Campos de EMPLEADOS
     // Nombre, Cedula, Cargo, Telefono, FechaIngreso, SalarioFijo, SalarioComisiones
     public boolean validacion2(String c1, String c2, String c3, String c4, String c5, String c6, String c7) {
 
@@ -589,7 +689,7 @@ public class Principal extends javax.swing.JFrame {
 
     }
 
-    //02 Funcion para validar 2 VENTAS
+    //02.2 Funcion para validar campos de VENTAS
     // Nombre, Cedula, Codigo, Monto
     public boolean validacionventa2(String c1, String c2, String c4, String c5) {
 
@@ -669,6 +769,34 @@ public class Principal extends javax.swing.JFrame {
 
     }
 
+    //03 Funcion para validar Existencia Empleado
+    public boolean ValidarExistenciaEmpleado(String Nombre, String Cedula) {
+        Scanner sc = new Scanner(System.in);
+        LeerEmpleados(sc, "Empleados", Nombre, Cedula);
+        sc.close();
+        if (existeempleado == false) {//si el empleado no existe mostrar mensaje de error
+            JOptionPane.showMessageDialog(null, "Verifique los campos del vendedor", "Vendedor No Encontrado", JOptionPane.WARNING_MESSAGE);
+            return false;
+
+        }
+        return true;
+    }
+    //04 Funcion para validar que el codigo no exista
+
+    public boolean ValidarNoExistenciaCodigo(String file_name, String Codigo) {
+        Scanner sc = new Scanner(System.in);
+        LeerVentasC(sc, file_name, Codigo);//llamar subrutina que leea registro y compare los codigos
+        sc.close();
+
+        if (existecod == true) {//si el codigo existe mostrar mensaje de error
+            System.out.println("Existe codigo es TRUE tiene que aparecer error");
+            error3v.setText("(!) Codigo existente");
+            error3v.setVisible(true);
+            return false;
+        }
+        return true;
+    }
+
     public Principal() {
         initComponents();
         //INTERFAZ
@@ -722,7 +850,6 @@ public class Principal extends javax.swing.JFrame {
         //No visible
         FrameAgregar.setVisible(false);
         FrameEliminar.setVisible(false);
-        FrameAgregarVenta.setVisible(false);
         LabelFondoBorroso.setVisible(false);
         error1.setVisible(false);
         error2.setVisible(false);
@@ -731,6 +858,14 @@ public class Principal extends javax.swing.JFrame {
         error5.setVisible(false);
         error6.setVisible(false);
         error7.setVisible(false);
+
+        //ARCHIVO VENTAS
+        //No visible
+        FrameAgregarVenta.setVisible(false);
+        error1v.setVisible(false);
+        error2v.setVisible(false);
+        error3v.setVisible(false);
+        error4v.setVisible(false);
 
     }
 
@@ -786,7 +921,7 @@ public class Principal extends javax.swing.JFrame {
         ComboBox = new javax.swing.JComboBox<>();
         cerraragregarventa = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        limpiarventas = new javax.swing.JButton();
         error1v = new javax.swing.JLabel();
         error2v = new javax.swing.JLabel();
         error3v = new javax.swing.JLabel();
@@ -985,7 +1120,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Toyota", "Ford", "Honda", "Mercedes" }));
+        ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Toyota", "Ford", "Honda", "BMW", "Mercedes" }));
         ComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxActionPerformed(evt);
@@ -1000,8 +1135,18 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButton2.setText("Agregar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Limpiar");
+        limpiarventas.setText("Limpiar");
+        limpiarventas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarventasActionPerformed(evt);
+            }
+        });
 
         error1v.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         error1v.setForeground(new java.awt.Color(255, 0, 0));
@@ -1060,7 +1205,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3))
+                        .addComponent(limpiarventas))
                     .addComponent(cerraragregarventa))
                 .addGap(24, 24, 24))
         );
@@ -1100,7 +1245,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(limpiarventas))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
@@ -1826,8 +1971,8 @@ public class Principal extends javax.swing.JFrame {
             PanelInventario.setBackground(fondoclaro);
             InventarioSubPanel.setBackground(fondoclaro);
             Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53.png")));
-            Modo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53brillo.png"))); 
-       
+            Modo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53brillo.png")));
+
             Nocturno = false;
         } else {//estaclaro
             System.out.println("Pasar Modo oscuro");
@@ -1839,8 +1984,8 @@ public class Principal extends javax.swing.JFrame {
             InventarioSubPanel.setBackground(fondooscuro);
 
             Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/solsinfondpx53.png")));
-            Modo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/solsinfondpx53brillo.png"))); 
-       
+            Modo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/solsinfondpx53brillo.png")));
+
             Nocturno = true;
         }
 //       
@@ -1848,7 +1993,19 @@ public class Principal extends javax.swing.JFrame {
 
     private void cerraragregarventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerraragregarventaActionPerformed
         FrameAgregarVenta.setVisible(false);
+        LimpiarCamposVentas();
     }//GEN-LAST:event_cerraragregarventaActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        AgregarVentas("Ventas");
+        Scanner sc = new Scanner(System.in);
+        LeerNormal(sc, "Ventas", TablaVENTAS);
+        sc.close();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void limpiarventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarventasActionPerformed
+        LimpiarCamposVentas();
+    }//GEN-LAST:event_limpiarventasActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1965,7 +2122,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField ftelefono;
     private javax.swing.JTextField fvendedor;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2008,5 +2164,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JButton limpiarventas;
     // End of variables declaration//GEN-END:variables
 }
