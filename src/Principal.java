@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -472,6 +473,7 @@ File original = new File(file_name + ".txt");
         PanelVentas.setVisible(true);
         PanelEmpleados.setEnabled(false);
         PanelVentas.setEnabled(true);
+        Nocturno=false;
         PanelInventario.setEnabled(false);
         Actual = PanelVentas;
         CambiarBotones("PanelVentas");
@@ -555,8 +557,8 @@ File original = new File(file_name + ".txt");
         Boton_Empleados = new javax.swing.JButton();
         Boton_Ventas = new javax.swing.JButton();
         Boton_Inventario = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Modo = new javax.swing.JButton();
+        InfoBTN = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -676,7 +678,7 @@ File original = new File(file_name + ".txt");
                 Boton_EmpleadosActionPerformed(evt);
             }
         });
-        getContentPane().add(Boton_Empleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 60, 60));
+        getContentPane().add(Boton_Empleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 80, 70));
 
         Boton_Ventas.setBackground(new java.awt.Color(51, 0, 0));
         Boton_Ventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/ventassinfondox53.png"))); // NOI18N
@@ -688,7 +690,7 @@ File original = new File(file_name + ".txt");
                 Boton_VentasActionPerformed(evt);
             }
         });
-        getContentPane().add(Boton_Ventas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 60, 60));
+        getContentPane().add(Boton_Ventas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 80, 70));
 
         Boton_Inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/inventarriosinfondox53.png"))); // NOI18N
         Boton_Inventario.setBorderPainted(false);
@@ -699,18 +701,27 @@ File original = new File(file_name + ".txt");
                 Boton_InventarioActionPerformed(evt);
             }
         });
-        getContentPane().add(Boton_Inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 60, 60));
+        getContentPane().add(Boton_Inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 80, 70));
 
-        jButton1.setText("N");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 53, 53));
-
-        jButton2.setText("Info.");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53.png"))); // NOI18N
+        Modo.setContentAreaFilled(false);
+        Modo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53brillo.png"))); // NOI18N
+        Modo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                ModoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, 60, 53));
+        getContentPane().add(Modo, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 540, 70, 53));
+
+        InfoBTN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/infosinfondox53.png"))); // NOI18N
+        InfoBTN.setContentAreaFilled(false);
+        InfoBTN.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/infosinfondox53brillo.png"))); // NOI18N
+        InfoBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InfoBTNActionPerformed(evt);
+            }
+        });
+        getContentPane().add(InfoBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, 80, 53));
 
         jLabel2.setBackground(new java.awt.Color(255, 204, 204));
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 2, 36)); // NOI18N
@@ -1424,9 +1435,9 @@ File original = new File(file_name + ".txt");
         }
     }//GEN-LAST:event_Boton_InventarioActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void InfoBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoBTNActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_InfoBTNActionPerformed
 
     private void BotonOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonOrdenarActionPerformed
 
@@ -1534,6 +1545,47 @@ FrameEliminar.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+     boolean Nocturno;
+    Color fondoclaro = Color.decode("#FFFFFF");//blanco
+    Color fondooscuro = Color.decode("#2A2333");
+    Color rojooscuro = Color.decode("#330000");
+    
+    private void ModoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModoActionPerformed
+        if (Nocturno == true) {//esta oscuro
+            System.out.println("Pasar Modo claro");
+            TituloPanel.setForeground(rojooscuro);
+            PanelEmpleados.setBackground(fondoclaro);
+            PanelVentas.setBackground(fondoclaro);
+            PanelInventario.setBackground(fondoclaro);
+
+            Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53.png")));
+
+            Nocturno = false;
+        } else {//estaclaro
+            System.out.println("Pasar Modo oscuro");
+            TituloPanel.setForeground(fondoclaro);
+
+            PanelEmpleados.setBackground(fondooscuro);
+            PanelVentas.setBackground(fondooscuro);
+            PanelInventario.setBackground(fondooscuro);
+
+            Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/solsinfondpx53.png")));
+
+            Nocturno = true;
+        }
+        TituloPanel.revalidate();
+        TituloPanel.repaint();
+
+        PanelEmpleados.revalidate();
+        PanelEmpleados.repaint();
+
+        PanelVentas.revalidate();
+        PanelVentas.repaint();
+
+        PanelInventario.revalidate();
+        PanelInventario.repaint();
+    }//GEN-LAST:event_ModoActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1598,7 +1650,9 @@ FrameEliminar.setVisible(true);
     private javax.swing.JInternalFrame FrameAgregar;
     private javax.swing.JInternalFrame FrameAgregarVenta;
     private javax.swing.JInternalFrame FrameEliminar;
+    private javax.swing.JButton InfoBTN;
     private javax.swing.JLabel LabelFondoBorroso;
+    private javax.swing.JButton Modo;
     private javax.swing.JPanel PanelAgregarEmpleado;
     private javax.swing.JPanel PanelEliminarEmpleado;
     private javax.swing.JPanel PanelEmpleados;
@@ -1635,8 +1689,6 @@ FrameEliminar.setVisible(true);
     private javax.swing.JTextField fsalariocomisiones;
     private javax.swing.JTextField fsalariofijo;
     private javax.swing.JTextField ftelefono;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
