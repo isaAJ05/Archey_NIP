@@ -762,17 +762,17 @@ File original = new File(file_name + ".txt");
         });
         PanelEliminarEmpleado.add(BotonLimpiar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 404, -1, -1));
 
-        jLabel33.setText("Poner Imagen de Empleado");
-        PanelEliminarEmpleado.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 170, 210));
+        jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/empleado sin fondo.png"))); // NOI18N
+        PanelEliminarEmpleado.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 170, 210));
 
         error9.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         error9.setForeground(new java.awt.Color(255, 0, 0));
         error9.setText("(!) El nombre no debe contener números ni caracteres especiales.");
         PanelEliminarEmpleado.add(error9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 290, -1));
 
-        FrameEliminar.getContentPane().add(PanelEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        FrameEliminar.getContentPane().add(PanelEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 440));
 
-        PanelEmpleados.add(FrameEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 700, -1));
+        PanelEmpleados.add(FrameEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 670, 460));
 
         FrameAgregar.setVisible(true);
 
@@ -837,8 +837,8 @@ File original = new File(file_name + ".txt");
         });
         PanelAgregarEmpleado.add(BotonLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 404, -1, -1));
 
-        jLabel12.setText("Poner Imagen de Empleado");
-        PanelAgregarEmpleado.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 170, 210));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/empleado sin fondo.png"))); // NOI18N
+        PanelAgregarEmpleado.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 170, 210));
 
         error7.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         error7.setForeground(new java.awt.Color(255, 0, 0));
