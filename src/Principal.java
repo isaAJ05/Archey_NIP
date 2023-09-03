@@ -2409,6 +2409,7 @@ public class Principal extends javax.swing.JFrame {
             BotonOrdenar.setForeground(negro);
             BotonOrdenarSalario.setForeground(negro);
             BotonSinOrdenar.setForeground(negro);
+            MostrarBusqueda.setForeground(negro);
             GrafiPanel.setBackground(fondoclaro);
             Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53.png")));
             Modo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53brillo.png")));
@@ -2433,6 +2434,7 @@ public class Principal extends javax.swing.JFrame {
             BotonOrdenar.setForeground(fondoclaro);
             BotonOrdenarSalario.setForeground(fondoclaro);
             BotonSinOrdenar.setForeground(fondoclaro);
+            MostrarBusqueda.setForeground(fondoclaro);
             URL imageURL1 = Principal.class.getResource("/Imagenes/borrosooscuroempleado.png");
             ImageIcon imageIcon = new ImageIcon(imageURL1);
             LabelFondoBorroso.setIcon(imageIcon);
