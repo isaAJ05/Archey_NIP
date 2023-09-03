@@ -34,7 +34,7 @@ public class Principal extends javax.swing.JFrame {
     //01 Subrutina para llenar el archivo Empleados
     public static void agregarDatosEmpleados(String file_name) {
         try {
-            FileWriter outFile = new FileWriter(file_name + ".txt", false);
+            FileWriter outFile = new FileWriter(file_name + ".txt", true);
             PrintWriter registro = new PrintWriter(outFile);
 
             //Matriz para crear Archivo Existente 
@@ -86,6 +86,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     //02 SUBRUTINA PARA MOSTRAR LOS CAMPOS ARCHIVO EMPLEADOS-VENTAS
+  
     public static void LeerNormal(Scanner sc, String file_name, JTable tabla) {
         boolean hay = false;
         while (hay == false) {
@@ -111,6 +112,34 @@ public class Principal extends javax.swing.JFrame {
             }
         }
     }
+    //02.2 SUBRUTINA PARA MOSTRAR LOS CAMPOS ARCHIVO VENTAS
+  
+    public void LeerVentasok(Scanner sc, String file_name, JTable tabla) {
+        boolean hay = false;
+        while (hay == false) {
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(file_name + ".txt"));
+                String line = null;
+                DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+                model.setRowCount(0);
+
+                while ((line = br.readLine()) != null) {
+                    String temp[] = line.split("\t");
+                    RelacionAutos(temp[2], temp[4]);//Relacionar en el inventario los autos vendidos
+                    model.addRow(temp); //Agregar datos del archivo a la tabla
+                }
+
+                br.close();
+                hay = true;
+
+            } catch (IOException ex) {
+                System.out.println("No se encontro archivo");
+                hay = false;
+                file_name = sc.nextLine(); // Archivo
+            }
+        }
+    }
+    
 
     //03 SUBRUTINA PARA MOSTRAR LOS CAMPOS ORDENADOS DEL ARCHIVO EMPLEADOS 
     public static void LeerOrdenado(Scanner sc, String file_name, JTable tabla, String NoS) {
@@ -317,7 +346,7 @@ public class Principal extends javax.swing.JFrame {
                 if (validacionventa2(Nombre, Cedula, Codigo, Monto)) {
                     if (ValidarExistenciaEmpleado(Nombre, Cedula) && ValidarNoExistenciaCodigo(file_name, Codigo)) {//si no existe codigo y si existe empleado registrar la venta
                         registrar_ventas.println(Nombre + "\t" + Cedula + "\t" + Tipo + "\t" + Codigo + "\t" + Monto);
-                        RelacionAutos(Tipo, Monto);//Relacionar en el inventario los autos vendidos
+                        
                         if (Double.parseDouble(Monto) > 30000000) {// actualizar comision empleado si este vendio vehiculo superio a 30 millones
                             actualizarSalarioConComisiones("Empleados", Nombre, Monto, TablaEMPLEADOS);
                         }
@@ -815,7 +844,7 @@ public class Principal extends javax.swing.JFrame {
         TituloPanel.setText("|  Ventas");
         //ARCHIVO EMPLEADOS
         //Crear
-        agregarDatosEmpleados("Empleados");
+        //agregarDatosEmpleados("Empleados"); ya esta creado
         //Mostrar Archivo Empleados
         Scanner sc = new Scanner(System.in);
         LeerNormal(sc, "Empleados", TablaEMPLEADOS);
@@ -866,6 +895,21 @@ public class Principal extends javax.swing.JFrame {
         error2v.setVisible(false);
         error3v.setVisible(false);
         error4v.setVisible(false);
+        //Para Mostrar Archivo de Ventas al iniciar
+        File archivo = new File("Ventas.txt");
+        // Verificar si el archivo existe
+        if (archivo.exists()) {
+            // Verificar si el archivo está vacío
+            if (archivo.length() == 0) {
+                System.out.println("El archivo de ventas está vacío.");
+            } else {
+                System.out.println("El archivo de ventas no está vacío.");
+                LeerVentasok(sc, "Ventas", TablaVENTAS);
+            }
+        } else {
+            System.out.println("El archivo de ventas no existe.");
+        }
+        
 
     }
 
@@ -1999,7 +2043,7 @@ public class Principal extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         AgregarVentas("Ventas");
         Scanner sc = new Scanner(System.in);
-        LeerNormal(sc, "Ventas", TablaVENTAS);
+        LeerVentasok(sc, "Ventas", TablaVENTAS);
         sc.close();
     }//GEN-LAST:event_jButton2ActionPerformed
 
