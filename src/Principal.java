@@ -18,6 +18,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
@@ -31,7 +32,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Natalia Carpintero, Paula Nuñez e Isabella Arrieta
  */
 public class Principal extends javax.swing.JFrame {
-
+ 
     //SUBRUTINAS: EMPLEADOS
     //01 Subrutina para llenar el archivo Empleados
     public static void agregarDatosEmpleados(String file_name) {
@@ -896,6 +897,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     public Principal() {
+        setIconImage(new ImageIcon(getClass().getResource("ICONS/iconoarchey.png")).getImage());
         initComponents();
         //INTERFAZ
         //setIconImage(new ImageIcon(getClass().getResource("Imagenes/icon.png")).getImage());
