@@ -18,6 +18,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
@@ -2239,6 +2240,14 @@ public class Principal extends javax.swing.JFrame {
             InventarioSubPanel.setBackground(fondoclaro);
             Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53.png")));
             Modo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53brillo.png")));
+            
+            URL imageURL = Principal.class.getResource("/Imagenes/borrosoclaroempleadp.png");
+            ImageIcon imageIconE = new ImageIcon(imageURL);
+            LabelFondoBorroso.setIcon(imageIconE);
+            URL imageURLV = Principal.class.getResource("/Imagenes/ventasborrosoclaro.png");
+            ImageIcon imageIconV = new ImageIcon(imageURLV);
+            fondoborrosoventas.setIcon(imageIconV);
+
 
             Nocturno = false;
         } else {//estaclaro
@@ -2249,7 +2258,14 @@ public class Principal extends javax.swing.JFrame {
             PanelVentas.setBackground(fondooscuro);
             PanelInventario.setBackground(fondooscuro);
             InventarioSubPanel.setBackground(fondooscuro);
-
+            
+            URL imageURL1 = Principal.class.getResource("/Imagenes/borrosooscuroempleado.png");
+            ImageIcon imageIcon = new ImageIcon(imageURL1);
+            LabelFondoBorroso.setIcon(imageIcon);
+            URL imageURL2 = Principal.class.getResource("/Imagenes/ventasoscuroborroso.png");
+            ImageIcon imageIcon2 = new ImageIcon(imageURL2);
+            fondoborrosoventas.setIcon(imageIcon2);
+            
             Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/solsinfondpx53.png")));
             Modo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/solsinfondpx53brillo.png")));
 
