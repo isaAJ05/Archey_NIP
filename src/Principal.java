@@ -1145,7 +1145,7 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/lOGOx60.png"))); // NOI18N
-        getContentPane().add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 10, 60, 60));
+        getContentPane().add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 60, 70));
 
         Boton_Empleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/empleadosinfondo x53.png"))); // NOI18N
         Boton_Empleados.setBorderPainted(false);
