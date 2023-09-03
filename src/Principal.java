@@ -922,6 +922,8 @@ public class Principal extends javax.swing.JFrame {
         PanelVentas.setEnabled(true);
         GrafiPanel.setVisible(false);
         GrafiPanel.setEnabled(false);
+        PanelInfo.setVisible(false);
+        PanelInfo.setEnabled(false);
         Nocturno = false;
         PanelInventario.setEnabled(false);
         Actual = PanelVentas;
@@ -1028,6 +1030,12 @@ public class Principal extends javax.swing.JFrame {
             Boton_Ventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/ventassinfondox53.png")));
             Boton_Empleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/empleado sin fondox70.png")));
         }
+         if (Actual.equalsIgnoreCase("PanelInfo")) {
+            Boton_Inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/inventarriosinfondox53.png")));
+            Boton_Ventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/ventassinfondox53.png")));
+            Boton_Empleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/empleadosinfondo x53.png")));
+        }
+        
 
     }
 
@@ -1046,6 +1054,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         TituloPanel = new javax.swing.JLabel();
         PanelEmpleados = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaEMPLEADOS = new javax.swing.JTable();
         FrameEliminar = new javax.swing.JInternalFrame();
         PanelEliminarEmpleado = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
@@ -1083,13 +1093,17 @@ public class Principal extends javax.swing.JFrame {
         error5 = new javax.swing.JLabel();
         error6 = new javax.swing.JLabel();
         LabelFondoBorroso = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TablaEMPLEADOS = new javax.swing.JTable();
-        BotonOrdenar = new javax.swing.JRadioButton();
-        BotonOrdenarSalario = new javax.swing.JRadioButton();
-        BotonSinOrdenar = new javax.swing.JRadioButton();
+        Buscador = new javax.swing.JTextField();
         BotonparaAgregar = new javax.swing.JButton();
         BotonparaEliminar = new javax.swing.JButton();
+        BotonOrdenarSalario = new javax.swing.JRadioButton();
+        BotonOrdenar = new javax.swing.JRadioButton();
+        BotonSinOrdenar = new javax.swing.JRadioButton();
+        MostrarBusqueda = new javax.swing.JLabel();
+        PanelInfo = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jPanel3 = new javax.swing.JPanel();
+        InfoLabel = new javax.swing.JLabel();
         PanelInventario = new javax.swing.JPanel();
         BTNgrafi = new javax.swing.JButton();
         GrafiPanel = new javax.swing.JPanel();
@@ -1252,6 +1266,56 @@ public class Principal extends javax.swing.JFrame {
         PanelEmpleados.setBackground(new java.awt.Color(255, 255, 255));
         PanelEmpleados.setPreferredSize(new java.awt.Dimension(1240, 700));
         PanelEmpleados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane1.setBackground(new java.awt.Color(51, 0, 0));
+        jScrollPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
+        jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setToolTipText("");
+        jScrollPane1.setFont(new java.awt.Font("Adobe Gothic Std B", 1, 12)); // NOI18N
+        jScrollPane1.setOpaque(false);
+
+        TablaEMPLEADOS.setAutoCreateRowSorter(true);
+        TablaEMPLEADOS.setBackground(new java.awt.Color(255, 204, 204));
+        TablaEMPLEADOS.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        TablaEMPLEADOS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        TablaEMPLEADOS.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Nombre", "C.C.", "Cargo", "Telf. Contacto", "Fecha Ingreso", "Salario Mensual", "Salario+Comisiones"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TablaEMPLEADOS.setColumnSelectionAllowed(true);
+        TablaEMPLEADOS.setIntercellSpacing(new java.awt.Dimension(5, 5));
+        TablaEMPLEADOS.setRowHeight(40);
+        TablaEMPLEADOS.setSelectionBackground(new java.awt.Color(255, 153, 153));
+        TablaEMPLEADOS.setSelectionForeground(new java.awt.Color(102, 0, 0));
+        TablaEMPLEADOS.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        TablaEMPLEADOS.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        TablaEMPLEADOS.setShowGrid(false);
+        TablaEMPLEADOS.setShowVerticalLines(true);
+        TablaEMPLEADOS.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(TablaEMPLEADOS);
+        TablaEMPLEADOS.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        PanelEmpleados.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 180, 1101, -1));
+        jScrollPane1.getAccessibleContext().setAccessibleName("");
 
         FrameEliminar.setVisible(true);
         FrameEliminar.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1427,77 +1491,13 @@ public class Principal extends javax.swing.JFrame {
         LabelFondoBorroso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/borrosoclaroempleadp.png"))); // NOI18N
         PanelEmpleados.add(LabelFondoBorroso, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -130, 1480, 890));
 
-        jScrollPane1.setBackground(new java.awt.Color(51, 0, 0));
-        jScrollPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
-        jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setToolTipText("");
-        jScrollPane1.setFont(new java.awt.Font("Adobe Gothic Std B", 1, 12)); // NOI18N
-        jScrollPane1.setOpaque(false);
-
-        TablaEMPLEADOS.setAutoCreateRowSorter(true);
-        TablaEMPLEADOS.setBackground(new java.awt.Color(255, 204, 204));
-        TablaEMPLEADOS.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
-        TablaEMPLEADOS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        TablaEMPLEADOS.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Nombre", "C.C.", "Cargo", "Telf. Contacto", "Fecha Ingreso", "Salario Mensual", "Salario+Comisiones"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        TablaEMPLEADOS.setColumnSelectionAllowed(true);
-        TablaEMPLEADOS.setIntercellSpacing(new java.awt.Dimension(5, 5));
-        TablaEMPLEADOS.setRowHeight(40);
-        TablaEMPLEADOS.setSelectionBackground(new java.awt.Color(255, 153, 153));
-        TablaEMPLEADOS.setSelectionForeground(new java.awt.Color(102, 0, 0));
-        TablaEMPLEADOS.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        TablaEMPLEADOS.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        TablaEMPLEADOS.setShowGrid(false);
-        TablaEMPLEADOS.setShowVerticalLines(true);
-        TablaEMPLEADOS.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(TablaEMPLEADOS);
-        TablaEMPLEADOS.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-
-        PanelEmpleados.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 180, 1101, -1));
-        jScrollPane1.getAccessibleContext().setAccessibleName("");
-
-        BotonOrdenar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        BotonOrdenar.setText("Ordenar por nombre");
-        BotonOrdenar.addActionListener(new java.awt.event.ActionListener() {
+        Buscador.setText("Buscar ...");
+        Buscador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonOrdenarActionPerformed(evt);
+                BuscadorActionPerformed(evt);
             }
         });
-        PanelEmpleados.add(BotonOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 120, -1, -1));
-
-        BotonOrdenarSalario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        BotonOrdenarSalario.setText("Ordenar por Salario");
-        BotonOrdenarSalario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonOrdenarSalarioActionPerformed(evt);
-            }
-        });
-        PanelEmpleados.add(BotonOrdenarSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 140, -1, -1));
-
-        BotonSinOrdenar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        BotonSinOrdenar.setText("Sin ordenar");
-        PanelEmpleados.add(BotonSinOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 160, -1, -1));
+        PanelEmpleados.add(Buscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 420, 30));
 
         BotonparaAgregar.setBackground(new java.awt.Color(204, 0, 0));
         BotonparaAgregar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -1510,7 +1510,7 @@ public class Principal extends javax.swing.JFrame {
                 BotonparaAgregarActionPerformed(evt);
             }
         });
-        PanelEmpleados.add(BotonparaAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 130, 130, 40));
+        PanelEmpleados.add(BotonparaAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 140, 40));
 
         BotonparaEliminar.setBackground(new java.awt.Color(204, 0, 0));
         BotonparaEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -1524,9 +1524,74 @@ public class Principal extends javax.swing.JFrame {
                 BotonparaEliminarActionPerformed(evt);
             }
         });
-        PanelEmpleados.add(BotonparaEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 130, 140, 40));
+        PanelEmpleados.add(BotonparaEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 80, 140, 40));
+
+        BotonOrdenarSalario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonOrdenarSalario.setText("Ordenar por Salario");
+        BotonOrdenarSalario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonOrdenarSalarioActionPerformed(evt);
+            }
+        });
+        PanelEmpleados.add(BotonOrdenarSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 60, -1, -1));
+
+        BotonOrdenar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonOrdenar.setText("Ordenar por nombre");
+        BotonOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonOrdenarActionPerformed(evt);
+            }
+        });
+        PanelEmpleados.add(BotonOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 20, -1, -1));
+
+        BotonSinOrdenar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonSinOrdenar.setText("Sin ordenar");
+        PanelEmpleados.add(BotonSinOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 100, -1, -1));
+        PanelEmpleados.add(MostrarBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 1060, 30));
 
         getContentPane().add(PanelEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 1160, 640));
+
+        PanelInfo.setBackground(new java.awt.Color(255, 255, 255));
+
+        jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane4.setOpaque(false);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(InfoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 1125, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(InfoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jScrollPane4.setViewportView(jPanel3);
+
+        javax.swing.GroupLayout PanelInfoLayout = new javax.swing.GroupLayout(PanelInfo);
+        PanelInfo.setLayout(PanelInfoLayout);
+        PanelInfoLayout.setHorizontalGroup(
+            PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelInfoLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        PanelInfoLayout.setVerticalGroup(
+            PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelInfoLayout.createSequentialGroup()
+                .addGap(0, 91, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(PanelInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 1160, 640));
 
         PanelInventario.setBackground(new java.awt.Color(255, 255, 255));
         PanelInventario.setPreferredSize(new java.awt.Dimension(1240, 700));
@@ -2160,7 +2225,16 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton_InventarioActionPerformed
 
     private void InfoBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoBTNActionPerformed
-        // TODO add your handling code here:
+        if (Actual != PanelInfo) {
+            PanelInfo.setVisible(true);
+            PanelInfo.setEnabled(true);
+            CambiaEstadoPANEL(Actual);
+            Actual = PanelInfo;
+            TituloPanel.setText("|  Guia Informativa");
+            CambiarBotones("PanelInfo");
+//           
+            //System.out.println(Actual);
+        }
     }//GEN-LAST:event_InfoBTNActionPerformed
 
     private void BotonOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonOrdenarActionPerformed
@@ -2315,6 +2389,7 @@ public class Principal extends javax.swing.JFrame {
             PanelVentas.setBackground(fondoclaro);
             PanelInventario.setBackground(fondoclaro);
             InventarioSubPanel.setBackground(fondoclaro);
+            PanelInfo.setBackground(fondoclaro);
             BotonOrdenar.setForeground(negro);
             BotonOrdenarSalario.setForeground(negro);
             BotonSinOrdenar.setForeground(negro);
@@ -2336,6 +2411,7 @@ public class Principal extends javax.swing.JFrame {
             PanelEmpleados.setBackground(fondooscuro);
             GrafiPanel.setBackground(fondooscuro);
             PanelVentas.setBackground(fondooscuro);
+            PanelInfo.setBackground(fondooscuro);
             PanelInventario.setBackground(fondooscuro);
             InventarioSubPanel.setBackground(fondooscuro);
             BotonOrdenar.setForeground(fondoclaro);
@@ -2499,6 +2575,7 @@ public class Principal extends javax.swing.JFrame {
 //                true,//herramientas
 //                false//url
 //        );
+
         //Grafico 3D REDONDO
         JFreeChart grafico_circular = ChartFactory.createPieChart3D("Cantidad De Autors Vendida", datos, true, true, false);
         PiePlot piePlot = (PiePlot) grafico_circular.getPlot();
@@ -2512,29 +2589,36 @@ public class Principal extends javax.swing.JFrame {
         Gpa1.add(pnl, BorderLayout.WEST);
 
         //gRAFICO DE BARRAS
-        DefaultCategoryDataset barchartData = new DefaultCategoryDataset();
-        barchartData.setValue((int)MontoT, "Monto Total", "Toyota");
+        DefaultCategoryDataset barchartData = new DefaultCategoryDataset(); //Llamar libreria
+        barchartData.setValue((int)MontoT, "Monto Total", "Toyota");//Establecer datos
         barchartData.setValue((int)MontoF, "Monto Total", "Ford");
         barchartData.setValue((int)MontoH, "Monto Total", "Honda");
         barchartData.setValue((int)MontoB, "Monto Total", "BMW");
         barchartData.setValue((int)MontoM, "Monto Total", "Mercedes-Benz");
+        //Crear tabla
         JFreeChart barChart=ChartFactory.createBarChart3D("Total Obtenido","Tipos De Auto", "Monto", barchartData,PlotOrientation.HORIZONTAL,false,true,false);
         CategoryPlot barchrt=barChart.getCategoryPlot();
+        //Modificar los numeros de los ejes
         NumberAxis yAxis = (NumberAxis) barchrt.getRangeAxis();
-        NumberFormat format = new DecimalFormat("#,###"); // Personaliza el formato de los números
+        NumberFormat format = new DecimalFormat("#,###.#"); // Personaliza el formato de los números
         yAxis.setNumberFormatOverride(format);
         
+        //Usar la grafica en el panel
         ChartPanel pnl2=new ChartPanel(barChart);
         pnl2.setMouseWheelEnabled(true);
         pnl2.setPreferredSize(new Dimension(550, 400));
         Gpa.setLayout(new BorderLayout());
         Gpa.add(pnl2, BorderLayout.EAST);
+        //Verificar
         pnl.validate();
         pnl2.validate();
-
         pack();
         repaint();
     }//GEN-LAST:event_BTNgrafiActionPerformed
+
+    private void BuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BuscadorActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -2594,6 +2678,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton Boton_Ventas;
     private javax.swing.JButton BotonparaAgregar;
     private javax.swing.JButton BotonparaEliminar;
+    private javax.swing.JTextField Buscador;
     private javax.swing.JLabel CantVendidaBMW;
     private javax.swing.JLabel CantVendidaFord;
     private javax.swing.JLabel CantVendidaHonda;
@@ -2608,13 +2693,16 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel Gpa1;
     private javax.swing.JPanel GrafiPanel;
     private javax.swing.JButton InfoBTN;
+    private javax.swing.JLabel InfoLabel;
     private javax.swing.JPanel InventarioSubPanel;
     private javax.swing.JLabel LabelFondoBorroso;
     private javax.swing.JButton LimpiarVenta;
     private javax.swing.JButton Modo;
+    private javax.swing.JLabel MostrarBusqueda;
     private javax.swing.JPanel PanelAgregarEmpleado;
     private javax.swing.JPanel PanelEliminarEmpleado;
     private javax.swing.JPanel PanelEmpleados;
+    private javax.swing.JPanel PanelInfo;
     private javax.swing.JPanel PanelInventario;
     private javax.swing.JPanel PanelVentas;
     private javax.swing.JTable TablaEMPLEADOS;
@@ -2703,8 +2791,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     // End of variables declaration//GEN-END:variables
 }
