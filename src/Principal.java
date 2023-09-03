@@ -4,6 +4,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -30,6 +34,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -975,6 +980,7 @@ public class Principal extends javax.swing.JFrame {
         error6.setVisible(false);
         error7.setVisible(false);
 
+        //Para el buscador
         //ARCHIVO VENTAS
         //No visible
         FrameAgregarVenta.setVisible(false);
@@ -1030,12 +1036,11 @@ public class Principal extends javax.swing.JFrame {
             Boton_Ventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/ventassinfondox53.png")));
             Boton_Empleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/empleado sin fondox70.png")));
         }
-         if (Actual.equalsIgnoreCase("PanelInfo")) {
+        if (Actual.equalsIgnoreCase("PanelInfo")) {
             Boton_Inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/inventarriosinfondox53.png")));
             Boton_Ventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/ventassinfondox53.png")));
             Boton_Empleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/empleadosinfondo x53.png")));
         }
-        
 
     }
 
@@ -1054,6 +1059,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         TituloPanel = new javax.swing.JLabel();
         PanelEmpleados = new javax.swing.JPanel();
+        Buscador = new javax.swing.JTextField();
+        MostrarBusqueda = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaEMPLEADOS = new javax.swing.JTable();
         FrameEliminar = new javax.swing.JInternalFrame();
@@ -1092,14 +1099,13 @@ public class Principal extends javax.swing.JFrame {
         error4 = new javax.swing.JLabel();
         error5 = new javax.swing.JLabel();
         error6 = new javax.swing.JLabel();
+        BTNBuscar = new javax.swing.JButton();
         LabelFondoBorroso = new javax.swing.JLabel();
-        Buscador = new javax.swing.JTextField();
         BotonparaAgregar = new javax.swing.JButton();
         BotonparaEliminar = new javax.swing.JButton();
         BotonOrdenarSalario = new javax.swing.JRadioButton();
         BotonOrdenar = new javax.swing.JRadioButton();
         BotonSinOrdenar = new javax.swing.JRadioButton();
-        MostrarBusqueda = new javax.swing.JLabel();
         PanelInfo = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
@@ -1267,6 +1273,15 @@ public class Principal extends javax.swing.JFrame {
         PanelEmpleados.setPreferredSize(new java.awt.Dimension(1240, 700));
         PanelEmpleados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Buscador.setText("Buscar ...");
+        Buscador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscadorActionPerformed(evt);
+            }
+        });
+        PanelEmpleados.add(Buscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 420, 30));
+        PanelEmpleados.add(MostrarBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 1060, 30));
+
         jScrollPane1.setBackground(new java.awt.Color(51, 0, 0));
         jScrollPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
         jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
@@ -1301,7 +1316,6 @@ public class Principal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        TablaEMPLEADOS.setColumnSelectionAllowed(true);
         TablaEMPLEADOS.setIntercellSpacing(new java.awt.Dimension(5, 5));
         TablaEMPLEADOS.setRowHeight(40);
         TablaEMPLEADOS.setSelectionBackground(new java.awt.Color(255, 153, 153));
@@ -1312,7 +1326,6 @@ public class Principal extends javax.swing.JFrame {
         TablaEMPLEADOS.setShowVerticalLines(true);
         TablaEMPLEADOS.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(TablaEMPLEADOS);
-        TablaEMPLEADOS.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         PanelEmpleados.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 180, 1101, -1));
         jScrollPane1.getAccessibleContext().setAccessibleName("");
@@ -1488,16 +1501,17 @@ public class Principal extends javax.swing.JFrame {
 
         PanelEmpleados.add(FrameAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 680, -1));
 
-        LabelFondoBorroso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/borrosoclaroempleadp.png"))); // NOI18N
-        PanelEmpleados.add(LabelFondoBorroso, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -130, 1480, 890));
-
-        Buscador.setText("Buscar ...");
-        Buscador.addActionListener(new java.awt.event.ActionListener() {
+        BTNBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupita.png"))); // NOI18N
+        BTNBuscar.setContentAreaFilled(false);
+        BTNBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscadorActionPerformed(evt);
+                BTNBuscarActionPerformed(evt);
             }
         });
-        PanelEmpleados.add(Buscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 420, 30));
+        PanelEmpleados.add(BTNBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 50, 50));
+
+        LabelFondoBorroso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/borrosoclaroempleadp.png"))); // NOI18N
+        PanelEmpleados.add(LabelFondoBorroso, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -130, 1480, 890));
 
         BotonparaAgregar.setBackground(new java.awt.Color(204, 0, 0));
         BotonparaAgregar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -1547,7 +1561,6 @@ public class Principal extends javax.swing.JFrame {
         BotonSinOrdenar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         BotonSinOrdenar.setText("Sin ordenar");
         PanelEmpleados.add(BotonSinOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 100, -1, -1));
-        PanelEmpleados.add(MostrarBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 1060, 30));
 
         getContentPane().add(PanelEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 1160, 640));
 
@@ -2346,7 +2359,7 @@ public class Principal extends javax.swing.JFrame {
         BotonEliminarVenta.setVisible(false);
         DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) fvendedor.getModel();
 
-        try ( BufferedReader BR = new BufferedReader(new FileReader("empleados.txt"))) {
+        try (BufferedReader BR = new BufferedReader(new FileReader("empleados.txt"))) {
             String line;
             while ((line = BR.readLine()) != null) {
                 String[] nombres = line.split("\t");
@@ -2490,7 +2503,7 @@ public class Principal extends javax.swing.JFrame {
 
         DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) fvendedor.getModel();
         NombreEmpleado = fvendedor.getSelectedItem().toString();
-        try ( BufferedReader BR = new BufferedReader(new FileReader("empleados.txt"))) {
+        try (BufferedReader BR = new BufferedReader(new FileReader("empleados.txt"))) {
             String line;
             while ((line = BR.readLine()) != null) {
                 String[] nombres = line.split("\t");
@@ -2580,7 +2593,6 @@ public class Principal extends javax.swing.JFrame {
 //                true,//herramientas
 //                false//url
 //        );
-
         //Grafico 3D REDONDO
         JFreeChart grafico_circular = ChartFactory.createPieChart3D("Cantidad De Autors Vendida", datos, true, true, false);
         PiePlot piePlot = (PiePlot) grafico_circular.getPlot();
@@ -2595,21 +2607,21 @@ public class Principal extends javax.swing.JFrame {
 
         //gRAFICO DE BARRAS
         DefaultCategoryDataset barchartData = new DefaultCategoryDataset(); //Llamar libreria
-        barchartData.setValue((int)MontoT, "Monto Total", "Toyota");//Establecer datos
-        barchartData.setValue((int)MontoF, "Monto Total", "Ford");
-        barchartData.setValue((int)MontoH, "Monto Total", "Honda");
-        barchartData.setValue((int)MontoB, "Monto Total", "BMW");
-        barchartData.setValue((int)MontoM, "Monto Total", "Mercedes-Benz");
+        barchartData.setValue((int) MontoT, "Monto Total", "Toyota");//Establecer datos
+        barchartData.setValue((int) MontoF, "Monto Total", "Ford");
+        barchartData.setValue((int) MontoH, "Monto Total", "Honda");
+        barchartData.setValue((int) MontoB, "Monto Total", "BMW");
+        barchartData.setValue((int) MontoM, "Monto Total", "Mercedes-Benz");
         //Crear tabla
-        JFreeChart barChart=ChartFactory.createBarChart3D("Total Obtenido","Tipos De Auto", "Monto", barchartData,PlotOrientation.HORIZONTAL,false,true,false);
-        CategoryPlot barchrt=barChart.getCategoryPlot();
+        JFreeChart barChart = ChartFactory.createBarChart3D("Total Obtenido", "Tipos De Auto", "Monto", barchartData, PlotOrientation.HORIZONTAL, false, true, false);
+        CategoryPlot barchrt = barChart.getCategoryPlot();
         //Modificar los numeros de los ejes
         NumberAxis yAxis = (NumberAxis) barchrt.getRangeAxis();
         NumberFormat format = new DecimalFormat("#,###.#"); // Personaliza el formato de los números
         yAxis.setNumberFormatOverride(format);
-        
+
         //Usar la grafica en el panel
-        ChartPanel pnl2=new ChartPanel(barChart);
+        ChartPanel pnl2 = new ChartPanel(barChart);
         pnl2.setMouseWheelEnabled(true);
         pnl2.setPreferredSize(new Dimension(550, 400));
         Gpa.setLayout(new BorderLayout());
@@ -2622,8 +2634,56 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_BTNgrafiActionPerformed
 
     private void BuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscadorActionPerformed
-        // TODO add your handling code here:
+        String valorBuscado = Buscador.getText().toLowerCase();
+        DefaultTableModel modelo = (DefaultTableModel) TablaEMPLEADOS.getModel();
+        boolean coincidenciaEncontrada = false;
+        if (!valorBuscado.isEmpty()) { // Validar que el campo de búsqueda no esté vacío
+            for (int row = 0; row < modelo.getRowCount(); row++) {
+                Object valorCelda = modelo.getValueAt(row, 0); // Acceder solo a la primera columna
+                if (valorCelda != null && valorCelda.toString().toLowerCase().contains(valorBuscado)) {
+                    TablaEMPLEADOS.setRowSelectionInterval(row, row);
+                    TablaEMPLEADOS.scrollRectToVisible(TablaEMPLEADOS.getCellRect(row, 0, true));
+                    coincidenciaEncontrada = true;
+                    break;
+                }
+            }
+        }
+
+        if (coincidenciaEncontrada == true) {
+            MostrarBusqueda.setVisible(true);
+            MostrarBusqueda.setText("Empleado encontrado");
+
+        } else {
+            MostrarBusqueda.setVisible(false);
+            MostrarBusqueda.setText("Empleado no encontrado");
+        }
     }//GEN-LAST:event_BuscadorActionPerformed
+
+    private void BTNBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNBuscarActionPerformed
+        String valorBuscado = Buscador.getText().toLowerCase();
+        DefaultTableModel modelo = (DefaultTableModel) TablaEMPLEADOS.getModel();
+        boolean coincidenciaEncontrada = false;
+        if (!valorBuscado.isEmpty()) { // Validar que el campo de búsqueda no esté vacío
+            for (int row = 0; row < modelo.getRowCount(); row++) {
+                Object valorCelda = modelo.getValueAt(row, 0); // Acceder solo a la primera columna
+                if (valorCelda != null && valorCelda.toString().toLowerCase().contains(valorBuscado)) {
+                    TablaEMPLEADOS.setRowSelectionInterval(row, row);
+                    TablaEMPLEADOS.scrollRectToVisible(TablaEMPLEADOS.getCellRect(row, 0, true));
+                    coincidenciaEncontrada = true;
+                    break;
+                }
+            }
+        }
+
+        if (coincidenciaEncontrada == true) {
+            MostrarBusqueda.setVisible(true);
+            MostrarBusqueda.setText("Empleado encontrado");
+
+        } else {
+            MostrarBusqueda.setVisible(false);
+            MostrarBusqueda.setText("Empleado no encontrado");
+        }
+    }//GEN-LAST:event_BTNBuscarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -2667,6 +2727,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTNBuscar;
     private javax.swing.JButton BTNgrafi;
     private javax.swing.JButton BotonAgregarEmpleados;
     private javax.swing.JButton BotonEliminarEmpleados;
