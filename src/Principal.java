@@ -1012,6 +1012,7 @@ public class Principal extends javax.swing.JFrame {
     public void CambiaEstadoPANEL(JPanel p) {
         p.setVisible(!p.isVisible());
         p.setEnabled(!p.isEnabled());
+        
 
     }
 
@@ -2268,6 +2269,7 @@ public class Principal extends javax.swing.JFrame {
         BotonOrdenar.setVisible(false);
         BotonOrdenarSalario.setVisible(false);
         BotonSinOrdenar.setVisible(false);
+        
 
 
     }//GEN-LAST:event_BotonparaAgregarActionPerformed
@@ -2284,6 +2286,7 @@ public class Principal extends javax.swing.JFrame {
         BotonOrdenarSalario.setVisible(true);
         BotonSinOrdenar.setVisible(true);
         Limpiar();
+        TituloPanel.repaint();
     }//GEN-LAST:event_cerrarActionPerformed
 
     private void fnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnombreActionPerformed
