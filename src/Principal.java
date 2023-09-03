@@ -907,6 +907,7 @@ public class Principal extends javax.swing.JFrame {
         PanelVentas.setVisible(true);
         PanelEmpleados.setEnabled(false);
         PanelVentas.setEnabled(true);
+      //  GrafiPanel.setVisible(false);
         Nocturno = false;
         PanelInventario.setEnabled(false);
         Actual = PanelVentas;
@@ -2229,7 +2230,7 @@ public class Principal extends javax.swing.JFrame {
     Color fondoclaro = Color.decode("#FFFFFF");//blanco
     Color fondooscuro = Color.decode("#2A2333");
     Color rojooscuro = Color.decode("#330000");
-
+    Color negro=Color.decode("000000");
     private void ModoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModoActionPerformed
         if (Nocturno == true) {//esta oscuro
             System.out.println("Pasar Modo claro");
@@ -2238,6 +2239,9 @@ public class Principal extends javax.swing.JFrame {
             PanelVentas.setBackground(fondoclaro);
             PanelInventario.setBackground(fondoclaro);
             InventarioSubPanel.setBackground(fondoclaro);
+            BotonOrdenar.setForeground(negro);
+            BotonOrdenarSalario.setForeground(negro);
+            BotonSinOrdenar.setForeground(negro);
             Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53.png")));
             Modo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53brillo.png")));
             
@@ -2258,7 +2262,9 @@ public class Principal extends javax.swing.JFrame {
             PanelVentas.setBackground(fondooscuro);
             PanelInventario.setBackground(fondooscuro);
             InventarioSubPanel.setBackground(fondooscuro);
-            
+            BotonOrdenar.setForeground(fondoclaro);
+            BotonOrdenarSalario.setForeground(fondoclaro);
+            BotonSinOrdenar.setForeground(fondoclaro);
             URL imageURL1 = Principal.class.getResource("/Imagenes/borrosooscuroempleado.png");
             ImageIcon imageIcon = new ImageIcon(imageURL1);
             LabelFondoBorroso.setIcon(imageIcon);
