@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -797,6 +798,24 @@ public class Principal extends javax.swing.JFrame {
         return true;
 
     }
+    //02.3 Funcion validar nombre en eliminar
+    public boolean NombreCorrecto(JTextField nombre){
+        // Validacion Nombre
+        boolean validon = true;
+        for (char c : nombre.getText().toCharArray()) {
+            if (!Character.isLetter(c) && !Character.isSpaceChar(c)) {
+                validon = false;
+                break;
+            }
+        }
+        if (!validon) {
+            errornombre.setVisible(true);
+            return false;
+        } else {
+            errornombre.setVisible(false);
+        }
+        return true;
+    }
 
     //03 Funcion para validar Existencia Empleado
     public boolean ValidarExistenciaEmpleado(String Nombre, String Cedula) {
@@ -895,6 +914,7 @@ public class Principal extends javax.swing.JFrame {
         error2v.setVisible(false);
         error3v.setVisible(false);
         error4v.setVisible(false);
+        errornombre.setVisible(false);
         //Para Mostrar Archivo de Ventas al iniciar
         File archivo = new File("Ventas.txt");
         // Verificar si el archivo existe
@@ -941,7 +961,6 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        TituloPanel = new javax.swing.JLabel();
         Boton_Empleados = new javax.swing.JButton();
         Boton_Ventas = new javax.swing.JButton();
         Boton_Inventario = new javax.swing.JButton();
@@ -950,6 +969,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        TituloPanel = new javax.swing.JLabel();
         PanelVentas = new javax.swing.JPanel();
         FrameAgregarVenta = new javax.swing.JInternalFrame();
         jPanel2 = new javax.swing.JPanel();
@@ -965,7 +985,7 @@ public class Principal extends javax.swing.JFrame {
         ComboBox = new javax.swing.JComboBox<>();
         cerraragregarventa = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        limpiarventas = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         error1v = new javax.swing.JLabel();
         error2v = new javax.swing.JLabel();
         error3v = new javax.swing.JLabel();
@@ -983,7 +1003,7 @@ public class Principal extends javax.swing.JFrame {
         BotonEliminarEmpleados = new javax.swing.JButton();
         BotonLimpiar1 = new javax.swing.JButton();
         jLabel33 = new javax.swing.JLabel();
-        error9 = new javax.swing.JLabel();
+        errornombre = new javax.swing.JLabel();
         FrameAgregar = new javax.swing.JInternalFrame();
         PanelAgregarEmpleado = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -1063,12 +1083,6 @@ public class Principal extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        TituloPanel.setFont(new java.awt.Font("Adobe Gothic Std B", 0, 48)); // NOI18N
-        TituloPanel.setForeground(new java.awt.Color(51, 0, 0));
-        TituloPanel.setText("|      Empleados");
-        TituloPanel.setAlignmentY(0.0F);
-        getContentPane().add(TituloPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
-
         Boton_Empleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/empleadosinfondo x53.png"))); // NOI18N
         Boton_Empleados.setBorderPainted(false);
         Boton_Empleados.setContentAreaFilled(false);
@@ -1140,6 +1154,12 @@ public class Principal extends javax.swing.JFrame {
         jLabel13.setOpaque(true);
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 80, 660));
 
+        TituloPanel.setFont(new java.awt.Font("Adobe Gothic Std B", 0, 48)); // NOI18N
+        TituloPanel.setForeground(new java.awt.Color(51, 0, 0));
+        TituloPanel.setText("|      Empleados");
+        TituloPanel.setAlignmentY(0.0F);
+        getContentPane().add(TituloPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
+
         PanelVentas.setBackground(new java.awt.Color(255, 255, 255));
         PanelVentas.setPreferredSize(new java.awt.Dimension(1240, 700));
         PanelVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1164,7 +1184,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Toyota", "Ford", "Honda", "BMW", "Mercedes" }));
+        ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Toyota", "Ford", "Honda", "Mercedes" }));
         ComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxActionPerformed(evt);
@@ -1179,18 +1199,8 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButton2.setText("Agregar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
-        limpiarventas.setText("Limpiar");
-        limpiarventas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                limpiarventasActionPerformed(evt);
-            }
-        });
+        jButton3.setText("Limpiar");
 
         error1v.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         error1v.setForeground(new java.awt.Color(255, 0, 0));
@@ -1249,7 +1259,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
-                        .addComponent(limpiarventas))
+                        .addComponent(jButton3))
                     .addComponent(cerraragregarventa))
                 .addGap(24, 24, 24))
         );
@@ -1289,7 +1299,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(limpiarventas))
+                    .addComponent(jButton3))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
@@ -1367,6 +1377,11 @@ public class Principal extends javax.swing.JFrame {
         PanelVentas.add(BotonRegistrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 140, -1, -1));
 
         BotonEliminarVenta.setText("(-) Eliminar Registro");
+        BotonEliminarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEliminarVentaActionPerformed(evt);
+            }
+        });
         PanelVentas.add(BotonEliminarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 140, -1, -1));
 
         getContentPane().add(PanelVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 1160, 640));
@@ -1418,10 +1433,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/empleado sin fondo.png"))); // NOI18N
         PanelEliminarEmpleado.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 170, 210));
 
-        error9.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        error9.setForeground(new java.awt.Color(255, 0, 0));
-        error9.setText("(!) El nombre no debe contener números ni caracteres especiales.");
-        PanelEliminarEmpleado.add(error9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 290, -1));
+        errornombre.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        errornombre.setForeground(new java.awt.Color(255, 0, 0));
+        errornombre.setText("(!) El nombre no debe contener números ni caracteres especiales.");
+        PanelEliminarEmpleado.add(errornombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 290, -1));
 
         FrameEliminar.getContentPane().add(PanelEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 440));
 
@@ -1581,7 +1596,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         TablaEMPLEADOS.setColumnSelectionAllowed(true);
-        TablaEMPLEADOS.setGridColor(new java.awt.Color(255, 255, 255));
         TablaEMPLEADOS.setIntercellSpacing(new java.awt.Dimension(5, 5));
         TablaEMPLEADOS.setRowHeight(40);
         TablaEMPLEADOS.setSelectionBackground(new java.awt.Color(255, 153, 153));
@@ -1597,6 +1611,7 @@ public class Principal extends javax.swing.JFrame {
         PanelEmpleados.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 244, 1101, -1));
         jScrollPane1.getAccessibleContext().setAccessibleName("");
 
+        BotonOrdenar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         BotonOrdenar.setText("Ordenar por nombre");
         BotonOrdenar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1605,6 +1620,7 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelEmpleados.add(BotonOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 180, -1, -1));
 
+        BotonOrdenarSalario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         BotonOrdenarSalario.setText("Ordenar por Salario");
         BotonOrdenarSalario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1613,24 +1629,36 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelEmpleados.add(BotonOrdenarSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 200, -1, -1));
 
+        BotonSinOrdenar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         BotonSinOrdenar.setText("Sin ordenar");
         PanelEmpleados.add(BotonSinOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 220, -1, -1));
 
-        BotonparaAgregar.setText("+ (Agregar nuevo registro)");
+        BotonparaAgregar.setBackground(new java.awt.Color(204, 0, 0));
+        BotonparaAgregar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonparaAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        BotonparaAgregar.setText("+ (Nuevo Registro)");
+        BotonparaAgregar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BotonparaAgregar.setBorderPainted(false);
         BotonparaAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonparaAgregarActionPerformed(evt);
             }
         });
-        PanelEmpleados.add(BotonparaAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, -1, -1));
+        PanelEmpleados.add(BotonparaAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 191, 130, 40));
 
-        BotonparaEliminar.setText("- (Eliminar registro)");
+        BotonparaEliminar.setBackground(new java.awt.Color(204, 0, 0));
+        BotonparaEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonparaEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        BotonparaEliminar.setText("- (Eliminar Registro)");
+        BotonparaEliminar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BotonparaEliminar.setBorderPainted(false);
+        BotonparaEliminar.setFocusPainted(false);
         BotonparaEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonparaEliminarActionPerformed(evt);
             }
         });
-        PanelEmpleados.add(BotonparaEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 210, 140, -1));
+        PanelEmpleados.add(BotonparaEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 191, 140, 40));
 
         LabelFondoBorroso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/desenfocadobeta.png"))); // NOI18N
         PanelEmpleados.add(LabelFondoBorroso, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 1340, 590));
@@ -1974,19 +2002,25 @@ public class Principal extends javax.swing.JFrame {
         BotonOrdenar.setVisible(true);
         BotonOrdenarSalario.setVisible(true);
         BotonSinOrdenar.setVisible(true);
-        Limpiar();
+        //para limpiar
+        fnombreE.setText("");
+        errornombre.setVisible(false);
     }//GEN-LAST:event_cerrar1ActionPerformed
 //BOTON ELIMINAR EMPLEADOS
     private void BotonEliminarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarEmpleadosActionPerformed
-        Scanner sc = new Scanner(System.in);
+        if (NombreCorrecto(fnombreE)){
+            Scanner sc = new Scanner(System.in);
         EliminarRegistro(sc, "Empleados", TablaEMPLEADOS);
         LeerNormal(sc, "Empleados", TablaEMPLEADOS);
         sc.close();
+        }
+        
     }//GEN-LAST:event_BotonEliminarEmpleadosActionPerformed
 
     private void BotonLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonLimpiar1ActionPerformed
-        Limpiar();
-        Limpiar();
+        fnombreE.setText("");
+        errornombre.setVisible(false);
+        
     }//GEN-LAST:event_BotonLimpiar1ActionPerformed
 
     private void BotonRegistrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarVentaActionPerformed
@@ -2050,6 +2084,10 @@ public class Principal extends javax.swing.JFrame {
     private void limpiarventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarventasActionPerformed
         LimpiarCamposVentas();
     }//GEN-LAST:event_limpiarventasActionPerformed
+
+    private void BotonEliminarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonEliminarVentaActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -2132,7 +2170,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel TitHonda;
     private javax.swing.JLabel TitMercedes;
     private javax.swing.JLabel TitToyota;
-    private javax.swing.JLabel TituloPanel;
+    public javax.swing.JLabel TituloPanel;
     private javax.swing.JLabel TotalBMW;
     private javax.swing.JLabel TotalFord;
     private javax.swing.JLabel TotalHonda;
@@ -2152,7 +2190,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel error5;
     private javax.swing.JLabel error6;
     private javax.swing.JLabel error7;
-    private javax.swing.JLabel error9;
+    private javax.swing.JLabel errornombre;
     private javax.swing.JTextField fcargo;
     private javax.swing.JTextField fcedula;
     private javax.swing.JTextField fcedulav;
@@ -2166,6 +2204,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField ftelefono;
     private javax.swing.JTextField fvendedor;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2208,6 +2247,5 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JButton limpiarventas;
     // End of variables declaration//GEN-END:variables
 }
