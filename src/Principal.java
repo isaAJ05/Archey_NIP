@@ -1321,7 +1321,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel37.setText("Tipo de auto:");
 
-        ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar tipo de auto", "Toyota", "Ford", "Honda", "Mercedes" }));
+        ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar tipo de auto", "Toyota", "Ford", "Honda", "BMW", "Mercedes" }));
         ComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxActionPerformed(evt);
