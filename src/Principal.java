@@ -1516,9 +1516,9 @@ public class Principal extends javax.swing.JFrame {
         PanelVentas.add(MostrarBusquedaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 1080, 30));
 
         BuscadorVenta.setText("Buscar ...");
-        BuscadorVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscadorVentaActionPerformed(evt);
+        BuscadorVenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BuscadorVentaMouseClicked(evt);
             }
         });
         PanelVentas.add(BuscadorVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 92, 430, 30));
@@ -1828,9 +1828,9 @@ public class Principal extends javax.swing.JFrame {
         PanelEmpleados.add(LabelFondoBorroso, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -130, 1480, 890));
 
         BuscadorEmple.setText("Buscar ...");
-        BuscadorEmple.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscadorEmpleActionPerformed(evt);
+        BuscadorEmple.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BuscadorEmpleMouseClicked(evt);
             }
         });
         PanelEmpleados.add(BuscadorEmple, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 420, 30));
@@ -2632,13 +2632,13 @@ public class Principal extends javax.swing.JFrame {
         repaint();
     }//GEN-LAST:event_BTNgrafiActionPerformed
 
-    private void BuscadorEmpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscadorEmpleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BuscadorEmpleActionPerformed
+    private void BuscadorVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscadorVentaMouseClicked
+        BuscadorVenta.setText(null);
+    }//GEN-LAST:event_BuscadorVentaMouseClicked
 
-    private void BuscadorVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscadorVentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BuscadorVentaActionPerformed
+    private void BuscadorEmpleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscadorEmpleMouseClicked
+        BuscadorEmple.setText(null);
+    }//GEN-LAST:event_BuscadorEmpleMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
