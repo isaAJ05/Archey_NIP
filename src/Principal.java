@@ -2,6 +2,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -36,6 +37,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -980,7 +982,16 @@ public class Principal extends javax.swing.JFrame {
         error6.setVisible(false);
         error7.setVisible(false);
 
-        //Para el buscador
+        //Para la tabla EMPLEADOS
+        // Obtener el encabezado de la tabla
+        JTableHeader header = TablaEMPLEADOS.getTableHeader();
+
+// Crear una fuente en negrita
+        Font font = new Font("Tahoma", Font.BOLD, 14);
+
+// Aplicar la fuente en negrita al encabezado
+        header.setFont(font);
+
         //ARCHIVO VENTAS
         //No visible
         FrameAgregarVenta.setVisible(false);
@@ -1006,13 +1017,21 @@ public class Principal extends javax.swing.JFrame {
         } else {
             System.out.println("El archivo de ventas no existe.");
         }
+        //Para la tabla VENTAS
+        // Obtener el encabezado de la tabla
+        JTableHeader header2 = TablaVENTAS.getTableHeader();
+
+// Crear una fuente en negrita
+        Font font2 = new Font("Tahoma", Font.BOLD, 14);
+
+// Aplicar la fuente en negrita al encabezado
+        header2.setFont(font2);
 
     }
 
     public void CambiaEstadoPANEL(JPanel p) {
         p.setVisible(!p.isVisible());
         p.setEnabled(!p.isEnabled());
-        
 
     }
 
@@ -2305,7 +2324,6 @@ public class Principal extends javax.swing.JFrame {
         BotonOrdenar.setVisible(false);
         BotonOrdenarSalario.setVisible(false);
         BotonSinOrdenar.setVisible(false);
-        
 
 
     }//GEN-LAST:event_BotonparaAgregarActionPerformed
@@ -2711,7 +2729,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscadorActionPerformed
 
     private void BTNBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNBuscarActionPerformed
-        String valorBuscado =EmpleBuscador.getText().toLowerCase();
+        String valorBuscado = EmpleBuscador.getText().toLowerCase();
         DefaultTableModel modelo = (DefaultTableModel) TablaEMPLEADOS.getModel();
         boolean coincidenciaEncontrada = false;
         if (!valorBuscado.isEmpty()) { // Validar que el campo de búsqueda no esté vacío
@@ -2731,13 +2749,13 @@ public class Principal extends javax.swing.JFrame {
             MostrarBusquedaEmple.setText("Empleado encontrado");
 
         } else {
-             MostrarBusquedaEmple.setVisible(true);
+            MostrarBusquedaEmple.setVisible(true);
             MostrarBusquedaEmple.setText("Empleado no encontrado");
         }
     }//GEN-LAST:event_BTNBuscarActionPerformed
 
     private void BuscadorVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscadorVentasMouseClicked
-      BuscadorVentas.setText(null);
+        BuscadorVentas.setText(null);
     }//GEN-LAST:event_BuscadorVentasMouseClicked
 
     private void EmpleBuscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmpleBuscadorMouseClicked
@@ -2745,7 +2763,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_EmpleBuscadorMouseClicked
 
     private void BTNBuscarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNBuscarVentasActionPerformed
-       String valorBuscado =BuscadorVentas.getText().toLowerCase();
+        String valorBuscado = BuscadorVentas.getText().toLowerCase();
         DefaultTableModel modelo = (DefaultTableModel) TablaVENTAS.getModel();
         boolean coincidenciaEncontrada = false;
         if (!valorBuscado.isEmpty()) { // Validar que el campo de búsqueda no esté vacío
@@ -2765,13 +2783,13 @@ public class Principal extends javax.swing.JFrame {
             MostrarBusquedaVentas.setText("Venta encontrada");
 
         } else {
-             MostrarBusquedaVentas.setVisible(true);
+            MostrarBusquedaVentas.setVisible(true);
             MostrarBusquedaVentas.setText("Venta no encontrada");
         }
     }//GEN-LAST:event_BTNBuscarVentasActionPerformed
 
     private void BuscadorVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscadorVentasActionPerformed
-        String valorBuscado =BuscadorVentas.getText().toLowerCase();
+        String valorBuscado = BuscadorVentas.getText().toLowerCase();
         DefaultTableModel modelo = (DefaultTableModel) TablaVENTAS.getModel();
         boolean coincidenciaEncontrada = false;
         if (!valorBuscado.isEmpty()) { // Validar que el campo de búsqueda no esté vacío
@@ -2791,7 +2809,7 @@ public class Principal extends javax.swing.JFrame {
             MostrarBusquedaVentas.setText("Venta encontrada");
 
         } else {
-             MostrarBusquedaVentas.setVisible(true);
+            MostrarBusquedaVentas.setVisible(true);
             MostrarBusquedaVentas.setText("Venta no encontrada");
         }
 
