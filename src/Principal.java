@@ -2657,7 +2657,7 @@ public class Principal extends javax.swing.JFrame {
             MostrarBusqueda.setText("Empleado encontrado");
 
         } else {
-            MostrarBusqueda.setVisible(false);
+            MostrarBusqueda.setVisible(true);
             MostrarBusqueda.setText("Empleado no encontrado");
         }
     }//GEN-LAST:event_BuscadorActionPerformed
@@ -2683,7 +2683,7 @@ public class Principal extends javax.swing.JFrame {
             MostrarBusqueda.setText("Empleado encontrado");
 
         } else {
-            MostrarBusqueda.setVisible(false);
+             MostrarBusqueda.setVisible(true);
             MostrarBusqueda.setText("Empleado no encontrado");
         }
     }//GEN-LAST:event_BTNBuscarActionPerformed
