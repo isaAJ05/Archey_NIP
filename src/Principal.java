@@ -2449,6 +2449,8 @@ public class Principal extends javax.swing.JFrame {
             MostrarBusquedaEmple.setForeground(negro);
             MostrarBusquedaVentas.setForeground(negro);
             GrafiPanel.setBackground(fondoclaro);
+            jPanel3.setBackground(fondoclaro);
+            InfoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/InfoIMGclarox1125.png")));
             Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53.png")));
             Modo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53brillo.png")));
 
@@ -2458,7 +2460,7 @@ public class Principal extends javax.swing.JFrame {
             URL imageURLV = Principal.class.getResource("/Imagenes/ventasborrosoclaro.png");
             ImageIcon imageIconV = new ImageIcon(imageURLV);
             fondoborrosoventas.setIcon(imageIconV);
-
+            TituloPanel.repaint();
             Nocturno = false;
         } else {//estaclaro
             System.out.println("Pasar Modo oscuro");
@@ -2470,6 +2472,7 @@ public class Principal extends javax.swing.JFrame {
             PanelInventario.setBackground(fondooscuro);
             InventarioSubPanel.setBackground(fondooscuro);
             BotonOrdenar.setForeground(fondoclaro);
+            jPanel3.setBackground(fondooscuro);
             BotonOrdenarSalario.setForeground(fondoclaro);
             BotonSinOrdenar.setForeground(fondoclaro);
             MostrarBusquedaEmple.setForeground(fondoclaro);
@@ -2479,13 +2482,15 @@ public class Principal extends javax.swing.JFrame {
             LabelFondoBorroso.setIcon(imageIcon);
             URL imageURL2 = Principal.class.getResource("/Imagenes/ventasoscuroborroso.png");
             ImageIcon imageIcon2 = new ImageIcon(imageURL2);
+            InfoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/InfoIMGoscurox1125.png")));
             fondoborrosoventas.setIcon(imageIcon2);
 
             Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/solsinfondpx53.png")));
             Modo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/solsinfondpx53brillo.png")));
-
+            TituloPanel.repaint();
             Nocturno = true;
         }
+        TituloPanel.repaint();
 //       
     }//GEN-LAST:event_ModoActionPerformed
 
