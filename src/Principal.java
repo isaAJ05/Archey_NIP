@@ -87,7 +87,6 @@ public class Principal extends javax.swing.JFrame {
     }
 
     //02 SUBRUTINA PARA MOSTRAR LOS CAMPOS ARCHIVO EMPLEADOS-VENTAS
-  
     public static void LeerNormal(Scanner sc, String file_name, JTable tabla) {
         boolean hay = false;
         while (hay == false) {
@@ -114,7 +113,7 @@ public class Principal extends javax.swing.JFrame {
         }
     }
     //02.2 SUBRUTINA PARA MOSTRAR LOS CAMPOS ARCHIVO VENTAS
-  
+
     public void LeerVentasok(Scanner sc, String file_name, JTable tabla) {
         boolean hay = false;
         while (hay == false) {
@@ -140,7 +139,6 @@ public class Principal extends javax.swing.JFrame {
             }
         }
     }
-    
 
     //03 SUBRUTINA PARA MOSTRAR LOS CAMPOS ORDENADOS DEL ARCHIVO EMPLEADOS 
     public static void LeerOrdenado(Scanner sc, String file_name, JTable tabla, String NoS) {
@@ -347,7 +345,7 @@ public class Principal extends javax.swing.JFrame {
                 if (validacionventa2(Nombre, Cedula, Codigo, Monto)) {
                     if (ValidarExistenciaEmpleado(Nombre, Cedula) && ValidarNoExistenciaCodigo(file_name, Codigo)) {//si no existe codigo y si existe empleado registrar la venta
                         registrar_ventas.println(Nombre + "\t" + Cedula + "\t" + Tipo + "\t" + Codigo + "\t" + Monto);
-                        
+
                         if (Double.parseDouble(Monto) > 30000000) {// actualizar comision empleado si este vendio vehiculo superio a 30 millones
                             actualizarSalarioConComisiones("Empleados", Nombre, Monto, TablaEMPLEADOS);
                         }
@@ -437,31 +435,31 @@ public class Principal extends javax.swing.JFrame {
                 cantT++;
                 CantVendidaToyota.setText(String.valueOf(cantT));
                 MontoT += Double.parseDouble(Monto);
-                TotalToyota.setText("$"+String.valueOf(MontoT));
+                TotalToyota.setText("$" + String.valueOf(MontoT));
                 break;
             case "Ford":
                 cantF++;
                 CantVendidaFord.setText(String.valueOf(cantF));
                 MontoF += Double.parseDouble(Monto);
-                TotalFord.setText("$"+String.valueOf(MontoF));
+                TotalFord.setText("$" + String.valueOf(MontoF));
                 break;
             case "Honda":
                 cantH++;
                 CantVendidaHonda.setText(String.valueOf(cantH));
                 MontoH += Double.parseDouble(Monto);
-                TotalHonda.setText("$"+String.valueOf(MontoH));
+                TotalHonda.setText("$" + String.valueOf(MontoH));
                 break;
             case "BMW":
                 cantB++;
                 CantVendidaBMW.setText(String.valueOf(cantB));
                 MontoB += Double.parseDouble(Monto);
-                TotalBMW.setText("$"+String.valueOf(MontoB));
+                TotalBMW.setText("$" + String.valueOf(MontoB));
                 break;
             case "Mercedes":
                 cantM++;
                 CantVendidaMercedes.setText(String.valueOf(cantM));
                 MontoM += Double.parseDouble(Monto);
-                TotalMercedes.setText("$"+String.valueOf(MontoM));
+                TotalMercedes.setText("$" + String.valueOf(MontoM));
                 break;
             default:
 
@@ -533,7 +531,55 @@ public class Principal extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }
-    
+    //11 Subrutina para eliminar registros de ventas
+
+    public void EliminarRegistroVenta(Scanner sc, String file_name, JTable tabla) {
+        File original = new File(file_name + ".txt");
+        try {
+            FileReader FR = new FileReader(file_name + ".txt");
+            BufferedReader BR = new BufferedReader(FR);
+            FileWriter FW = new FileWriter("VentasTemp.txt", true);
+            BufferedWriter BW = new BufferedWriter(FW);
+            String linea, borrar_codigo = fcodigoE.getText();
+            boolean encontrado = false;
+            while ((linea = BR.readLine()) != null) {
+                String[] campos = linea.split("\t");
+                if (!campos[3].equalsIgnoreCase(borrar_codigo)) {
+                    BW.write(linea); // si el codigo no es el que se busca, se escribe en el archivo temporal
+                    BW.newLine();
+                } else {
+                    encontrado = true;
+                    System.out.println("ENCONTRADO");
+                }
+
+            }
+            BR.close();
+            BW.close();
+            if (encontrado) {
+                if (original.delete()) {
+                    File temporal = new File("VentasTemp.txt");
+                    if (temporal.renameTo(original)) {
+                        JOptionPane.showMessageDialog(null, "Los datos se han eliminado satisfactoriamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ha ocurrido un error al renombrar el archivo temporal.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                    LeerNormal(sc, file_name, tabla);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ha ocurrido un error al eliminar el archivo original.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró el codigo ingresado.", "Error", JOptionPane.ERROR_MESSAGE);
+
+            }
+
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al eliminar el codigo.", "Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+
+    }
+
     //11 Subrutina para limpiar campos de Empleados
     public void Limpiar() {
         fnombre.setText("");
@@ -544,13 +590,15 @@ public class Principal extends javax.swing.JFrame {
         fsalariofijo.setText("");
         fsalariocomisiones.setText("");
     }
+
     //12 Subrutina para limpiar campos de Ventas
-    public void LimpiarCamposVentas(){
+    public void LimpiarCamposVentas() {
         fvendedor.setText("");
         fcedulav.setText("");
         fcodigo.setText("");
         fmonto.setText("");
     }
+    
 
     //13 SUBRUTINA PARA APLICAR SONIDO
     private void sonido(String cadena) {
@@ -798,8 +846,9 @@ public class Principal extends javax.swing.JFrame {
         return true;
 
     }
+
     //02.3 Funcion validar nombre en eliminar
-    public boolean NombreCorrecto(JTextField nombre){
+    public boolean NombreCorrecto(JTextField nombre) {
         // Validacion Nombre
         boolean validon = true;
         for (char c : nombre.getText().toCharArray()) {
@@ -910,11 +959,14 @@ public class Principal extends javax.swing.JFrame {
         //ARCHIVO VENTAS
         //No visible
         FrameAgregarVenta.setVisible(false);
+        FrameEliminarVenta.setVisible(false);
+        fondoborrosoventas.setVisible(false);
         error1v.setVisible(false);
         error2v.setVisible(false);
         error3v.setVisible(false);
         error4v.setVisible(false);
         errornombre.setVisible(false);
+        errorcodigoE.setVisible(false);
         //Para Mostrar Archivo de Ventas al iniciar
         File archivo = new File("Ventas.txt");
         // Verificar si el archivo existe
@@ -929,7 +981,6 @@ public class Principal extends javax.swing.JFrame {
         } else {
             System.out.println("El archivo de ventas no existe.");
         }
-        
 
     }
 
@@ -971,6 +1022,14 @@ public class Principal extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         TituloPanel = new javax.swing.JLabel();
         PanelVentas = new javax.swing.JPanel();
+        FrameEliminarVenta = new javax.swing.JInternalFrame();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel39 = new javax.swing.JLabel();
+        fcodigoE = new javax.swing.JTextField();
+        errorcodigoE = new javax.swing.JLabel();
+        BotonParaEliminarVenta = new javax.swing.JButton();
+        LimpiarVenta = new javax.swing.JButton();
+        cerrareliminar = new javax.swing.JButton();
         FrameAgregarVenta = new javax.swing.JInternalFrame();
         jPanel2 = new javax.swing.JPanel();
         jLabel34 = new javax.swing.JLabel();
@@ -990,10 +1049,11 @@ public class Principal extends javax.swing.JFrame {
         error2v = new javax.swing.JLabel();
         error3v = new javax.swing.JLabel();
         error4v = new javax.swing.JLabel();
+        fondoborrosoventas = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         TablaVENTAS = new javax.swing.JTable();
-        BotonRegistrarVenta = new javax.swing.JButton();
         BotonEliminarVenta = new javax.swing.JButton();
+        BotonRegistrarVenta = new javax.swing.JButton();
         PanelEmpleados = new javax.swing.JPanel();
         FrameEliminar = new javax.swing.JInternalFrame();
         PanelEliminarEmpleado = new javax.swing.JPanel();
@@ -1031,6 +1091,7 @@ public class Principal extends javax.swing.JFrame {
         error4 = new javax.swing.JLabel();
         error5 = new javax.swing.JLabel();
         error6 = new javax.swing.JLabel();
+        LabelFondoBorroso = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaEMPLEADOS = new javax.swing.JTable();
         BotonOrdenar = new javax.swing.JRadioButton();
@@ -1038,7 +1099,6 @@ public class Principal extends javax.swing.JFrame {
         BotonSinOrdenar = new javax.swing.JRadioButton();
         BotonparaAgregar = new javax.swing.JButton();
         BotonparaEliminar = new javax.swing.JButton();
-        LabelFondoBorroso = new javax.swing.JLabel();
         PanelInventario = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         InventarioSubPanel = new javax.swing.JPanel();
@@ -1163,6 +1223,92 @@ public class Principal extends javax.swing.JFrame {
         PanelVentas.setBackground(new java.awt.Color(255, 255, 255));
         PanelVentas.setPreferredSize(new java.awt.Dimension(1240, 700));
         PanelVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        FrameEliminarVenta.setVisible(true);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel39.setText("Digite el código del auto:");
+
+        errorcodigoE.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        errorcodigoE.setForeground(new java.awt.Color(255, 0, 0));
+        errorcodigoE.setText("(!) El código debe contener 6 caracteres.");
+
+        BotonParaEliminarVenta.setText("Eliminar");
+        BotonParaEliminarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonParaEliminarVentaActionPerformed(evt);
+            }
+        });
+
+        LimpiarVenta.setText("Limpiar");
+        LimpiarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LimpiarVentaActionPerformed(evt);
+            }
+        });
+
+        cerrareliminar.setText("Cerrar");
+        cerrareliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrareliminarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(BotonParaEliminarVenta)
+                        .addGap(18, 18, 18)
+                        .addComponent(LimpiarVenta)
+                        .addGap(53, 53, 53))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(cerrareliminar)
+                        .addGap(18, 18, 18))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel39)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(errorcodigoE, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fcodigoE, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(165, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(cerrareliminar)
+                .addGap(64, 64, 64)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel39)
+                    .addComponent(fcodigoE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(errorcodigoE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BotonParaEliminarVenta)
+                    .addComponent(LimpiarVenta))
+                .addGap(48, 48, 48))
+        );
+
+        javax.swing.GroupLayout FrameEliminarVentaLayout = new javax.swing.GroupLayout(FrameEliminarVenta.getContentPane());
+        FrameEliminarVenta.getContentPane().setLayout(FrameEliminarVentaLayout);
+        FrameEliminarVentaLayout.setHorizontalGroup(
+            FrameEliminarVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        FrameEliminarVentaLayout.setVerticalGroup(
+            FrameEliminarVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        PanelVentas.add(FrameEliminarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 660, 320));
 
         FrameAgregarVenta.setVisible(true);
 
@@ -1316,6 +1462,9 @@ public class Principal extends javax.swing.JFrame {
 
         PanelVentas.add(FrameAgregarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 550, 430));
 
+        fondoborrosoventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ventasborrosoclaro.png"))); // NOI18N
+        PanelVentas.add(fondoborrosoventas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -80, 1240, 780));
+
         jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
         jScrollPane3.setForeground(new java.awt.Color(51, 0, 0));
@@ -1368,14 +1517,9 @@ public class Principal extends javax.swing.JFrame {
 
         PanelVentas.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 176, 1101, -1));
 
-        BotonRegistrarVenta.setText("(+) Registrar Venta");
-        BotonRegistrarVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonRegistrarVentaActionPerformed(evt);
-            }
-        });
-        PanelVentas.add(BotonRegistrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 140, -1, -1));
-
+        BotonEliminarVenta.setBackground(new java.awt.Color(204, 0, 0));
+        BotonEliminarVenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonEliminarVenta.setForeground(new java.awt.Color(255, 255, 255));
         BotonEliminarVenta.setText("(-) Eliminar Registro");
         BotonEliminarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1383,6 +1527,17 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         PanelVentas.add(BotonEliminarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 140, -1, -1));
+
+        BotonRegistrarVenta.setBackground(new java.awt.Color(204, 0, 0));
+        BotonRegistrarVenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonRegistrarVenta.setForeground(new java.awt.Color(255, 255, 255));
+        BotonRegistrarVenta.setText("(+) Registrar Venta");
+        BotonRegistrarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegistrarVentaActionPerformed(evt);
+            }
+        });
+        PanelVentas.add(BotonRegistrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 140, -1, -1));
 
         getContentPane().add(PanelVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 1160, 640));
 
@@ -1561,6 +1716,9 @@ public class Principal extends javax.swing.JFrame {
 
         PanelEmpleados.add(FrameAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 680, -1));
 
+        LabelFondoBorroso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/borrosoclaroempleadp.png"))); // NOI18N
+        PanelEmpleados.add(LabelFondoBorroso, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -130, 1480, 890));
+
         jScrollPane1.setBackground(new java.awt.Color(51, 0, 0));
         jScrollPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
         jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
@@ -1659,9 +1817,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         PanelEmpleados.add(BotonparaEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 191, 140, 40));
-
-        LabelFondoBorroso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/desenfocadobeta.png"))); // NOI18N
-        PanelEmpleados.add(LabelFondoBorroso, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 1340, 590));
 
         getContentPane().add(PanelEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 1160, 640));
 
@@ -2008,23 +2163,28 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cerrar1ActionPerformed
 //BOTON ELIMINAR EMPLEADOS
     private void BotonEliminarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarEmpleadosActionPerformed
-        if (NombreCorrecto(fnombreE)){
+        if (NombreCorrecto(fnombreE)) {
             Scanner sc = new Scanner(System.in);
-        EliminarRegistro(sc, "Empleados", TablaEMPLEADOS);
-        LeerNormal(sc, "Empleados", TablaEMPLEADOS);
-        sc.close();
+            EliminarRegistro(sc, "Empleados", TablaEMPLEADOS);
+            LeerNormal(sc, "Empleados", TablaEMPLEADOS);
+            sc.close();
         }
-        
+
     }//GEN-LAST:event_BotonEliminarEmpleadosActionPerformed
 
     private void BotonLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonLimpiar1ActionPerformed
         fnombreE.setText("");
         errornombre.setVisible(false);
-        
+
     }//GEN-LAST:event_BotonLimpiar1ActionPerformed
 
     private void BotonRegistrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarVentaActionPerformed
         FrameAgregarVenta.setVisible(true);
+        fondoborrosoventas.setVisible(true);
+        TablaVENTAS.setVisible(false);
+        jScrollPane3.setVisible(false);
+        BotonRegistrarVenta.setVisible(false);
+        BotonEliminarVenta.setVisible(false);
     }//GEN-LAST:event_BotonRegistrarVentaActionPerformed
 
     private void fvendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fvendedorActionPerformed
@@ -2071,7 +2231,13 @@ public class Principal extends javax.swing.JFrame {
 
     private void cerraragregarventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerraragregarventaActionPerformed
         FrameAgregarVenta.setVisible(false);
+        fondoborrosoventas.setVisible(false);
         LimpiarCamposVentas();
+        TablaVENTAS.setVisible(true);
+        jScrollPane3.setVisible(true);
+        BotonRegistrarVenta.setVisible(true);
+        BotonEliminarVenta.setVisible(true);
+
     }//GEN-LAST:event_cerraragregarventaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -2086,8 +2252,43 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_limpiarventasActionPerformed
 
     private void BotonEliminarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarVentaActionPerformed
-        // TODO add your handling code here:
+        
+        FrameEliminarVenta.setVisible(true);
+        fondoborrosoventas.setVisible(true);
+        TablaVENTAS.setVisible(false);
+        jScrollPane3.setVisible(false);
+        BotonRegistrarVenta.setVisible(false);
+        BotonEliminarVenta.setVisible(false);
+
     }//GEN-LAST:event_BotonEliminarVentaActionPerformed
+
+    private void BotonParaEliminarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonParaEliminarVentaActionPerformed
+        if (fcodigoE.getText().length() == 6) {
+            Scanner sc = new Scanner(System.in);
+            EliminarRegistroVenta(sc, "Ventas", TablaVENTAS);
+            LeerVentasok(sc, "Ventas", TablaVENTAS);
+            sc.close();
+
+        } else {
+            errorcodigoE.setVisible(true);
+        }
+    }//GEN-LAST:event_BotonParaEliminarVentaActionPerformed
+
+    private void LimpiarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarVentaActionPerformed
+        fcodigoE.setText("");
+        errorcodigoE.setVisible(false);
+    }//GEN-LAST:event_LimpiarVentaActionPerformed
+
+    private void cerrareliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrareliminarActionPerformed
+        fcodigoE.setText("");
+        errorcodigoE.setVisible(false);
+        FrameEliminarVenta.setVisible(false);
+        fondoborrosoventas.setVisible(false);
+        TablaVENTAS.setVisible(true);
+        jScrollPane3.setVisible(true);
+        BotonRegistrarVenta.setVisible(true);
+        BotonEliminarVenta.setVisible(true);
+    }//GEN-LAST:event_cerrareliminarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -2138,6 +2339,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton BotonLimpiar1;
     private javax.swing.JRadioButton BotonOrdenar;
     private javax.swing.JRadioButton BotonOrdenarSalario;
+    private javax.swing.JButton BotonParaEliminarVenta;
     private javax.swing.JButton BotonRegistrarVenta;
     private javax.swing.JRadioButton BotonSinOrdenar;
     private javax.swing.JButton Boton_Empleados;
@@ -2154,9 +2356,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JInternalFrame FrameAgregar;
     private javax.swing.JInternalFrame FrameAgregarVenta;
     private javax.swing.JInternalFrame FrameEliminar;
+    private javax.swing.JInternalFrame FrameEliminarVenta;
     private javax.swing.JButton InfoBTN;
     private javax.swing.JPanel InventarioSubPanel;
     private javax.swing.JLabel LabelFondoBorroso;
+    private javax.swing.JButton LimpiarVenta;
     private javax.swing.JButton Modo;
     private javax.swing.JPanel PanelAgregarEmpleado;
     private javax.swing.JPanel PanelEliminarEmpleado;
@@ -2179,6 +2383,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton cerrar;
     private javax.swing.JButton cerrar1;
     private javax.swing.JButton cerraragregarventa;
+    private javax.swing.JButton cerrareliminar;
     private javax.swing.JLabel error1;
     private javax.swing.JLabel error1v;
     private javax.swing.JLabel error2;
@@ -2190,15 +2395,18 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel error5;
     private javax.swing.JLabel error6;
     private javax.swing.JLabel error7;
+    private javax.swing.JLabel errorcodigoE;
     private javax.swing.JLabel errornombre;
     private javax.swing.JTextField fcargo;
     private javax.swing.JTextField fcedula;
     private javax.swing.JTextField fcedulav;
     private javax.swing.JTextField fcodigo;
+    private javax.swing.JTextField fcodigoE;
     private javax.swing.JTextField ffechaingreso;
     private javax.swing.JTextField fmonto;
     private javax.swing.JTextField fnombre;
     private javax.swing.JTextField fnombreE;
+    private javax.swing.JLabel fondoborrosoventas;
     private javax.swing.JTextField fsalariocomisiones;
     private javax.swing.JTextField fsalariofijo;
     private javax.swing.JTextField ftelefono;
@@ -2237,12 +2445,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
