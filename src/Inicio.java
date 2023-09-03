@@ -2,6 +2,7 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 /*
@@ -20,6 +21,7 @@ public class Inicio extends javax.swing.JFrame {
      */
     Color fondo = Color.decode("#1C1920");
     public Inicio() {
+        setIconImage(new ImageIcon(getClass().getResource("ICONS/iconooo.png")).getImage());
         initComponents();
         this.setSize(723,407);
         this.setLocationRelativeTo(null);//centrar ventana
