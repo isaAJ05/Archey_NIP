@@ -17,6 +17,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
@@ -332,7 +333,7 @@ public class Principal extends javax.swing.JFrame {
             // if false the file will be deleted and created everytime
             // if true the registers will be appended to the end of the file
             PrintWriter registrar_ventas = new PrintWriter(outFile);
-            Nombre = fvendedor.getText();
+           Nombre = fvendedor.getSelectedItem().toString();
             Cedula = fcedulav.getText();
             Tipo = ComboBox.getSelectedItem().toString();
             Codigo = fcodigo.getText();
@@ -593,7 +594,7 @@ public class Principal extends javax.swing.JFrame {
 
     //12 Subrutina para limpiar campos de Ventas
     public void LimpiarCamposVentas() {
-        fvendedor.setText("");
+//        fvendedor.setText("");
         fcedulav.setText("");
         fcodigo.setText("");
         fmonto.setText("");
@@ -779,12 +780,12 @@ public class Principal extends javax.swing.JFrame {
                 break;
             }
         }
-        if (!validon) {
-            error1v.setVisible(true);
-            return false;
-        } else {
-            error1v.setVisible(false);
-        }
+//        if (!validon) {
+//            error1v.setVisible(true);
+//            return false;
+//        } else {
+//            error1v.setVisible(false);
+//        }
 
         //Validacion Cedula
         boolean validoc = true;
@@ -794,12 +795,12 @@ public class Principal extends javax.swing.JFrame {
                 break;
             }
         }
-        if (!validoc) {
-            error2v.setVisible(true); // Mostrar mensaje de error
-            return false;
-        } else {
-            error2v.setVisible(false); // Ocultar mensaje de error
-        }
+//        if (!validoc) {
+//            error2v.setVisible(true); // Mostrar mensaje de error
+//            return false;
+//        } else {
+//            error2v.setVisible(false); // Ocultar mensaje de error
+//        }
         //Validacion Codigo
         boolean validocod = true;
         for (char c : c4.toCharArray()) {
@@ -961,8 +962,8 @@ public class Principal extends javax.swing.JFrame {
         FrameAgregarVenta.setVisible(false);
         FrameEliminarVenta.setVisible(false);
         fondoborrosoventas.setVisible(false);
-        error1v.setVisible(false);
-        error2v.setVisible(false);
+//        error1v.setVisible(false);
+//        error2v.setVisible(false);
         error3v.setVisible(false);
         error4v.setVisible(false);
         errornombre.setVisible(false);
@@ -1036,19 +1037,17 @@ public class Principal extends javax.swing.JFrame {
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
+        ComboBox = new javax.swing.JComboBox<>();
         jLabel38 = new javax.swing.JLabel();
         fmonto = new javax.swing.JTextField();
-        fvendedor = new javax.swing.JTextField();
-        fcedulav = new javax.swing.JTextField();
         fcodigo = new javax.swing.JTextField();
-        ComboBox = new javax.swing.JComboBox<>();
         cerraragregarventa = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        error1v = new javax.swing.JLabel();
-        error2v = new javax.swing.JLabel();
         error3v = new javax.swing.JLabel();
         error4v = new javax.swing.JLabel();
+        fvendedor = new javax.swing.JComboBox<>();
+        fcedulav = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
         fondoborrosoventas = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         TablaVENTAS = new javax.swing.JTable();
@@ -1322,20 +1321,14 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel37.setText("Tipo de auto:");
 
-        jLabel38.setText("Código del auto:");
-
-        fvendedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fvendedorActionPerformed(evt);
-            }
-        });
-
-        ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Toyota", "Ford", "Honda", "Mercedes" }));
+        ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar tipo de auto", "Toyota", "Ford", "Honda", "Mercedes" }));
         ComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxActionPerformed(evt);
             }
         });
+
+        jLabel38.setText("Código del auto:");
 
         cerraragregarventa.setText("Cerrar");
         cerraragregarventa.addActionListener(new java.awt.event.ActionListener() {
@@ -1344,17 +1337,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Agregar");
-
         jButton3.setText("Limpiar");
-
-        error1v.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        error1v.setForeground(new java.awt.Color(255, 0, 0));
-        error1v.setText("(!) El nombre no debe contener números ni caracteres especiales.");
-
-        error2v.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        error2v.setForeground(new java.awt.Color(255, 0, 0));
-        error2v.setText("(!) La cédula debe contener solo números.");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         error3v.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         error3v.setForeground(new java.awt.Color(255, 0, 0));
@@ -1364,6 +1352,22 @@ public class Principal extends javax.swing.JFrame {
         error4v.setForeground(new java.awt.Color(255, 0, 0));
         error4v.setText("(!)Monto debe contener solo numeros mayores a cero");
 
+        fvendedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar empleado" }));
+        fvendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fvendedorActionPerformed(evt);
+            }
+        });
+
+        fcedulav.setEditable(false);
+
+        jButton2.setText("Agregar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -1372,39 +1376,40 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel35)
-                        .addGap(18, 18, 18)
-                        .addComponent(fvendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel38)
                             .addComponent(jLabel37))
                         .addGap(52, 52, 52)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(error3v, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel36)
-                        .addGap(100, 100, 100)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(error1v, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fcedulav, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(error2v, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel34)
                         .addGap(41, 41, 41)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(error4v, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fmonto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(fmonto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel35))
+                            .addComponent(jLabel36))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fvendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(fcedulav, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(78, 78, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(331, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton2)
-                        .addGap(18, 18, 18)
+                        .addGap(39, 39, 39)
                         .addComponent(jButton3))
                     .addComponent(cerraragregarventa))
                 .addGap(24, 24, 24))
@@ -1414,19 +1419,17 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(cerraragregarventa)
-                .addGap(33, 33, 33)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel35)
-                    .addComponent(fvendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(error1v)
-                .addGap(5, 5, 5)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fcedulav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel36))
-                .addGap(1, 1, 1)
-                .addComponent(error2v, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(36, 36, 36)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel35)
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel36))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(fvendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)
+                        .addComponent(fcedulav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel37)
                     .addComponent(ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1444,8 +1447,8 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(error4v)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(jButton2))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
@@ -2185,15 +2188,37 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane3.setVisible(false);
         BotonRegistrarVenta.setVisible(false);
         BotonEliminarVenta.setVisible(false);
+        DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) fvendedor.getModel();
+
+        try (BufferedReader BR = new BufferedReader(new FileReader("empleados.txt"))) {
+            String line;
+            while ((line = BR.readLine()) != null) {
+                String[] nombres = line.split("\t");
+
+                if (nombres.length > 0) {
+                    String nombre = nombres[0];
+                    String cedula = nombres[1];
+                    // Verificar si el elemento ya existe en el JComboBox antes de agregarlo
+                    // Esto evita que se duplique cada que se seleccione un elemento (nombre)
+                    boolean existe = false;
+                    for (int i = 0; i < model.getSize(); i++) {
+                        if (nombre.equals(model.getElementAt(i))) {
+                            existe = true;
+                            break;
+                        }
+                    }
+
+                    if (!existe) { // Solo se añaden los elementos (nombres) si no estaban antes
+                        model.addElement(nombre);
+                    }
+                }
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+          
     }//GEN-LAST:event_BotonRegistrarVentaActionPerformed
-
-    private void fvendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fvendedorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fvendedorActionPerformed
-
-    private void ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBoxActionPerformed
 
     boolean Nocturno;
     Color fondoclaro = Color.decode("#FFFFFF");//blanco
@@ -2240,13 +2265,6 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cerraragregarventaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        AgregarVentas("Ventas");
-        Scanner sc = new Scanner(System.in);
-        LeerVentasok(sc, "Ventas", TablaVENTAS);
-        sc.close();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void limpiarventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarventasActionPerformed
         LimpiarCamposVentas();
     }//GEN-LAST:event_limpiarventasActionPerformed
@@ -2289,6 +2307,70 @@ public class Principal extends javax.swing.JFrame {
         BotonRegistrarVenta.setVisible(true);
         BotonEliminarVenta.setVisible(true);
     }//GEN-LAST:event_cerrareliminarActionPerformed
+String NombreEmpleado, TipoAuto;
+    private void fvendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fvendedorActionPerformed
+
+        DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) fvendedor.getModel();
+        NombreEmpleado = fvendedor.getSelectedItem().toString();
+        try (BufferedReader BR = new BufferedReader(new FileReader("empleados.txt"))) {
+            String line;
+            while ((line = BR.readLine()) != null) {
+                String[] nombres = line.split("\t");
+
+                if (nombres.length > 0) {
+                    String nombre = nombres[0];
+                    String cedula = nombres[1];
+                    // Verificar si el elemento ya existe en el JComboBox antes de agregarlo
+                    // Esto evita que se duplique cada que se seleccione un elemento (nombre)
+                    boolean existe = false;
+                    for (int i = 0; i < model.getSize(); i++) {
+                        if (nombre.equalsIgnoreCase(NombreEmpleado)) {
+                            existe = true;
+                            break;
+                        }
+                    }
+
+                    if (!existe) { // Solo se añaden los elementos (nombres) si no estaban antes
+                        model.addElement(nombre);
+                    }else{
+                        fcedulav.setText(cedula);
+                    }
+                }
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_fvendedorActionPerformed
+
+    private void ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboBoxActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        AgregarVentas("Ventas");
+        Scanner sc = new Scanner(System.in);
+        LeerVentasok(sc, "Ventas", TablaVENTAS);
+        sc.close();
+        TipoAuto = ComboBox.getSelectedItem().toString();
+        NombreEmpleado = fvendedor.getSelectedItem().toString();
+        if (NombreEmpleado.equalsIgnoreCase("Seleccionar empleado")) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un empleado.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        if (TipoAuto.equalsIgnoreCase("Seleccionar tipo de auto")) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un tipo de auto.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+      String seleccionarv = "Seleccionar empleado";
+        String seleccionarc = "Seleccionar tipo de auto";
+                fvendedor.setSelectedItem(seleccionarv);
+                ComboBox.setSelectedItem(seleccionarc);
+                fcedulav.setText("");
+                fcodigo.setText("");
+                fmonto.setText("");
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -2385,9 +2467,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton cerraragregarventa;
     private javax.swing.JButton cerrareliminar;
     private javax.swing.JLabel error1;
-    private javax.swing.JLabel error1v;
     private javax.swing.JLabel error2;
-    private javax.swing.JLabel error2v;
     private javax.swing.JLabel error3;
     private javax.swing.JLabel error3v;
     private javax.swing.JLabel error4;
@@ -2410,7 +2490,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField fsalariocomisiones;
     private javax.swing.JTextField fsalariofijo;
     private javax.swing.JTextField ftelefono;
-    private javax.swing.JTextField fvendedor;
+    private javax.swing.JComboBox<String> fvendedor;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
