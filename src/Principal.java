@@ -897,6 +897,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     public Principal() {
+        setIconImage(new ImageIcon(getClass().getResource("ICONS/iconooo.png")).getImage());
         initComponents();
         //INTERFAZ
         //setIconImage(new ImageIcon(getClass().getResource("Imagenes/icon.png")).getImage());
