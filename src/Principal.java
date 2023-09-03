@@ -2356,6 +2356,7 @@ public class Principal extends javax.swing.JFrame {
         //para limpiar
         fnombreE.setText("");
         errornombre.setVisible(false);
+        TituloPanel.repaint();
     }//GEN-LAST:event_cerrar1ActionPerformed
 //BOTON ELIMINAR EMPLEADOS
     private void BotonEliminarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarEmpleadosActionPerformed
@@ -2479,6 +2480,7 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane3.setVisible(true);
         BotonRegistrarVenta.setVisible(true);
         BotonEliminarVenta.setVisible(true);
+        TituloPanel.repaint();
 
     }//GEN-LAST:event_cerraragregarventaActionPerformed
 
@@ -2523,6 +2525,7 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane3.setVisible(true);
         BotonRegistrarVenta.setVisible(true);
         BotonEliminarVenta.setVisible(true);
+        TituloPanel.repaint();
     }//GEN-LAST:event_cerrareliminarActionPerformed
     String NombreEmpleado, TipoAuto;
     private void fvendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fvendedorActionPerformed
