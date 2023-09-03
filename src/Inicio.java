@@ -1,7 +1,9 @@
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
@@ -23,12 +25,19 @@ public class Inicio extends javax.swing.JFrame {
     public Inicio() {
         setIconImage(new ImageIcon(getClass().getResource("ICONS/iconooo.png")).getImage());
         initComponents();
-        this.setSize(723,407);
+        this.setSize(692,388);
         this.setLocationRelativeTo(null);//centrar ventana
         // Guardar referencia al objeto actual
+          // Cargar el GIF desde la URL
+          
+        URL gifURL = Inicio.class.getResource("Imagenes/480.gif");
+       ImageIcon gifIcon = new ImageIcon(gifURL);
+       Labelgif.setIcon(gifIcon);
+        Labelgif.setPreferredSize(new Dimension(gifIcon.getIconWidth(), gifIcon.getIconHeight()));
         this.setResizable(false);
         
         this.setBackground(fondo);
+        
         Inicio thisFrame = this;
 
         Timer timer = new Timer(7200, new ActionListener() {
@@ -54,23 +63,23 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
+        Labelgif = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 900));
         setResizable(false);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ArcheyS (1).gif"))); // NOI18N
+        Labelgif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/480.gif"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
+            .addComponent(Labelgif)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Labelgif)
         );
 
         pack();
@@ -113,6 +122,6 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel Labelgif;
     // End of variables declaration//GEN-END:variables
 }
