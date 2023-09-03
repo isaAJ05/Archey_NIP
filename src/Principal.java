@@ -1108,6 +1108,9 @@ public class Principal extends javax.swing.JFrame {
         BotonOrdenar = new javax.swing.JRadioButton();
         BotonSinOrdenar = new javax.swing.JRadioButton();
         PanelVentas = new javax.swing.JPanel();
+        BuscadorVentas = new javax.swing.JTextField();
+        BTNBuscarVentas = new javax.swing.JButton();
+        MostrarBusquedaVentas = new javax.swing.JLabel();
         FrameEliminarVenta = new javax.swing.JInternalFrame();
         jPanel1 = new javax.swing.JPanel();
         jLabel39 = new javax.swing.JLabel();
@@ -1136,10 +1139,8 @@ public class Principal extends javax.swing.JFrame {
         fondoborrosoventas = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         TablaVENTAS = new javax.swing.JTable();
-        BuscadorVentas = new javax.swing.JTextField();
         BotonEliminarVenta = new javax.swing.JButton();
         BotonRegistrarVenta = new javax.swing.JButton();
-        MostrarBusquedaVentas = new javax.swing.JLabel();
         PanelInfo = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
@@ -1571,6 +1572,24 @@ public class Principal extends javax.swing.JFrame {
         PanelVentas.setPreferredSize(new java.awt.Dimension(1240, 700));
         PanelVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        BuscadorVentas.setText("Buscar...");
+        BuscadorVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BuscadorVentasMouseClicked(evt);
+            }
+        });
+        PanelVentas.add(BuscadorVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 92, 440, 30));
+
+        BTNBuscarVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupita.png"))); // NOI18N
+        BTNBuscarVentas.setContentAreaFilled(false);
+        BTNBuscarVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNBuscarVentasActionPerformed(evt);
+            }
+        });
+        PanelVentas.add(BTNBuscarVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 50, 50));
+        PanelVentas.add(MostrarBusquedaVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 1090, 30));
+
         FrameEliminarVenta.setVisible(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -1868,14 +1887,6 @@ public class Principal extends javax.swing.JFrame {
 
         PanelVentas.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 176, 1101, -1));
 
-        BuscadorVentas.setText("Buscar...");
-        BuscadorVentas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BuscadorVentasMouseClicked(evt);
-            }
-        });
-        PanelVentas.add(BuscadorVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 92, 440, 30));
-
         BotonEliminarVenta.setBackground(new java.awt.Color(204, 0, 0));
         BotonEliminarVenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         BotonEliminarVenta.setForeground(new java.awt.Color(255, 255, 255));
@@ -1897,7 +1908,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         PanelVentas.add(BotonRegistrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 30, -1, 30));
-        PanelVentas.add(MostrarBusquedaVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 1090, 30));
 
         getContentPane().add(PanelVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 1160, 640));
 
@@ -2709,6 +2719,32 @@ public class Principal extends javax.swing.JFrame {
         EmpleBuscador.setText(null);
     }//GEN-LAST:event_EmpleBuscadorMouseClicked
 
+    private void BTNBuscarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNBuscarVentasActionPerformed
+       String valorBuscado =BuscadorVentas.getText().toLowerCase();
+        DefaultTableModel modelo = (DefaultTableModel) TablaVENTAS.getModel();
+        boolean coincidenciaEncontrada = false;
+        if (!valorBuscado.isEmpty()) { // Validar que el campo de búsqueda no esté vacío
+            for (int row = 0; row < modelo.getRowCount(); row++) {
+                Object valorCelda = modelo.getValueAt(row, 0); // Acceder solo a la primera columna
+                if (valorCelda != null && valorCelda.toString().toLowerCase().contains(valorBuscado)) {
+                    TablaVENTAS.setRowSelectionInterval(row, row);
+                    TablaVENTAS.scrollRectToVisible(TablaVENTAS.getCellRect(row, 0, true));
+                    coincidenciaEncontrada = true;
+                    break;
+                }
+            }
+        }
+
+        if (coincidenciaEncontrada == true) {
+            MostrarBusquedaVentas.setVisible(true);
+            MostrarBusquedaVentas.setText("Empleado encontrado");
+
+        } else {
+             MostrarBusquedaVentas.setVisible(true);
+            MostrarBusquedaVentas.setText("Empleado no encontrado");
+        }
+    }//GEN-LAST:event_BTNBuscarVentasActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -2752,6 +2788,7 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTNBuscar;
+    private javax.swing.JButton BTNBuscarVentas;
     private javax.swing.JButton BTNgrafi;
     private javax.swing.JButton BotonAgregarEmpleados;
     private javax.swing.JButton BotonEliminarEmpleados;
