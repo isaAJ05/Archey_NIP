@@ -12,6 +12,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
@@ -25,12 +27,18 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 
 /**
@@ -993,7 +1001,13 @@ public class Principal extends javax.swing.JFrame {
 
     }
 
-    public static void CambiaEstadoPANEL(JPanel p) {
+    public void CambiaEstadoPANEL(JPanel p) {
+        p.setVisible(!p.isVisible());
+        p.setEnabled(!p.isEnabled());
+
+    }
+
+    public void CambiaEstadoPANEL(JScrollPane p) {
         p.setVisible(!p.isVisible());
         p.setEnabled(!p.isEnabled());
     }
@@ -1034,6 +1048,8 @@ public class Principal extends javax.swing.JFrame {
         PanelInventario = new javax.swing.JPanel();
         BTNgrafi = new javax.swing.JButton();
         GrafiPanel = new javax.swing.JPanel();
+        Gpa = new javax.swing.JPanel();
+        Gpa1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         InventarioSubPanel = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
@@ -1237,26 +1253,67 @@ public class Principal extends javax.swing.JFrame {
         PanelInventario.setPreferredSize(new java.awt.Dimension(1240, 700));
         PanelInventario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BTNgrafi.setText("jButton1");
+        BTNgrafi.setBackground(new java.awt.Color(204, 0, 0));
+        BTNgrafi.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
+        BTNgrafi.setForeground(new java.awt.Color(255, 255, 255));
+        BTNgrafi.setText("Graficos");
         BTNgrafi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTNgrafiActionPerformed(evt);
             }
         });
-        PanelInventario.add(BTNgrafi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 29, -1, 36));
+        PanelInventario.add(BTNgrafi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 20, 100, 40));
+
+        GrafiPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        Gpa.setOpaque(false);
+
+        javax.swing.GroupLayout GpaLayout = new javax.swing.GroupLayout(Gpa);
+        Gpa.setLayout(GpaLayout);
+        GpaLayout.setHorizontalGroup(
+            GpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 490, Short.MAX_VALUE)
+        );
+        GpaLayout.setVerticalGroup(
+            GpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        Gpa1.setOpaque(false);
+
+        javax.swing.GroupLayout Gpa1Layout = new javax.swing.GroupLayout(Gpa1);
+        Gpa1.setLayout(Gpa1Layout);
+        Gpa1Layout.setHorizontalGroup(
+            Gpa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 539, Short.MAX_VALUE)
+        );
+        Gpa1Layout.setVerticalGroup(
+            Gpa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 389, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout GrafiPanelLayout = new javax.swing.GroupLayout(GrafiPanel);
         GrafiPanel.setLayout(GrafiPanelLayout);
         GrafiPanelLayout.setHorizontalGroup(
             GrafiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GrafiPanelLayout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addComponent(Gpa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addComponent(Gpa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         GrafiPanelLayout.setVerticalGroup(
             GrafiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
+            .addGroup(GrafiPanelLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addGroup(GrafiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Gpa1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Gpa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
-        PanelInventario.add(GrafiPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 1000, 560));
+        PanelInventario.add(GrafiPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 1120, 520));
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -2261,6 +2318,7 @@ public class Principal extends javax.swing.JFrame {
             BotonOrdenar.setForeground(negro);
             BotonOrdenarSalario.setForeground(negro);
             BotonSinOrdenar.setForeground(negro);
+            GrafiPanel.setBackground(fondoclaro);
             Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53.png")));
             Modo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53brillo.png")));
 
@@ -2275,8 +2333,8 @@ public class Principal extends javax.swing.JFrame {
         } else {//estaclaro
             System.out.println("Pasar Modo oscuro");
             TituloPanel.setForeground(fondoclaro);
-
             PanelEmpleados.setBackground(fondooscuro);
+            GrafiPanel.setBackground(fondooscuro);
             PanelVentas.setBackground(fondooscuro);
             PanelInventario.setBackground(fondooscuro);
             InventarioSubPanel.setBackground(fondooscuro);
@@ -2416,33 +2474,64 @@ public class Principal extends javax.swing.JFrame {
         fmonto.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed
 
+
     private void BTNgrafiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNgrafiActionPerformed
+
         CambiaEstadoPANEL(GrafiPanel);
+        CambiaEstadoPANEL(jScrollPane2);
         TituloPanel.repaint();
         //llamar libreria
         DefaultPieDataset datos = new DefaultPieDataset();
         //Establecer valores
-        datos.setValue("Toyota", cantT);
-        datos.setValue("Ford", cantF);
+        datos.setValue("Toyota ", cantT);
+        datos.setValue("Ford ", cantF);
         datos.setValue("Honda", cantH);
         datos.setValue("BMW", cantB);
         datos.setValue("Mercedes - Benz", cantM);
         //Crear objeto para grafico
-        JFreeChart grafico_circular=ChartFactory.createPieChart(
-              //Argumentos
-                "Cantidad Vendida",//Nombre Grafico 
-                datos,//datos
-                true,//categorias
-                true,//herramientas
-                false//url
-        );
-        ChartPanel pnl=new ChartPanel(grafico_circular);
+
+        //Graficos 2D
+//        JFreeChart grafico_circular=ChartFactory.createPieChart(
+//              //Argumentos
+//                "Cantidad Vendida",//Nombre Grafico 
+//                datos,//datos
+//                true,//categorias
+//                true,//herramientas
+//                false//url
+//        );
+        //Grafico 3D REDONDO
+        JFreeChart grafico_circular = ChartFactory.createPieChart3D("Cantidad De Autors Vendida", datos, true, true, false);
+        PiePlot piePlot = (PiePlot) grafico_circular.getPlot();
+        piePlot.setBackgroundPaint(fondoclaro);
+
+        ChartPanel pnl = new ChartPanel(grafico_circular);
         pnl.setMouseWheelEnabled(true);
-        pnl.setPreferredSize(new Dimension(400,200));
+        pnl.setPreferredSize(new Dimension(500, 400));
+
+        Gpa1.setLayout(new BorderLayout());
+        Gpa1.add(pnl, BorderLayout.WEST);
+
+        //gRAFICO DE BARRAS
+        DefaultCategoryDataset barchartData = new DefaultCategoryDataset();
+        barchartData.setValue((int)MontoT, "Monto Total", "Toyota");
+        barchartData.setValue((int)MontoF, "Monto Total", "Ford");
+        barchartData.setValue((int)MontoH, "Monto Total", "Honda");
+        barchartData.setValue((int)MontoB, "Monto Total", "BMW");
+        barchartData.setValue((int)MontoM, "Monto Total", "Mercedes-Benz");
+        JFreeChart barChart=ChartFactory.createBarChart3D("Total Obtenido","Tipos De Auto", "Monto", barchartData,PlotOrientation.HORIZONTAL,false,true,false);
+        CategoryPlot barchrt=barChart.getCategoryPlot();
+        NumberAxis yAxis = (NumberAxis) barchrt.getRangeAxis();
+        NumberFormat format = new DecimalFormat("#,###"); // Personaliza el formato de los números
+        yAxis.setNumberFormatOverride(format);
         
-        GrafiPanel.setLayout(new BorderLayout());
-        GrafiPanel.add(pnl,BorderLayout.NORTH);
-        
+        ChartPanel pnl2=new ChartPanel(barChart);
+        pnl2.setMouseWheelEnabled(true);
+        pnl2.setPreferredSize(new Dimension(550, 400));
+        Gpa.setLayout(new BorderLayout());
+        Gpa.add(pnl2, BorderLayout.EAST);
+        pnl.validate();
+        pnl2.validate();
+
         pack();
         repaint();
     }//GEN-LAST:event_BTNgrafiActionPerformed
@@ -2515,6 +2604,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JInternalFrame FrameAgregarVenta;
     private javax.swing.JInternalFrame FrameEliminar;
     private javax.swing.JInternalFrame FrameEliminarVenta;
+    private javax.swing.JPanel Gpa;
+    private javax.swing.JPanel Gpa1;
     private javax.swing.JPanel GrafiPanel;
     private javax.swing.JButton InfoBTN;
     private javax.swing.JPanel InventarioSubPanel;
