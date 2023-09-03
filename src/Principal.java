@@ -1053,42 +1053,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         TituloPanel = new javax.swing.JLabel();
-        PanelVentas = new javax.swing.JPanel();
-        FrameEliminarVenta = new javax.swing.JInternalFrame();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel39 = new javax.swing.JLabel();
-        fcodigoE = new javax.swing.JTextField();
-        errorcodigoE = new javax.swing.JLabel();
-        BotonParaEliminarVenta = new javax.swing.JButton();
-        LimpiarVenta = new javax.swing.JButton();
-        cerrareliminar = new javax.swing.JButton();
-        FrameAgregarVenta = new javax.swing.JInternalFrame();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
-        ComboBox = new javax.swing.JComboBox<>();
-        jLabel38 = new javax.swing.JLabel();
-        fmonto = new javax.swing.JTextField();
-        fcodigo = new javax.swing.JTextField();
-        cerraragregarventa = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        error3v = new javax.swing.JLabel();
-        error4v = new javax.swing.JLabel();
-        fvendedor = new javax.swing.JComboBox<>();
-        fcedulav = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        fondoborrosoventas = new javax.swing.JLabel();
-        MostrarBusquedaVenta = new javax.swing.JLabel();
-        BuscadorVenta = new javax.swing.JTextField();
-        BotonRegistrarVenta = new javax.swing.JButton();
-        BotonEliminarVenta = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        TablaVENTAS = new javax.swing.JTable();
         PanelEmpleados = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TablaEMPLEADOS = new javax.swing.JTable();
         FrameEliminar = new javax.swing.JInternalFrame();
         PanelEliminarEmpleado = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
@@ -1126,6 +1091,8 @@ public class Principal extends javax.swing.JFrame {
         error5 = new javax.swing.JLabel();
         error6 = new javax.swing.JLabel();
         LabelFondoBorroso = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaEMPLEADOS = new javax.swing.JTable();
         BuscadorEmple = new javax.swing.JTextField();
         BotonparaAgregar = new javax.swing.JButton();
         BotonparaEliminar = new javax.swing.JButton();
@@ -1133,6 +1100,39 @@ public class Principal extends javax.swing.JFrame {
         BotonOrdenar = new javax.swing.JRadioButton();
         BotonSinOrdenar = new javax.swing.JRadioButton();
         MostrarBusquedaEmple = new javax.swing.JLabel();
+        PanelVentas = new javax.swing.JPanel();
+        FrameEliminarVenta = new javax.swing.JInternalFrame();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel39 = new javax.swing.JLabel();
+        fcodigoE = new javax.swing.JTextField();
+        errorcodigoE = new javax.swing.JLabel();
+        BotonParaEliminarVenta = new javax.swing.JButton();
+        LimpiarVenta = new javax.swing.JButton();
+        cerrareliminar = new javax.swing.JButton();
+        FrameAgregarVenta = new javax.swing.JInternalFrame();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        ComboBox = new javax.swing.JComboBox<>();
+        jLabel38 = new javax.swing.JLabel();
+        fmonto = new javax.swing.JTextField();
+        fcodigo = new javax.swing.JTextField();
+        cerraragregarventa = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        error3v = new javax.swing.JLabel();
+        error4v = new javax.swing.JLabel();
+        fvendedor = new javax.swing.JComboBox<>();
+        fcedulav = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        fondoborrosoventas = new javax.swing.JLabel();
+        MostrarBusquedaVenta = new javax.swing.JLabel();
+        BuscadorVenta = new javax.swing.JTextField();
+        BotonRegistrarVenta = new javax.swing.JButton();
+        BotonEliminarVenta = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        TablaVENTAS = new javax.swing.JTable();
         PanelInfo = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
@@ -1264,6 +1264,294 @@ public class Principal extends javax.swing.JFrame {
         TituloPanel.setText("|      Empleados");
         TituloPanel.setAlignmentY(0.0F);
         getContentPane().add(TituloPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
+
+        PanelEmpleados.setBackground(new java.awt.Color(255, 255, 255));
+        PanelEmpleados.setPreferredSize(new java.awt.Dimension(1240, 700));
+        PanelEmpleados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        FrameEliminar.setVisible(true);
+        FrameEliminar.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        PanelEliminarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+        PanelEliminarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel32.setText("Nombre:");
+        PanelEliminarEmpleado.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+
+        fnombreE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fnombreEActionPerformed(evt);
+            }
+        });
+        PanelEliminarEmpleado.add(fnombreE, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 280, -1));
+
+        cerrar1.setText("Cerrar");
+        cerrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrar1ActionPerformed(evt);
+            }
+        });
+        PanelEliminarEmpleado.add(cerrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, -1, -1));
+
+        BotonEliminarEmpleados.setText("Eliminar");
+        BotonEliminarEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEliminarEmpleadosActionPerformed(evt);
+            }
+        });
+        PanelEliminarEmpleado.add(BotonEliminarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 404, -1, -1));
+
+        BotonLimpiar1.setText("Limpiar");
+        BotonLimpiar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonLimpiar1ActionPerformed(evt);
+            }
+        });
+        PanelEliminarEmpleado.add(BotonLimpiar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 404, -1, -1));
+
+        jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/empleado sin fondo.png"))); // NOI18N
+        PanelEliminarEmpleado.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 170, 210));
+
+        errornombre.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        errornombre.setForeground(new java.awt.Color(255, 0, 0));
+        errornombre.setText("(!) El nombre no debe contener números ni caracteres especiales.");
+        PanelEliminarEmpleado.add(errornombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 290, -1));
+
+        FrameEliminar.getContentPane().add(PanelEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 440));
+
+        PanelEmpleados.add(FrameEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 670, 460));
+
+        FrameAgregar.setVisible(true);
+
+        PanelAgregarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+        PanelAgregarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setText("Nombre:");
+        PanelAgregarEmpleado.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 89, -1, -1));
+
+        jLabel6.setText("Cédula:");
+        PanelAgregarEmpleado.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 135, -1, -1));
+
+        jLabel7.setText("Cargo:");
+        PanelAgregarEmpleado.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 175, -1, -1));
+
+        jLabel8.setText("Teléfono:");
+        PanelAgregarEmpleado.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 215, -1, -1));
+
+        jLabel9.setText("Fecha de Ingreso:");
+        PanelAgregarEmpleado.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 258, -1, -1));
+
+        jLabel10.setText("Salario Fijo Mensual:");
+        PanelAgregarEmpleado.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 298, -1, -1));
+
+        jLabel11.setText("Salario+Comisiones:");
+        PanelAgregarEmpleado.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 335, -1, 22));
+
+        fnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fnombreActionPerformed(evt);
+            }
+        });
+        PanelAgregarEmpleado.add(fnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 86, 280, -1));
+        PanelAgregarEmpleado.add(fcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 132, 280, -1));
+        PanelAgregarEmpleado.add(fcargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 172, 280, -1));
+        PanelAgregarEmpleado.add(ffechaingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 255, 280, -1));
+        PanelAgregarEmpleado.add(ftelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 212, 280, -1));
+        PanelAgregarEmpleado.add(fsalariofijo, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 295, 280, -1));
+        PanelAgregarEmpleado.add(fsalariocomisiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 335, 280, -1));
+
+        cerrar.setText("Cerrar");
+        cerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarActionPerformed(evt);
+            }
+        });
+        PanelAgregarEmpleado.add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, -1, -1));
+
+        BotonAgregarEmpleados.setText("Agregar");
+        BotonAgregarEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonAgregarEmpleadosActionPerformed(evt);
+            }
+        });
+        PanelAgregarEmpleado.add(BotonAgregarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 404, -1, -1));
+
+        BotonLimpiar.setText("Limpiar");
+        BotonLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonLimpiarActionPerformed(evt);
+            }
+        });
+        PanelAgregarEmpleado.add(BotonLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 404, -1, -1));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/empleado sin fondo.png"))); // NOI18N
+        PanelAgregarEmpleado.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 170, 210));
+
+        error7.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error7.setForeground(new java.awt.Color(255, 0, 0));
+        error7.setText("(!) Salario debe contener solo numeros mayores a cero");
+        PanelAgregarEmpleado.add(error7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 290, -1));
+
+        error1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error1.setForeground(new java.awt.Color(255, 0, 0));
+        error1.setText("(!) El nombre no debe contener números ni caracteres especiales.");
+        PanelAgregarEmpleado.add(error1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 290, -1));
+
+        error2.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error2.setForeground(new java.awt.Color(255, 0, 0));
+        error2.setText("(!) La cédula debe contener solo números.");
+        PanelAgregarEmpleado.add(error2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 158, 290, 10));
+
+        error3.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error3.setForeground(new java.awt.Color(255, 0, 0));
+        error3.setText("(!) Este campo no debe contener números ni caracteres especiales.");
+        PanelAgregarEmpleado.add(error3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 194, 300, -1));
+
+        error4.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error4.setForeground(new java.awt.Color(255, 0, 0));
+        error4.setText("(!) El telefono solo debe contener 10 digitos numéricos.");
+        PanelAgregarEmpleado.add(error4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 290, 20));
+
+        error5.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error5.setForeground(new java.awt.Color(255, 0, 0));
+        error5.setText("(!) Formato de fecha no válido. Recuerde (DD/MM/AA)");
+        PanelAgregarEmpleado.add(error5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 290, 10));
+
+        error6.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error6.setForeground(new java.awt.Color(255, 0, 0));
+        error6.setText("(!) Salario debe contener solo numeros mayores a cero");
+        PanelAgregarEmpleado.add(error6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 290, 10));
+
+        javax.swing.GroupLayout FrameAgregarLayout = new javax.swing.GroupLayout(FrameAgregar.getContentPane());
+        FrameAgregar.getContentPane().setLayout(FrameAgregarLayout);
+        FrameAgregarLayout.setHorizontalGroup(
+            FrameAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FrameAgregarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(PanelAgregarEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        FrameAgregarLayout.setVerticalGroup(
+            FrameAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FrameAgregarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(PanelAgregarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        PanelEmpleados.add(FrameAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 680, -1));
+
+        LabelFondoBorroso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/borrosoclaroempleadp.png"))); // NOI18N
+        PanelEmpleados.add(LabelFondoBorroso, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -130, 1480, 890));
+
+        jScrollPane1.setBackground(new java.awt.Color(51, 0, 0));
+        jScrollPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
+        jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setToolTipText("");
+        jScrollPane1.setFont(new java.awt.Font("Adobe Gothic Std B", 1, 12)); // NOI18N
+        jScrollPane1.setOpaque(false);
+
+        TablaEMPLEADOS.setAutoCreateRowSorter(true);
+        TablaEMPLEADOS.setBackground(new java.awt.Color(255, 204, 204));
+        TablaEMPLEADOS.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        TablaEMPLEADOS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        TablaEMPLEADOS.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Nombre", "C.C.", "Cargo", "Telf. Contacto", "Fecha Ingreso", "Salario Mensual", "Salario+Comisiones"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TablaEMPLEADOS.setColumnSelectionAllowed(true);
+        TablaEMPLEADOS.setIntercellSpacing(new java.awt.Dimension(5, 5));
+        TablaEMPLEADOS.setRowHeight(40);
+        TablaEMPLEADOS.setSelectionBackground(new java.awt.Color(255, 153, 153));
+        TablaEMPLEADOS.setSelectionForeground(new java.awt.Color(102, 0, 0));
+        TablaEMPLEADOS.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        TablaEMPLEADOS.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        TablaEMPLEADOS.setShowGrid(false);
+        TablaEMPLEADOS.setShowVerticalLines(true);
+        TablaEMPLEADOS.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(TablaEMPLEADOS);
+        TablaEMPLEADOS.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        PanelEmpleados.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 180, 1101, -1));
+        jScrollPane1.getAccessibleContext().setAccessibleName("");
+
+        BuscadorEmple.setText("Buscar ...");
+        BuscadorEmple.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BuscadorEmpleMouseClicked(evt);
+            }
+        });
+        PanelEmpleados.add(BuscadorEmple, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 420, 30));
+
+        BotonparaAgregar.setBackground(new java.awt.Color(204, 0, 0));
+        BotonparaAgregar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonparaAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        BotonparaAgregar.setText("+ (Nuevo Registro)");
+        BotonparaAgregar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BotonparaAgregar.setBorderPainted(false);
+        BotonparaAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonparaAgregarActionPerformed(evt);
+            }
+        });
+        PanelEmpleados.add(BotonparaAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 140, 40));
+
+        BotonparaEliminar.setBackground(new java.awt.Color(204, 0, 0));
+        BotonparaEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonparaEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        BotonparaEliminar.setText("- (Eliminar Registro)");
+        BotonparaEliminar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BotonparaEliminar.setBorderPainted(false);
+        BotonparaEliminar.setFocusPainted(false);
+        BotonparaEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonparaEliminarActionPerformed(evt);
+            }
+        });
+        PanelEmpleados.add(BotonparaEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 80, 140, 40));
+
+        BotonOrdenarSalario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonOrdenarSalario.setText("Ordenar por Salario");
+        BotonOrdenarSalario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonOrdenarSalarioActionPerformed(evt);
+            }
+        });
+        PanelEmpleados.add(BotonOrdenarSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 60, -1, -1));
+
+        BotonOrdenar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonOrdenar.setText("Ordenar por nombre");
+        BotonOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonOrdenarActionPerformed(evt);
+            }
+        });
+        PanelEmpleados.add(BotonOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 20, -1, -1));
+
+        BotonSinOrdenar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonSinOrdenar.setText("Sin ordenar");
+        PanelEmpleados.add(BotonSinOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 100, -1, -1));
+        PanelEmpleados.add(MostrarBusquedaEmple, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 1060, 30));
+
+        getContentPane().add(PanelEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 1160, 640));
 
         PanelVentas.setBackground(new java.awt.Color(255, 255, 255));
         PanelVentas.setPreferredSize(new java.awt.Dimension(1240, 700));
@@ -1598,294 +1886,6 @@ public class Principal extends javax.swing.JFrame {
         PanelVentas.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 176, 1101, -1));
 
         getContentPane().add(PanelVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 1160, 640));
-
-        PanelEmpleados.setBackground(new java.awt.Color(255, 255, 255));
-        PanelEmpleados.setPreferredSize(new java.awt.Dimension(1240, 700));
-        PanelEmpleados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jScrollPane1.setBackground(new java.awt.Color(51, 0, 0));
-        jScrollPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
-        jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setToolTipText("");
-        jScrollPane1.setFont(new java.awt.Font("Adobe Gothic Std B", 1, 12)); // NOI18N
-        jScrollPane1.setOpaque(false);
-
-        TablaEMPLEADOS.setAutoCreateRowSorter(true);
-        TablaEMPLEADOS.setBackground(new java.awt.Color(255, 204, 204));
-        TablaEMPLEADOS.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
-        TablaEMPLEADOS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        TablaEMPLEADOS.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Nombre", "C.C.", "Cargo", "Telf. Contacto", "Fecha Ingreso", "Salario Mensual", "Salario+Comisiones"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        TablaEMPLEADOS.setColumnSelectionAllowed(true);
-        TablaEMPLEADOS.setIntercellSpacing(new java.awt.Dimension(5, 5));
-        TablaEMPLEADOS.setRowHeight(40);
-        TablaEMPLEADOS.setSelectionBackground(new java.awt.Color(255, 153, 153));
-        TablaEMPLEADOS.setSelectionForeground(new java.awt.Color(102, 0, 0));
-        TablaEMPLEADOS.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        TablaEMPLEADOS.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        TablaEMPLEADOS.setShowGrid(false);
-        TablaEMPLEADOS.setShowVerticalLines(true);
-        TablaEMPLEADOS.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(TablaEMPLEADOS);
-        TablaEMPLEADOS.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-
-        PanelEmpleados.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 180, 1101, -1));
-        jScrollPane1.getAccessibleContext().setAccessibleName("");
-
-        FrameEliminar.setVisible(true);
-        FrameEliminar.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        PanelEliminarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
-        PanelEliminarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel32.setText("Nombre:");
-        PanelEliminarEmpleado.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
-
-        fnombreE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fnombreEActionPerformed(evt);
-            }
-        });
-        PanelEliminarEmpleado.add(fnombreE, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 280, -1));
-
-        cerrar1.setText("Cerrar");
-        cerrar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cerrar1ActionPerformed(evt);
-            }
-        });
-        PanelEliminarEmpleado.add(cerrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, -1, -1));
-
-        BotonEliminarEmpleados.setText("Eliminar");
-        BotonEliminarEmpleados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonEliminarEmpleadosActionPerformed(evt);
-            }
-        });
-        PanelEliminarEmpleado.add(BotonEliminarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 404, -1, -1));
-
-        BotonLimpiar1.setText("Limpiar");
-        BotonLimpiar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonLimpiar1ActionPerformed(evt);
-            }
-        });
-        PanelEliminarEmpleado.add(BotonLimpiar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 404, -1, -1));
-
-        jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/empleado sin fondo.png"))); // NOI18N
-        PanelEliminarEmpleado.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 170, 210));
-
-        errornombre.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        errornombre.setForeground(new java.awt.Color(255, 0, 0));
-        errornombre.setText("(!) El nombre no debe contener números ni caracteres especiales.");
-        PanelEliminarEmpleado.add(errornombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 290, -1));
-
-        FrameEliminar.getContentPane().add(PanelEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 440));
-
-        PanelEmpleados.add(FrameEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 670, 460));
-
-        FrameAgregar.setVisible(true);
-
-        PanelAgregarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
-        PanelAgregarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setText("Nombre:");
-        PanelAgregarEmpleado.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 89, -1, -1));
-
-        jLabel6.setText("Cédula:");
-        PanelAgregarEmpleado.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 135, -1, -1));
-
-        jLabel7.setText("Cargo:");
-        PanelAgregarEmpleado.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 175, -1, -1));
-
-        jLabel8.setText("Teléfono:");
-        PanelAgregarEmpleado.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 215, -1, -1));
-
-        jLabel9.setText("Fecha de Ingreso:");
-        PanelAgregarEmpleado.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 258, -1, -1));
-
-        jLabel10.setText("Salario Fijo Mensual:");
-        PanelAgregarEmpleado.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 298, -1, -1));
-
-        jLabel11.setText("Salario+Comisiones:");
-        PanelAgregarEmpleado.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 335, -1, 22));
-
-        fnombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fnombreActionPerformed(evt);
-            }
-        });
-        PanelAgregarEmpleado.add(fnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 86, 280, -1));
-        PanelAgregarEmpleado.add(fcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 132, 280, -1));
-        PanelAgregarEmpleado.add(fcargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 172, 280, -1));
-        PanelAgregarEmpleado.add(ffechaingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 255, 280, -1));
-        PanelAgregarEmpleado.add(ftelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 212, 280, -1));
-        PanelAgregarEmpleado.add(fsalariofijo, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 295, 280, -1));
-        PanelAgregarEmpleado.add(fsalariocomisiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 335, 280, -1));
-
-        cerrar.setText("Cerrar");
-        cerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cerrarActionPerformed(evt);
-            }
-        });
-        PanelAgregarEmpleado.add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, -1, -1));
-
-        BotonAgregarEmpleados.setText("Agregar");
-        BotonAgregarEmpleados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonAgregarEmpleadosActionPerformed(evt);
-            }
-        });
-        PanelAgregarEmpleado.add(BotonAgregarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 404, -1, -1));
-
-        BotonLimpiar.setText("Limpiar");
-        BotonLimpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonLimpiarActionPerformed(evt);
-            }
-        });
-        PanelAgregarEmpleado.add(BotonLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 404, -1, -1));
-
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/empleado sin fondo.png"))); // NOI18N
-        PanelAgregarEmpleado.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 170, 210));
-
-        error7.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        error7.setForeground(new java.awt.Color(255, 0, 0));
-        error7.setText("(!) Salario debe contener solo numeros mayores a cero");
-        PanelAgregarEmpleado.add(error7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 290, -1));
-
-        error1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        error1.setForeground(new java.awt.Color(255, 0, 0));
-        error1.setText("(!) El nombre no debe contener números ni caracteres especiales.");
-        PanelAgregarEmpleado.add(error1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 290, -1));
-
-        error2.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        error2.setForeground(new java.awt.Color(255, 0, 0));
-        error2.setText("(!) La cédula debe contener solo números.");
-        PanelAgregarEmpleado.add(error2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 158, 290, 10));
-
-        error3.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        error3.setForeground(new java.awt.Color(255, 0, 0));
-        error3.setText("(!) Este campo no debe contener números ni caracteres especiales.");
-        PanelAgregarEmpleado.add(error3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 194, 300, -1));
-
-        error4.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        error4.setForeground(new java.awt.Color(255, 0, 0));
-        error4.setText("(!) El telefono solo debe contener 10 digitos numéricos.");
-        PanelAgregarEmpleado.add(error4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 290, 20));
-
-        error5.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        error5.setForeground(new java.awt.Color(255, 0, 0));
-        error5.setText("(!) Formato de fecha no válido. Recuerde (DD/MM/AA)");
-        PanelAgregarEmpleado.add(error5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 290, 10));
-
-        error6.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        error6.setForeground(new java.awt.Color(255, 0, 0));
-        error6.setText("(!) Salario debe contener solo numeros mayores a cero");
-        PanelAgregarEmpleado.add(error6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 290, 10));
-
-        javax.swing.GroupLayout FrameAgregarLayout = new javax.swing.GroupLayout(FrameAgregar.getContentPane());
-        FrameAgregar.getContentPane().setLayout(FrameAgregarLayout);
-        FrameAgregarLayout.setHorizontalGroup(
-            FrameAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FrameAgregarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PanelAgregarEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        FrameAgregarLayout.setVerticalGroup(
-            FrameAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FrameAgregarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PanelAgregarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        PanelEmpleados.add(FrameAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 680, -1));
-
-        LabelFondoBorroso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/borrosoclaroempleadp.png"))); // NOI18N
-        PanelEmpleados.add(LabelFondoBorroso, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -130, 1480, 890));
-
-        BuscadorEmple.setText("Buscar ...");
-        BuscadorEmple.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BuscadorEmpleMouseClicked(evt);
-            }
-        });
-        PanelEmpleados.add(BuscadorEmple, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 420, 30));
-
-        BotonparaAgregar.setBackground(new java.awt.Color(204, 0, 0));
-        BotonparaAgregar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        BotonparaAgregar.setForeground(new java.awt.Color(255, 255, 255));
-        BotonparaAgregar.setText("+ (Nuevo Registro)");
-        BotonparaAgregar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        BotonparaAgregar.setBorderPainted(false);
-        BotonparaAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonparaAgregarActionPerformed(evt);
-            }
-        });
-        PanelEmpleados.add(BotonparaAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 140, 40));
-
-        BotonparaEliminar.setBackground(new java.awt.Color(204, 0, 0));
-        BotonparaEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        BotonparaEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        BotonparaEliminar.setText("- (Eliminar Registro)");
-        BotonparaEliminar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        BotonparaEliminar.setBorderPainted(false);
-        BotonparaEliminar.setFocusPainted(false);
-        BotonparaEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonparaEliminarActionPerformed(evt);
-            }
-        });
-        PanelEmpleados.add(BotonparaEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 80, 140, 40));
-
-        BotonOrdenarSalario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        BotonOrdenarSalario.setText("Ordenar por Salario");
-        BotonOrdenarSalario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonOrdenarSalarioActionPerformed(evt);
-            }
-        });
-        PanelEmpleados.add(BotonOrdenarSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 60, -1, -1));
-
-        BotonOrdenar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        BotonOrdenar.setText("Ordenar por nombre");
-        BotonOrdenar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonOrdenarActionPerformed(evt);
-            }
-        });
-        PanelEmpleados.add(BotonOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 20, -1, -1));
-
-        BotonSinOrdenar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        BotonSinOrdenar.setText("Sin ordenar");
-        PanelEmpleados.add(BotonSinOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 100, -1, -1));
-        PanelEmpleados.add(MostrarBusquedaEmple, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 1060, 30));
-
-        getContentPane().add(PanelEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 1160, 640));
 
         PanelInfo.setBackground(new java.awt.Color(255, 255, 255));
 
