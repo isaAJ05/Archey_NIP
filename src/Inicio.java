@@ -25,7 +25,7 @@ public class Inicio extends javax.swing.JFrame {
     public Inicio() {
         setIconImage(new ImageIcon(getClass().getResource("ICONS/iconooo.png")).getImage());
         initComponents();
-        this.setSize(692,388);
+        this.setSize(854,480);
         this.setLocationRelativeTo(null);//centrar ventana
         // Guardar referencia al objeto actual
           // Cargar el GIF desde la URL
