@@ -912,7 +912,7 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         //INTERFAZ
-        //setIconImage(new ImageIcon(getClass().getResource("Imagenes/icon.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("ICONS/iconooo.png")).getImage());
         //this.setTitle(" ");
         this.setLocationRelativeTo(null); //centrar ventana
         PanelEmpleados.setVisible(false);
@@ -1535,13 +1535,13 @@ public class Principal extends javax.swing.JFrame {
         BTNgrafi.setBackground(new java.awt.Color(204, 0, 0));
         BTNgrafi.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         BTNgrafi.setForeground(new java.awt.Color(255, 255, 255));
-        BTNgrafi.setText("Graficos");
+        BTNgrafi.setText("Gráficas");
         BTNgrafi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTNgrafiActionPerformed(evt);
             }
         });
-        PanelInventario.add(BTNgrafi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 20, 100, 40));
+        PanelInventario.add(BTNgrafi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 20, 130, 40));
 
         GrafiPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -2476,7 +2476,12 @@ public class Principal extends javax.swing.JFrame {
 
 
     private void BTNgrafiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNgrafiActionPerformed
-
+        //cambiar nombre boton
+        if (BTNgrafi.getText() == "Gráficas") {
+            BTNgrafi.setText("Inventario");
+        } else {
+            BTNgrafi.setText("Gráficas");
+        }
         CambiaEstadoPANEL(GrafiPanel);
         CambiaEstadoPANEL(jScrollPane2);
         TituloPanel.repaint();
