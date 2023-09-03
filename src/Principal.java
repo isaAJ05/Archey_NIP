@@ -1060,10 +1060,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         TituloPanel = new javax.swing.JLabel();
         PanelEmpleados = new javax.swing.JPanel();
-        Buscador = new javax.swing.JTextField();
-        MostrarBusqueda = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TablaEMPLEADOS = new javax.swing.JTable();
         FrameEliminar = new javax.swing.JInternalFrame();
         PanelEliminarEmpleado = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
@@ -1100,13 +1096,50 @@ public class Principal extends javax.swing.JFrame {
         error4 = new javax.swing.JLabel();
         error5 = new javax.swing.JLabel();
         error6 = new javax.swing.JLabel();
-        BTNBuscar = new javax.swing.JButton();
         LabelFondoBorroso = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaEMPLEADOS = new javax.swing.JTable();
+        EmpleBuscador = new javax.swing.JTextField();
+        BTNBuscar = new javax.swing.JButton();
+        MostrarBusquedaEmple = new javax.swing.JLabel();
         BotonparaAgregar = new javax.swing.JButton();
         BotonparaEliminar = new javax.swing.JButton();
         BotonOrdenarSalario = new javax.swing.JRadioButton();
         BotonOrdenar = new javax.swing.JRadioButton();
         BotonSinOrdenar = new javax.swing.JRadioButton();
+        PanelVentas = new javax.swing.JPanel();
+        FrameEliminarVenta = new javax.swing.JInternalFrame();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel39 = new javax.swing.JLabel();
+        fcodigoE = new javax.swing.JTextField();
+        errorcodigoE = new javax.swing.JLabel();
+        BotonParaEliminarVenta = new javax.swing.JButton();
+        LimpiarVenta = new javax.swing.JButton();
+        cerrareliminar = new javax.swing.JButton();
+        FrameAgregarVenta = new javax.swing.JInternalFrame();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        ComboBox = new javax.swing.JComboBox<>();
+        jLabel38 = new javax.swing.JLabel();
+        fmonto = new javax.swing.JTextField();
+        fcodigo = new javax.swing.JTextField();
+        cerraragregarventa = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        error3v = new javax.swing.JLabel();
+        error4v = new javax.swing.JLabel();
+        fvendedor = new javax.swing.JComboBox<>();
+        fcedulav = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        fondoborrosoventas = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        TablaVENTAS = new javax.swing.JTable();
+        BuscadorVentas = new javax.swing.JTextField();
+        BotonEliminarVenta = new javax.swing.JButton();
+        BotonRegistrarVenta = new javax.swing.JButton();
+        MostrarBusquedaVentas = new javax.swing.JLabel();
         PanelInfo = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
@@ -1153,37 +1186,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        PanelVentas = new javax.swing.JPanel();
-        FrameEliminarVenta = new javax.swing.JInternalFrame();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel39 = new javax.swing.JLabel();
-        fcodigoE = new javax.swing.JTextField();
-        errorcodigoE = new javax.swing.JLabel();
-        BotonParaEliminarVenta = new javax.swing.JButton();
-        LimpiarVenta = new javax.swing.JButton();
-        cerrareliminar = new javax.swing.JButton();
-        FrameAgregarVenta = new javax.swing.JInternalFrame();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
-        ComboBox = new javax.swing.JComboBox<>();
-        jLabel38 = new javax.swing.JLabel();
-        fmonto = new javax.swing.JTextField();
-        fcodigo = new javax.swing.JTextField();
-        cerraragregarventa = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        error3v = new javax.swing.JLabel();
-        error4v = new javax.swing.JLabel();
-        fvendedor = new javax.swing.JComboBox<>();
-        fcedulav = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        fondoborrosoventas = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        TablaVENTAS = new javax.swing.JTable();
-        BotonEliminarVenta = new javax.swing.JButton();
-        BotonRegistrarVenta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -1273,63 +1275,6 @@ public class Principal extends javax.swing.JFrame {
         PanelEmpleados.setBackground(new java.awt.Color(255, 255, 255));
         PanelEmpleados.setPreferredSize(new java.awt.Dimension(1240, 700));
         PanelEmpleados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Buscador.setText("Buscar ...");
-        Buscador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscadorActionPerformed(evt);
-            }
-        });
-        PanelEmpleados.add(Buscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 420, 30));
-        PanelEmpleados.add(MostrarBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 1060, 30));
-
-        jScrollPane1.setBackground(new java.awt.Color(51, 0, 0));
-        jScrollPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
-        jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setToolTipText("");
-        jScrollPane1.setFont(new java.awt.Font("Adobe Gothic Std B", 1, 12)); // NOI18N
-        jScrollPane1.setOpaque(false);
-
-        TablaEMPLEADOS.setAutoCreateRowSorter(true);
-        TablaEMPLEADOS.setBackground(new java.awt.Color(255, 204, 204));
-        TablaEMPLEADOS.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
-        TablaEMPLEADOS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        TablaEMPLEADOS.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Nombre", "C.C.", "Cargo", "Telf. Contacto", "Fecha Ingreso", "Salario Mensual", "Salario+Comisiones"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        TablaEMPLEADOS.setIntercellSpacing(new java.awt.Dimension(5, 5));
-        TablaEMPLEADOS.setRowHeight(40);
-        TablaEMPLEADOS.setSelectionBackground(new java.awt.Color(255, 153, 153));
-        TablaEMPLEADOS.setSelectionForeground(new java.awt.Color(102, 0, 0));
-        TablaEMPLEADOS.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        TablaEMPLEADOS.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        TablaEMPLEADOS.setShowGrid(false);
-        TablaEMPLEADOS.setShowVerticalLines(true);
-        TablaEMPLEADOS.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(TablaEMPLEADOS);
-
-        PanelEmpleados.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 180, 1101, -1));
-        jScrollPane1.getAccessibleContext().setAccessibleName("");
 
         FrameEliminar.setVisible(true);
         FrameEliminar.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1502,6 +1447,65 @@ public class Principal extends javax.swing.JFrame {
 
         PanelEmpleados.add(FrameAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 680, -1));
 
+        LabelFondoBorroso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/borrosoclaroempleadp.png"))); // NOI18N
+        PanelEmpleados.add(LabelFondoBorroso, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -130, 1480, 890));
+
+        jScrollPane1.setBackground(new java.awt.Color(51, 0, 0));
+        jScrollPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
+        jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setToolTipText("");
+        jScrollPane1.setFont(new java.awt.Font("Adobe Gothic Std B", 1, 12)); // NOI18N
+        jScrollPane1.setOpaque(false);
+
+        TablaEMPLEADOS.setAutoCreateRowSorter(true);
+        TablaEMPLEADOS.setBackground(new java.awt.Color(255, 204, 204));
+        TablaEMPLEADOS.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        TablaEMPLEADOS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        TablaEMPLEADOS.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Nombre", "C.C.", "Cargo", "Telf. Contacto", "Fecha Ingreso", "Salario Mensual", "Salario+Comisiones"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TablaEMPLEADOS.setIntercellSpacing(new java.awt.Dimension(5, 5));
+        TablaEMPLEADOS.setRowHeight(40);
+        TablaEMPLEADOS.setSelectionBackground(new java.awt.Color(255, 153, 153));
+        TablaEMPLEADOS.setSelectionForeground(new java.awt.Color(102, 0, 0));
+        TablaEMPLEADOS.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        TablaEMPLEADOS.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        TablaEMPLEADOS.setShowGrid(false);
+        TablaEMPLEADOS.setShowVerticalLines(true);
+        TablaEMPLEADOS.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(TablaEMPLEADOS);
+
+        PanelEmpleados.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 180, 1101, -1));
+        jScrollPane1.getAccessibleContext().setAccessibleName("");
+
+        EmpleBuscador.setText("Buscar...");
+        EmpleBuscador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EmpleBuscadorMouseClicked(evt);
+            }
+        });
+        PanelEmpleados.add(EmpleBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 370, 30));
+
         BTNBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupita.png"))); // NOI18N
         BTNBuscar.setContentAreaFilled(false);
         BTNBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -1510,9 +1514,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         PanelEmpleados.add(BTNBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 50, 50));
-
-        LabelFondoBorroso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/borrosoclaroempleadp.png"))); // NOI18N
-        PanelEmpleados.add(LabelFondoBorroso, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -130, 1480, 890));
+        PanelEmpleados.add(MostrarBusquedaEmple, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 1060, 30));
 
         BotonparaAgregar.setBackground(new java.awt.Color(204, 0, 0));
         BotonparaAgregar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -1564,301 +1566,6 @@ public class Principal extends javax.swing.JFrame {
         PanelEmpleados.add(BotonSinOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 100, -1, -1));
 
         getContentPane().add(PanelEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 1160, 640));
-
-        PanelInfo.setBackground(new java.awt.Color(255, 255, 255));
-
-        jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane4.setOpaque(false);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(InfoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 1125, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(InfoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jScrollPane4.setViewportView(jPanel3);
-
-        javax.swing.GroupLayout PanelInfoLayout = new javax.swing.GroupLayout(PanelInfo);
-        PanelInfo.setLayout(PanelInfoLayout);
-        PanelInfoLayout.setHorizontalGroup(
-            PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelInfoLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        PanelInfoLayout.setVerticalGroup(
-            PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelInfoLayout.createSequentialGroup()
-                .addGap(0, 91, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(PanelInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 1160, 640));
-
-        PanelInventario.setBackground(new java.awt.Color(255, 255, 255));
-        PanelInventario.setPreferredSize(new java.awt.Dimension(1240, 700));
-        PanelInventario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        BTNgrafi.setBackground(new java.awt.Color(204, 0, 0));
-        BTNgrafi.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
-        BTNgrafi.setForeground(new java.awt.Color(255, 255, 255));
-        BTNgrafi.setText("Gráficas");
-        BTNgrafi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTNgrafiActionPerformed(evt);
-            }
-        });
-        PanelInventario.add(BTNgrafi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 20, 130, 40));
-
-        GrafiPanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        Gpa.setOpaque(false);
-
-        javax.swing.GroupLayout GpaLayout = new javax.swing.GroupLayout(Gpa);
-        Gpa.setLayout(GpaLayout);
-        GpaLayout.setHorizontalGroup(
-            GpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
-        );
-        GpaLayout.setVerticalGroup(
-            GpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        Gpa1.setOpaque(false);
-
-        javax.swing.GroupLayout Gpa1Layout = new javax.swing.GroupLayout(Gpa1);
-        Gpa1.setLayout(Gpa1Layout);
-        Gpa1Layout.setHorizontalGroup(
-            Gpa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 539, Short.MAX_VALUE)
-        );
-        Gpa1Layout.setVerticalGroup(
-            Gpa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 389, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout GrafiPanelLayout = new javax.swing.GroupLayout(GrafiPanel);
-        GrafiPanel.setLayout(GrafiPanelLayout);
-        GrafiPanelLayout.setHorizontalGroup(
-            GrafiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GrafiPanelLayout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(Gpa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
-                .addComponent(Gpa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        GrafiPanelLayout.setVerticalGroup(
-            GrafiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(GrafiPanelLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(GrafiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Gpa1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Gpa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(70, Short.MAX_VALUE))
-        );
-
-        PanelInventario.add(GrafiPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 1120, 520));
-
-        jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-        InventarioSubPanel.setBackground(new java.awt.Color(255, 255, 255));
-        InventarioSubPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel27.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(255, 204, 204));
-        jLabel27.setText("Valor Total: ");
-        InventarioSubPanel.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 1190, -1, -1));
-
-        jLabel26.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(255, 204, 204));
-        jLabel26.setText("Valor Total: ");
-        InventarioSubPanel.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 910, -1, -1));
-
-        jLabel25.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(255, 204, 204));
-        jLabel25.setText("Vendidos :");
-        InventarioSubPanel.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 1190, -1, -1));
-
-        jLabel24.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(255, 204, 204));
-        jLabel24.setText("Vendidos :");
-        InventarioSubPanel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 910, -1, -1));
-
-        jLabel23.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 204, 204));
-        jLabel23.setText("Valor Total: ");
-        InventarioSubPanel.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 640, -1, -1));
-
-        jLabel22.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(255, 204, 204));
-        jLabel22.setText("Vendidos :");
-        InventarioSubPanel.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 640, -1, -1));
-
-        jLabel21.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(255, 204, 204));
-        jLabel21.setText("Valor Total: ");
-        InventarioSubPanel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 370, -1, -1));
-
-        jLabel20.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 204, 204));
-        jLabel20.setText("Vendidos :");
-        InventarioSubPanel.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 370, -1, -1));
-
-        jLabel19.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 204, 204));
-        jLabel19.setText("Valor Total: ");
-        InventarioSubPanel.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 100, -1, -1));
-
-        jLabel18.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 204, 204));
-        jLabel18.setText("Vendidos :");
-        InventarioSubPanel.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, -1, -1));
-
-        CantVendidaMercedes.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
-        CantVendidaMercedes.setForeground(new java.awt.Color(255, 255, 255));
-        CantVendidaMercedes.setText("0");
-        InventarioSubPanel.add(CantVendidaMercedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 1230, 130, 60));
-
-        CantVendidaBMW.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
-        CantVendidaBMW.setForeground(new java.awt.Color(255, 255, 255));
-        CantVendidaBMW.setText("0");
-        InventarioSubPanel.add(CantVendidaBMW, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 950, 130, 60));
-
-        CantVendidaHonda.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
-        CantVendidaHonda.setForeground(new java.awt.Color(255, 255, 255));
-        CantVendidaHonda.setText("0");
-        InventarioSubPanel.add(CantVendidaHonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 680, 150, 60));
-
-        CantVendidaFord.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
-        CantVendidaFord.setForeground(new java.awt.Color(255, 255, 255));
-        CantVendidaFord.setText("0");
-        InventarioSubPanel.add(CantVendidaFord, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, 130, 70));
-
-        CantVendidaToyota.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
-        CantVendidaToyota.setForeground(new java.awt.Color(255, 255, 255));
-        CantVendidaToyota.setText("0");
-        InventarioSubPanel.add(CantVendidaToyota, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 130, 70));
-
-        TotalMercedes.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
-        TotalMercedes.setForeground(new java.awt.Color(255, 255, 255));
-        TotalMercedes.setText("$0");
-        InventarioSubPanel.add(TotalMercedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 1230, 440, 60));
-
-        TotalBMW.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
-        TotalBMW.setForeground(new java.awt.Color(255, 255, 255));
-        TotalBMW.setText("$0");
-        InventarioSubPanel.add(TotalBMW, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 950, 430, 60));
-
-        TotalHonda.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
-        TotalHonda.setForeground(new java.awt.Color(255, 255, 255));
-        TotalHonda.setText("$0");
-        InventarioSubPanel.add(TotalHonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 680, 420, 60));
-
-        TotalFord.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
-        TotalFord.setForeground(new java.awt.Color(255, 255, 255));
-        TotalFord.setText("$0");
-        InventarioSubPanel.add(TotalFord, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 420, 440, 60));
-
-        TotalToyota.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
-        TotalToyota.setForeground(new java.awt.Color(255, 255, 255));
-        TotalToyota.setText("$0");
-        InventarioSubPanel.add(TotalToyota, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 140, 440, 70));
-
-        TitMercedes.setFont(new java.awt.Font("Orator Std", 1, 36)); // NOI18N
-        TitMercedes.setForeground(new java.awt.Color(255, 255, 255));
-        TitMercedes.setText("MERCEDES - BENS");
-        InventarioSubPanel.add(TitMercedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 1110, -1, -1));
-
-        TitToyota.setFont(new java.awt.Font("Orator Std", 1, 36)); // NOI18N
-        TitToyota.setForeground(new java.awt.Color(255, 255, 255));
-        TitToyota.setText("TOYOTA");
-        InventarioSubPanel.add(TitToyota, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, -1, -1));
-
-        TitBMW.setFont(new java.awt.Font("Orator Std", 1, 36)); // NOI18N
-        TitBMW.setForeground(new java.awt.Color(255, 255, 255));
-        TitBMW.setText("BMW");
-        InventarioSubPanel.add(TitBMW, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 850, -1, -1));
-
-        TitFord.setFont(new java.awt.Font("Orator Std", 1, 36)); // NOI18N
-        TitFord.setForeground(new java.awt.Color(255, 255, 255));
-        TitFord.setText("FORD");
-        InventarioSubPanel.add(TitFord, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, -1, -1));
-
-        TitHonda.setFont(new java.awt.Font("Orator Std", 1, 36)); // NOI18N
-        TitHonda.setForeground(new java.awt.Color(255, 255, 255));
-        TitHonda.setText("HONDA");
-        InventarioSubPanel.add(TitHonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 570, -1, -1));
-
-        jLabel31.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/bmwx430.png"))); // NOI18N
-        jLabel31.setOpaque(true);
-        InventarioSubPanel.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 827, 430, 220));
-
-        jLabel30.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/mercedesx430.png"))); // NOI18N
-        jLabel30.setOpaque(true);
-        InventarioSubPanel.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 1094, 430, 220));
-
-        jLabel29.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/hondax430.png"))); // NOI18N
-        jLabel29.setOpaque(true);
-        InventarioSubPanel.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 557, 430, 220));
-
-        jLabel28.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fordx430.png"))); // NOI18N
-        jLabel28.setOpaque(true);
-        InventarioSubPanel.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 430, 220));
-
-        jLabel17.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/toyotax430.png"))); // NOI18N
-        jLabel17.setOpaque(true);
-        InventarioSubPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 430, 210));
-
-        jLabel4.setBackground(new java.awt.Color(102, 0, 0));
-        jLabel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabel4.setOpaque(true);
-        InventarioSubPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 542, 1077, 250));
-
-        jLabel1.setBackground(new java.awt.Color(102, 0, 0));
-        jLabel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabel1.setOpaque(true);
-        InventarioSubPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 274, 1077, 250));
-
-        jLabel3.setBackground(new java.awt.Color(102, 0, 0));
-        jLabel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabel3.setOpaque(true);
-        InventarioSubPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 6, 1077, 250));
-
-        jLabel15.setBackground(new java.awt.Color(102, 0, 0));
-        jLabel15.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabel15.setOpaque(true);
-        InventarioSubPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 810, 1077, 250));
-
-        jLabel16.setBackground(new java.awt.Color(102, 0, 0));
-        jLabel16.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabel16.setOpaque(true);
-        InventarioSubPanel.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 1078, 1077, 250));
-
-        jScrollPane2.setViewportView(InventarioSubPanel);
-
-        PanelInventario.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 83, 1160, 557));
-
-        getContentPane().add(PanelInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 1160, 640));
 
         PanelVentas.setBackground(new java.awt.Color(255, 255, 255));
         PanelVentas.setPreferredSize(new java.awt.Dimension(1240, 700));
@@ -2161,6 +1868,14 @@ public class Principal extends javax.swing.JFrame {
 
         PanelVentas.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 176, 1101, -1));
 
+        BuscadorVentas.setText("Buscar...");
+        BuscadorVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BuscadorVentasMouseClicked(evt);
+            }
+        });
+        PanelVentas.add(BuscadorVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 92, 440, 30));
+
         BotonEliminarVenta.setBackground(new java.awt.Color(204, 0, 0));
         BotonEliminarVenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         BotonEliminarVenta.setForeground(new java.awt.Color(255, 255, 255));
@@ -2170,7 +1885,7 @@ public class Principal extends javax.swing.JFrame {
                 BotonEliminarVentaActionPerformed(evt);
             }
         });
-        PanelVentas.add(BotonEliminarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 140, -1, -1));
+        PanelVentas.add(BotonEliminarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 70, -1, 30));
 
         BotonRegistrarVenta.setBackground(new java.awt.Color(204, 0, 0));
         BotonRegistrarVenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -2181,9 +1896,305 @@ public class Principal extends javax.swing.JFrame {
                 BotonRegistrarVentaActionPerformed(evt);
             }
         });
-        PanelVentas.add(BotonRegistrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 140, -1, -1));
+        PanelVentas.add(BotonRegistrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 30, -1, 30));
+        PanelVentas.add(MostrarBusquedaVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 1090, 30));
 
         getContentPane().add(PanelVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 1160, 640));
+
+        PanelInfo.setBackground(new java.awt.Color(255, 255, 255));
+
+        jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane4.setOpaque(false);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(InfoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 1125, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(InfoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jScrollPane4.setViewportView(jPanel3);
+
+        javax.swing.GroupLayout PanelInfoLayout = new javax.swing.GroupLayout(PanelInfo);
+        PanelInfo.setLayout(PanelInfoLayout);
+        PanelInfoLayout.setHorizontalGroup(
+            PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelInfoLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        PanelInfoLayout.setVerticalGroup(
+            PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelInfoLayout.createSequentialGroup()
+                .addGap(0, 91, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(PanelInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 1160, 640));
+
+        PanelInventario.setBackground(new java.awt.Color(255, 255, 255));
+        PanelInventario.setPreferredSize(new java.awt.Dimension(1240, 700));
+        PanelInventario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        BTNgrafi.setBackground(new java.awt.Color(204, 0, 0));
+        BTNgrafi.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
+        BTNgrafi.setForeground(new java.awt.Color(255, 255, 255));
+        BTNgrafi.setText("Gráficas");
+        BTNgrafi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNgrafiActionPerformed(evt);
+            }
+        });
+        PanelInventario.add(BTNgrafi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 20, 130, 40));
+
+        GrafiPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        Gpa.setOpaque(false);
+
+        javax.swing.GroupLayout GpaLayout = new javax.swing.GroupLayout(Gpa);
+        Gpa.setLayout(GpaLayout);
+        GpaLayout.setHorizontalGroup(
+            GpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 490, Short.MAX_VALUE)
+        );
+        GpaLayout.setVerticalGroup(
+            GpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        Gpa1.setOpaque(false);
+
+        javax.swing.GroupLayout Gpa1Layout = new javax.swing.GroupLayout(Gpa1);
+        Gpa1.setLayout(Gpa1Layout);
+        Gpa1Layout.setHorizontalGroup(
+            Gpa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 539, Short.MAX_VALUE)
+        );
+        Gpa1Layout.setVerticalGroup(
+            Gpa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 389, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout GrafiPanelLayout = new javax.swing.GroupLayout(GrafiPanel);
+        GrafiPanel.setLayout(GrafiPanelLayout);
+        GrafiPanelLayout.setHorizontalGroup(
+            GrafiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GrafiPanelLayout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addComponent(Gpa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addComponent(Gpa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        GrafiPanelLayout.setVerticalGroup(
+            GrafiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GrafiPanelLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addGroup(GrafiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Gpa1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Gpa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
+        );
+
+        PanelInventario.add(GrafiPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 1120, 520));
+
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        InventarioSubPanel.setBackground(new java.awt.Color(255, 255, 255));
+        InventarioSubPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel27.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 204, 204));
+        jLabel27.setText("Valor Total: ");
+        InventarioSubPanel.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 1190, -1, -1));
+
+        jLabel26.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 204, 204));
+        jLabel26.setText("Valor Total: ");
+        InventarioSubPanel.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 910, -1, -1));
+
+        jLabel25.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 204, 204));
+        jLabel25.setText("Vendidos :");
+        InventarioSubPanel.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 1190, -1, -1));
+
+        jLabel24.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(255, 204, 204));
+        jLabel24.setText("Vendidos :");
+        InventarioSubPanel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 910, -1, -1));
+
+        jLabel23.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 204, 204));
+        jLabel23.setText("Valor Total: ");
+        InventarioSubPanel.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 640, -1, -1));
+
+        jLabel22.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 204, 204));
+        jLabel22.setText("Vendidos :");
+        InventarioSubPanel.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 640, -1, -1));
+
+        jLabel21.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 204, 204));
+        jLabel21.setText("Valor Total: ");
+        InventarioSubPanel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 370, -1, -1));
+
+        jLabel20.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 204, 204));
+        jLabel20.setText("Vendidos :");
+        InventarioSubPanel.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 370, -1, -1));
+
+        jLabel19.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 204, 204));
+        jLabel19.setText("Valor Total: ");
+        InventarioSubPanel.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 100, -1, -1));
+
+        jLabel18.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 204, 204));
+        jLabel18.setText("Vendidos :");
+        InventarioSubPanel.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, -1, -1));
+
+        CantVendidaMercedes.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
+        CantVendidaMercedes.setForeground(new java.awt.Color(255, 255, 255));
+        CantVendidaMercedes.setText("0");
+        InventarioSubPanel.add(CantVendidaMercedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 1230, 130, 60));
+
+        CantVendidaBMW.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
+        CantVendidaBMW.setForeground(new java.awt.Color(255, 255, 255));
+        CantVendidaBMW.setText("0");
+        InventarioSubPanel.add(CantVendidaBMW, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 950, 130, 60));
+
+        CantVendidaHonda.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
+        CantVendidaHonda.setForeground(new java.awt.Color(255, 255, 255));
+        CantVendidaHonda.setText("0");
+        InventarioSubPanel.add(CantVendidaHonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 680, 150, 60));
+
+        CantVendidaFord.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
+        CantVendidaFord.setForeground(new java.awt.Color(255, 255, 255));
+        CantVendidaFord.setText("0");
+        InventarioSubPanel.add(CantVendidaFord, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, 130, 70));
+
+        CantVendidaToyota.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
+        CantVendidaToyota.setForeground(new java.awt.Color(255, 255, 255));
+        CantVendidaToyota.setText("0");
+        InventarioSubPanel.add(CantVendidaToyota, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 130, 70));
+
+        TotalMercedes.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
+        TotalMercedes.setForeground(new java.awt.Color(255, 255, 255));
+        TotalMercedes.setText("$0");
+        InventarioSubPanel.add(TotalMercedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 1230, 440, 60));
+
+        TotalBMW.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
+        TotalBMW.setForeground(new java.awt.Color(255, 255, 255));
+        TotalBMW.setText("$0");
+        InventarioSubPanel.add(TotalBMW, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 950, 430, 60));
+
+        TotalHonda.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
+        TotalHonda.setForeground(new java.awt.Color(255, 255, 255));
+        TotalHonda.setText("$0");
+        InventarioSubPanel.add(TotalHonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 680, 420, 60));
+
+        TotalFord.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
+        TotalFord.setForeground(new java.awt.Color(255, 255, 255));
+        TotalFord.setText("$0");
+        InventarioSubPanel.add(TotalFord, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 420, 440, 60));
+
+        TotalToyota.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
+        TotalToyota.setForeground(new java.awt.Color(255, 255, 255));
+        TotalToyota.setText("$0");
+        InventarioSubPanel.add(TotalToyota, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 140, 440, 70));
+
+        TitMercedes.setFont(new java.awt.Font("Orator Std", 1, 36)); // NOI18N
+        TitMercedes.setForeground(new java.awt.Color(255, 255, 255));
+        TitMercedes.setText("MERCEDES - BENS");
+        InventarioSubPanel.add(TitMercedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 1110, -1, -1));
+
+        TitToyota.setFont(new java.awt.Font("Orator Std", 1, 36)); // NOI18N
+        TitToyota.setForeground(new java.awt.Color(255, 255, 255));
+        TitToyota.setText("TOYOTA");
+        InventarioSubPanel.add(TitToyota, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, -1, -1));
+
+        TitBMW.setFont(new java.awt.Font("Orator Std", 1, 36)); // NOI18N
+        TitBMW.setForeground(new java.awt.Color(255, 255, 255));
+        TitBMW.setText("BMW");
+        InventarioSubPanel.add(TitBMW, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 850, -1, -1));
+
+        TitFord.setFont(new java.awt.Font("Orator Std", 1, 36)); // NOI18N
+        TitFord.setForeground(new java.awt.Color(255, 255, 255));
+        TitFord.setText("FORD");
+        InventarioSubPanel.add(TitFord, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, -1, -1));
+
+        TitHonda.setFont(new java.awt.Font("Orator Std", 1, 36)); // NOI18N
+        TitHonda.setForeground(new java.awt.Color(255, 255, 255));
+        TitHonda.setText("HONDA");
+        InventarioSubPanel.add(TitHonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 570, -1, -1));
+
+        jLabel31.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/bmwx430.png"))); // NOI18N
+        jLabel31.setOpaque(true);
+        InventarioSubPanel.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 827, 430, 220));
+
+        jLabel30.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/mercedesx430.png"))); // NOI18N
+        jLabel30.setOpaque(true);
+        InventarioSubPanel.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 1094, 430, 220));
+
+        jLabel29.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/hondax430.png"))); // NOI18N
+        jLabel29.setOpaque(true);
+        InventarioSubPanel.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 557, 430, 220));
+
+        jLabel28.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fordx430.png"))); // NOI18N
+        jLabel28.setOpaque(true);
+        InventarioSubPanel.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 430, 220));
+
+        jLabel17.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/toyotax430.png"))); // NOI18N
+        jLabel17.setOpaque(true);
+        InventarioSubPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 430, 210));
+
+        jLabel4.setBackground(new java.awt.Color(102, 0, 0));
+        jLabel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLabel4.setOpaque(true);
+        InventarioSubPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 542, 1077, 250));
+
+        jLabel1.setBackground(new java.awt.Color(102, 0, 0));
+        jLabel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLabel1.setOpaque(true);
+        InventarioSubPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 274, 1077, 250));
+
+        jLabel3.setBackground(new java.awt.Color(102, 0, 0));
+        jLabel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLabel3.setOpaque(true);
+        InventarioSubPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 6, 1077, 250));
+
+        jLabel15.setBackground(new java.awt.Color(102, 0, 0));
+        jLabel15.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLabel15.setOpaque(true);
+        InventarioSubPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 810, 1077, 250));
+
+        jLabel16.setBackground(new java.awt.Color(102, 0, 0));
+        jLabel16.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLabel16.setOpaque(true);
+        InventarioSubPanel.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 1078, 1077, 250));
+
+        jScrollPane2.setViewportView(InventarioSubPanel);
+
+        PanelInventario.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 83, 1160, 557));
+
+        getContentPane().add(PanelInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 1160, 640));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -2409,7 +2420,7 @@ public class Principal extends javax.swing.JFrame {
             BotonOrdenar.setForeground(negro);
             BotonOrdenarSalario.setForeground(negro);
             BotonSinOrdenar.setForeground(negro);
-            MostrarBusqueda.setForeground(negro);
+            MostrarBusquedaEmple.setForeground(negro);
             GrafiPanel.setBackground(fondoclaro);
             Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53.png")));
             Modo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53brillo.png")));
@@ -2434,7 +2445,7 @@ public class Principal extends javax.swing.JFrame {
             BotonOrdenar.setForeground(fondoclaro);
             BotonOrdenarSalario.setForeground(fondoclaro);
             BotonSinOrdenar.setForeground(fondoclaro);
-            MostrarBusqueda.setForeground(fondoclaro);
+            MostrarBusquedaEmple.setForeground(fondoclaro);
             URL imageURL1 = Principal.class.getResource("/Imagenes/borrosooscuroempleado.png");
             ImageIcon imageIcon = new ImageIcon(imageURL1);
             LabelFondoBorroso.setIcon(imageIcon);
@@ -2639,7 +2650,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_BTNgrafiActionPerformed
 
     private void BuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscadorActionPerformed
-        String valorBuscado = Buscador.getText().toLowerCase();
+        String valorBuscado = EmpleBuscador.getText().toLowerCase();
         DefaultTableModel modelo = (DefaultTableModel) TablaEMPLEADOS.getModel();
         boolean coincidenciaEncontrada = false;
         if (!valorBuscado.isEmpty()) { // Validar que el campo de búsqueda no esté vacío
@@ -2655,17 +2666,17 @@ public class Principal extends javax.swing.JFrame {
         }
 
         if (coincidenciaEncontrada == true) {
-            MostrarBusqueda.setVisible(true);
-            MostrarBusqueda.setText("Empleado encontrado");
+            MostrarBusquedaEmple.setVisible(true);
+            MostrarBusquedaEmple.setText("Empleado encontrado");
 
         } else {
-            MostrarBusqueda.setVisible(true);
-            MostrarBusqueda.setText("Empleado no encontrado");
+            MostrarBusquedaEmple.setVisible(true);
+            MostrarBusquedaEmple.setText("Empleado no encontrado");
         }
     }//GEN-LAST:event_BuscadorActionPerformed
 
     private void BTNBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNBuscarActionPerformed
-        String valorBuscado = Buscador.getText().toLowerCase();
+        String valorBuscado =EmpleBuscador.getText().toLowerCase();
         DefaultTableModel modelo = (DefaultTableModel) TablaEMPLEADOS.getModel();
         boolean coincidenciaEncontrada = false;
         if (!valorBuscado.isEmpty()) { // Validar que el campo de búsqueda no esté vacío
@@ -2681,14 +2692,22 @@ public class Principal extends javax.swing.JFrame {
         }
 
         if (coincidenciaEncontrada == true) {
-            MostrarBusqueda.setVisible(true);
-            MostrarBusqueda.setText("Empleado encontrado");
+            MostrarBusquedaEmple.setVisible(true);
+            MostrarBusquedaEmple.setText("Empleado encontrado");
 
         } else {
-             MostrarBusqueda.setVisible(true);
-            MostrarBusqueda.setText("Empleado no encontrado");
+             MostrarBusquedaEmple.setVisible(true);
+            MostrarBusquedaEmple.setText("Empleado no encontrado");
         }
     }//GEN-LAST:event_BTNBuscarActionPerformed
+
+    private void BuscadorVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscadorVentasMouseClicked
+      BuscadorVentas.setText(null);
+    }//GEN-LAST:event_BuscadorVentasMouseClicked
+
+    private void EmpleBuscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmpleBuscadorMouseClicked
+        EmpleBuscador.setText(null);
+    }//GEN-LAST:event_EmpleBuscadorMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -2749,13 +2768,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton Boton_Ventas;
     private javax.swing.JButton BotonparaAgregar;
     private javax.swing.JButton BotonparaEliminar;
-    private javax.swing.JTextField Buscador;
+    private javax.swing.JTextField BuscadorVentas;
     private javax.swing.JLabel CantVendidaBMW;
     private javax.swing.JLabel CantVendidaFord;
     private javax.swing.JLabel CantVendidaHonda;
     private javax.swing.JLabel CantVendidaMercedes;
     private javax.swing.JLabel CantVendidaToyota;
     private javax.swing.JComboBox<String> ComboBox;
+    private javax.swing.JTextField EmpleBuscador;
     private javax.swing.JInternalFrame FrameAgregar;
     private javax.swing.JInternalFrame FrameAgregarVenta;
     private javax.swing.JInternalFrame FrameEliminar;
@@ -2769,7 +2789,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel LabelFondoBorroso;
     private javax.swing.JButton LimpiarVenta;
     private javax.swing.JButton Modo;
-    private javax.swing.JLabel MostrarBusqueda;
+    private javax.swing.JLabel MostrarBusquedaEmple;
+    private javax.swing.JLabel MostrarBusquedaVentas;
     private javax.swing.JPanel PanelAgregarEmpleado;
     private javax.swing.JPanel PanelEliminarEmpleado;
     private javax.swing.JPanel PanelEmpleados;
