@@ -1625,6 +1625,11 @@ public class Principal extends javax.swing.JFrame {
                 EmpleBuscadorMouseClicked(evt);
             }
         });
+        EmpleBuscador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmpleBuscadorActionPerformed(evt);
+            }
+        });
         PanelEmpleados.add(EmpleBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 370, 30));
 
         BTNBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupita.png"))); // NOI18N
@@ -2267,7 +2272,7 @@ public class Principal extends javax.swing.JFrame {
 
         TitMercedes.setFont(new java.awt.Font("Footlight MT Light", 1, 45)); // NOI18N
         TitMercedes.setForeground(new java.awt.Color(255, 255, 255));
-        TitMercedes.setText("MERCEDES - BENS");
+        TitMercedes.setText("MERCEDES - BENZ");
         InventarioSubPanel.add(TitMercedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 1110, -1, -1));
 
         TitToyota.setFont(new java.awt.Font("Footlight MT Light", 1, 45)); // NOI18N
@@ -2767,7 +2772,7 @@ public class Principal extends javax.swing.JFrame {
 //                false//url
 //        );
         //Grafico 3D REDONDO
-        JFreeChart grafico_circular = ChartFactory.createPieChart3D("Cantidad De Autors Vendida", datos, true, true, false);
+        JFreeChart grafico_circular = ChartFactory.createPieChart3D("Cantidad De Autos Vendida", datos, true, true, false);
         PiePlot piePlot = (PiePlot) grafico_circular.getPlot();
         piePlot.setBackgroundPaint(fondoclaro);
 
@@ -2929,6 +2934,32 @@ public class Principal extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_combocodigosActionPerformed
+
+    private void EmpleBuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpleBuscadorActionPerformed
+        String valorBuscado = EmpleBuscador.getText().toLowerCase();
+        DefaultTableModel modelo = (DefaultTableModel) TablaEMPLEADOS.getModel();
+        boolean coincidenciaEncontrada = false;
+        if (!valorBuscado.isEmpty()) { // Validar que el campo de búsqueda no esté vacío
+            for (int row = 0; row < modelo.getRowCount(); row++) {
+                Object valorCelda = modelo.getValueAt(row, 0); // Acceder solo a la primera columna
+                if (valorCelda != null && valorCelda.toString().toLowerCase().contains(valorBuscado)) {
+                    TablaEMPLEADOS.setRowSelectionInterval(row, row);
+                    TablaEMPLEADOS.scrollRectToVisible(TablaEMPLEADOS.getCellRect(row, 0, true));
+                    coincidenciaEncontrada = true;
+                    break;
+                }
+            }
+        }
+
+        if (coincidenciaEncontrada == true) {
+            MostrarBusquedaEmple.setVisible(true);
+            MostrarBusquedaEmple.setText("Empleado encontrado");
+
+        } else {
+            MostrarBusquedaEmple.setVisible(true);
+            MostrarBusquedaEmple.setText("Empleado no encontrado");
+        }
+    }//GEN-LAST:event_EmpleBuscadorActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
