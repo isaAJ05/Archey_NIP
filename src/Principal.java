@@ -289,21 +289,26 @@ public class Principal extends javax.swing.JFrame {
                 if (original.delete()) {
                     File temporal = new File("EmpleadosTemp.txt");
                     if (temporal.renameTo(original)) {
+                                    sonido("/Sonidos/papelera.wav");
                         JOptionPane.showMessageDialog(null, "Los datos se han eliminado satisfactoriamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                     } else {
+                                    sonido("/Sonidos/error.wav");
                         JOptionPane.showMessageDialog(null, "Ha ocurrido un error al renombrar el archivo temporal.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                     LeerNormal(sc, file_name, tabla);
                 } else {
+                                sonido("/Sonidos/error.wav");
                     JOptionPane.showMessageDialog(null, "Ha ocurrido un error al eliminar el archivo original.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
 
             } else {
+                            sonido("/Sonidos/error.wav");
                 JOptionPane.showMessageDialog(null, "No se encontró el empleado con ese nombre.", "Error", JOptionPane.ERROR_MESSAGE);
 
             }
 
         } catch (IOException ex) {
+                        sonido("/Sonidos/error.wav");
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error al eliminar el empleado.", "Error", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
@@ -619,6 +624,7 @@ public class Principal extends javax.swing.JFrame {
                 if (original.delete()) {
                     File temporal = new File("VentasTemp.txt");
                     if (temporal.renameTo(original)) {
+                                    sonido("/Sonidos/papelera.wav");
                         JOptionPane.showMessageDialog(null, "Los datos se han eliminado satisfactoriamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(null, "Ha ocurrido un error al renombrar el archivo temporal.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -747,6 +753,7 @@ public class Principal extends javax.swing.JFrame {
         if (!c1.isEmpty() && !c2.isEmpty() && !c3.isEmpty() && !c4.isEmpty() && !c5.isEmpty() && !c6.isEmpty() && !c7.isEmpty()) {
             return true;
         } else {
+            sonido("/Sonidos/error.wav");
             JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
             return false;
         }
@@ -757,6 +764,7 @@ public class Principal extends javax.swing.JFrame {
         if (!c4.isEmpty() && !c5.isEmpty()) {
             return true;
         } else {
+            sonido("/Sonidos/error.wav");
             JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
             return false;
         }
@@ -948,6 +956,7 @@ public class Principal extends javax.swing.JFrame {
             }
         }
         if (!validon) {
+                        sonido("/Sonidos/error.wav");
             errornombre.setVisible(true);
             return false;
         } else {
@@ -2498,7 +2507,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonAgregarEmpleadosActionPerformed
 
     private void BotonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonLimpiarActionPerformed
-        Limpiar();        Limpiar();    }//GEN-LAST:event_BotonLimpiarActionPerformed
+sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST:event_BotonLimpiarActionPerformed
 
     private void BotonparaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonparaEliminarActionPerformed
         sonido("/Sonidos/ficha.wav");
@@ -2542,6 +2551,7 @@ public class Principal extends javax.swing.JFrame {
             EliminarRegistro(sc, "Empleados", TablaEMPLEADOS);
             LeerNormal(sc, "Empleados", TablaEMPLEADOS);
             sc.close();
+
         }
 
     }//GEN-LAST:event_BotonEliminarEmpleadosActionPerformed
@@ -2549,6 +2559,7 @@ public class Principal extends javax.swing.JFrame {
     private void BotonLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonLimpiar1ActionPerformed
         fnombreE.setText("");
         errornombre.setVisible(false);
+        sonido("/Sonidos/ficha.wav");
 
     }//GEN-LAST:event_BotonLimpiar1ActionPerformed
 
@@ -2688,6 +2699,7 @@ public class Principal extends javax.swing.JFrame {
     private void BotonParaEliminarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonParaEliminarVentaActionPerformed
         System.out.println("Codigo a Eliminar: " + CodigoE);
         if (CodigoE.equalsIgnoreCase("Seleccionar empleado")) {
+                        sonido("/Sonidos/error.wav");
             JOptionPane.showMessageDialog(null, "Debe seleccionar un codigo.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             Scanner sc = new Scanner(System.in);
@@ -2773,6 +2785,7 @@ public class Principal extends javax.swing.JFrame {
         fcedulav.setText("");
         fcodigo.setText("");
         fmonto.setText("");
+        sonido("/Sonidos/ficha.wav");
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
