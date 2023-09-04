@@ -2457,6 +2457,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonOrdenarSalarioActionPerformed
 
     private void BotonparaAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonparaAgregarActionPerformed
+        sonido("/Sonidos/ficha.wav");
         FrameAgregar.setVisible(true);
         TablaEMPLEADOS.setVisible(false);
         jScrollPane1.setVisible(false);
@@ -2500,6 +2501,7 @@ public class Principal extends javax.swing.JFrame {
         Limpiar();        Limpiar();    }//GEN-LAST:event_BotonLimpiarActionPerformed
 
     private void BotonparaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonparaEliminarActionPerformed
+        sonido("/Sonidos/ficha.wav");
         FrameEliminar.setVisible(true);
         LabelFondoBorroso.setVisible(true);
         TablaEMPLEADOS.setVisible(false);
@@ -2551,6 +2553,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonLimpiar1ActionPerformed
 
     private void BotonRegistrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarVentaActionPerformed
+        sonido("/Sonidos/ficha.wav");
         FrameAgregarVenta.setVisible(true);
         fondoborrosoventas.setVisible(true);
         TablaVENTAS.setVisible(false);
@@ -2671,7 +2674,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_limpiarventasActionPerformed
 
     private void BotonEliminarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarVentaActionPerformed
-
+        sonido("/Sonidos/ficha.wav");
         FrameEliminarVenta.setVisible(true);
         fondoborrosoventas.setVisible(true);
         TablaVENTAS.setVisible(false);
@@ -2774,6 +2777,7 @@ public class Principal extends javax.swing.JFrame {
 
 
     private void BTNgrafiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNgrafiActionPerformed
+        sonido("/Sonidos/boop.wav");
         //cambiar nombre boton
         if (BTNgrafi.getText() == "Gráficas") {
             BTNgrafi.setText("Inventario");
@@ -2887,10 +2891,12 @@ public class Principal extends javax.swing.JFrame {
         if (coincidenciaEncontrada == true) {
             MostrarBusquedaEmple.setVisible(true);
             MostrarBusquedaEmple.setText("Empleado encontrado");
+            sonido("/Sonidos/boop.wav");
 
         } else {
             MostrarBusquedaEmple.setVisible(true);
             MostrarBusquedaEmple.setText("Empleado no encontrado");
+            sonido("/Sonidos/error.wav");
         }
     }//GEN-LAST:event_BTNBuscarActionPerformed
 
@@ -2924,10 +2930,12 @@ public class Principal extends javax.swing.JFrame {
         if (coincidenciaEncontrada == true) {
             MostrarBusquedaVentas.setVisible(true);
             MostrarBusquedaVentas.setText("Venta encontrada");
+            sonido("/Sonidos/boop.wav");
 
         } else {
             MostrarBusquedaVentas.setVisible(true);
             MostrarBusquedaVentas.setText("Venta no encontrada");
+            sonido("/Sonidos/error.wav");
         }
     }//GEN-LAST:event_BTNBuscarVentasActionPerformed
 
