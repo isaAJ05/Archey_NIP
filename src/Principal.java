@@ -28,14 +28,11 @@ import javax.sound.sampled.Clip;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import org.jfree.chart.ChartFactory;
@@ -1622,6 +1619,7 @@ public class Principal extends javax.swing.JFrame {
         PanelVentas.setPreferredSize(new java.awt.Dimension(1240, 700));
         PanelVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        BuscadorVentas.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
         BuscadorVentas.setText("Buscar...");
         BuscadorVentas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1635,6 +1633,7 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelVentas.add(BuscadorVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 92, 440, 30));
 
+        BTNBuscarVentas.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         BTNBuscarVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupita.png"))); // NOI18N
         BTNBuscarVentas.setContentAreaFilled(false);
         BTNBuscarVentas.addActionListener(new java.awt.event.ActionListener() {
@@ -1644,19 +1643,23 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelVentas.add(BTNBuscarVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 50, 50));
 
-        MostrarBusquedaVentas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        MostrarBusquedaVentas.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
         PanelVentas.add(MostrarBusquedaVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 1090, 30));
 
         FrameEliminarVenta.setVisible(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel39.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         jLabel39.setText("Digite el código del auto:");
 
-        errorcodigoE.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        fcodigoE.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+
+        errorcodigoE.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
         errorcodigoE.setForeground(new java.awt.Color(255, 0, 0));
         errorcodigoE.setText("(!) El código debe contener 6 caracteres.");
 
+        BotonParaEliminarVenta.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         BotonParaEliminarVenta.setText("Eliminar");
         BotonParaEliminarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1664,6 +1667,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        LimpiarVenta.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         LimpiarVenta.setText("Limpiar");
         LimpiarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1671,6 +1675,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        cerrareliminar.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         cerrareliminar.setText("Cerrar");
         cerrareliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1700,7 +1705,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(errorcodigoE, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fcodigoE, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1713,7 +1718,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(fcodigoE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(errorcodigoE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonParaEliminarVenta)
                     .addComponent(LimpiarVenta))
@@ -1737,14 +1742,19 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel34.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         jLabel34.setText("Monto de la venta:");
 
+        jLabel35.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         jLabel35.setText("Nombre del vendedor:");
 
+        jLabel36.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         jLabel36.setText("Cédula:");
 
+        jLabel37.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         jLabel37.setText("Tipo de auto:");
 
+        ComboBox.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
         ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar tipo de auto", "Toyota", "Ford", "Honda", "BMW", "Mercedes" }));
         ComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1752,8 +1762,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jLabel38.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         jLabel38.setText("Código del auto:");
 
+        fmonto.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+
+        fcodigo.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+
+        cerraragregarventa.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         cerraragregarventa.setText("Cerrar");
         cerraragregarventa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1761,6 +1777,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         jButton3.setText("Limpiar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1768,14 +1785,15 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        error3v.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error3v.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
         error3v.setForeground(new java.awt.Color(255, 0, 0));
         error3v.setText("(!) Depende");
 
-        error4v.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error4v.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
         error4v.setForeground(new java.awt.Color(255, 0, 0));
         error4v.setText("(!)Monto debe contener solo numeros mayores a cero");
 
+        fvendedor.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
         fvendedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar empleado" }));
         fvendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1784,7 +1802,9 @@ public class Principal extends javax.swing.JFrame {
         });
 
         fcedulav.setEditable(false);
+        fcedulav.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
 
+        jButton2.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         jButton2.setText("Agregar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1829,7 +1849,7 @@ public class Principal extends javax.swing.JFrame {
                                     .addComponent(fcedulav, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(78, 78, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(331, Short.MAX_VALUE)
+                .addContainerGap(326, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton2)
@@ -1873,7 +1893,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton2))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout FrameAgregarVentaLayout = new javax.swing.GroupLayout(FrameAgregarVenta.getContentPane());
@@ -1901,7 +1921,7 @@ public class Principal extends javax.swing.JFrame {
 
         TablaVENTAS.setBackground(new java.awt.Color(255, 204, 204));
         TablaVENTAS.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
-        TablaVENTAS.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        TablaVENTAS.setFont(new java.awt.Font("Poor Richard", 1, 18)); // NOI18N
         TablaVENTAS.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -1941,7 +1961,7 @@ public class Principal extends javax.swing.JFrame {
         PanelVentas.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 176, 1101, -1));
 
         BotonEliminarVenta.setBackground(new java.awt.Color(204, 0, 0));
-        BotonEliminarVenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonEliminarVenta.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         BotonEliminarVenta.setForeground(new java.awt.Color(255, 255, 255));
         BotonEliminarVenta.setText("(-) Eliminar Registro");
         BotonEliminarVenta.addActionListener(new java.awt.event.ActionListener() {
@@ -1952,7 +1972,7 @@ public class Principal extends javax.swing.JFrame {
         PanelVentas.add(BotonEliminarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 70, -1, 30));
 
         BotonRegistrarVenta.setBackground(new java.awt.Color(204, 0, 0));
-        BotonRegistrarVenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonRegistrarVenta.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         BotonRegistrarVenta.setForeground(new java.awt.Color(255, 255, 255));
         BotonRegistrarVenta.setText("(+) Registrar Venta");
         BotonRegistrarVenta.addActionListener(new java.awt.event.ActionListener() {
