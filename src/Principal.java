@@ -58,7 +58,7 @@ public class Principal extends javax.swing.JFrame {
     //01 Subrutina para llenar el archivo Empleados
     public static void agregarDatosEmpleados(String file_name) {
         try {
-            FileWriter outFile = new FileWriter(file_name + ".txt", true);
+            FileWriter outFile = new FileWriter(file_name + ".txt", false);
             PrintWriter registro = new PrintWriter(outFile);
 
             //Matriz para crear Archivo Existente 
@@ -249,7 +249,6 @@ public class Principal extends javax.swing.JFrame {
                     sonido("/Sonidos/correcto.wav");//implementacion de sonidos
                     JOptionPane.showMessageDialog(null, "Los datos se han agregado satisfactoriamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    sonido("/Sonidos/error.wav");
                 }
             }
             registrar_empleados.close();
@@ -353,9 +352,9 @@ public class Principal extends javax.swing.JFrame {
                         sonido("/Sonidos/correcto.wav");//implementacion de sonidos
                         JOptionPane.showMessageDialog(null, "Los datos se han agregado satisfactoriamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                     }
-                    sonido("/Sonidos/error.wav");//los mensajes van incluidos en las funciones
+                   //los mensajes van incluidos en las funciones
                 } else {
-                    sonido("/Sonidos/error.wav");//los mensajes van incluidos en las funciones
+                    //los mensajes van incluidos en las funciones
                 }
             }
             registrar_ventas.close();
@@ -413,6 +412,34 @@ public class Principal extends javax.swing.JFrame {
                         System.out.println("CODIGO ENCONTRADO: " + temp[3]);
                         existecod = true;
                         System.out.println("Existe codigo es true");
+                    }
+                }
+                br.close();
+                hay = true;
+
+            } catch (IOException ex) {
+                System.out.println("No se encontro archivo");
+                hay = false;
+                file_name = sc.nextLine(); // Archivo
+            }
+        }
+    }
+     //08 Subrutina PARA BUSCAR CEDULA
+    public void LeerEmpleados2(Scanner sc, String file_name, String Nombre) {
+        boolean existec = false;
+        boolean hay = false;
+        while (hay == false) {
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(file_name + ".txt"));
+                String line = null;
+                System.out.println("Este es el nombre a buscar: " + Nombre);
+                while ((line = br.readLine()) != null && existec == false) {
+                    String temp[] = line.split("\t");
+                    if (temp[0].equals(Nombre)) {
+                        System.out.println("Nombre encontrado: " + temp[0]);
+                        existec = true;
+                        fcedulav.setText(temp[1]);
+                        System.out.println("Existe cedula es true y es: "+ temp[1]);
                     }
                 }
                 br.close();
@@ -746,6 +773,46 @@ public class Principal extends javax.swing.JFrame {
         }
         return false;
     }
+    
+    DefaultComboBoxModel<String> modelV = new DefaultComboBoxModel<>();
+
+// Método para cargar elementos iniciales desde el archivo
+private void cargarElementosDesdeArchivo2() {
+    //modelV.removeAllElements(); // Limpia el modelo antes de cargar los elementos desde el archivo
+    boolean hayElementos = false; // Bandera para verificar si se encontraron elementos
+    try (BufferedReader BR = new BufferedReader(new FileReader("empleados.txt"))) {
+        String line;
+        while ((line = BR.readLine()) != null) {
+            String[] nombres = line.split("\t");
+            if (nombres.length > 2) { // Asegúrate de que haya suficientes campos
+                String nombre = nombres[0];
+                String cedula = nombres[1];
+                String cargo = nombres[2];
+                if (!existeEnComboBox2(nombre) && cargo.equalsIgnoreCase("Vendedor")) {
+                    modelV.addElement(nombre);
+                    hayElementos = true; // Se encontraron elementos
+                }else {
+                        fcedulav.setText(cedula);
+                    }
+            }
+        }
+        
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+    fvendedor.setModel(modelV); // Asigna el modelo al JComboBox
+}
+
+// Método para verificar si un elemento ya existe en el JComboBox
+private boolean existeEnComboBox2(String nombre) {
+    for (int i = 0; i < modelV.getSize(); i++) {
+        if (nombre.equalsIgnoreCase(modelV.getElementAt(i))) {
+            return true;
+        }
+    }
+    return false;
+}
 
 //FUNCIONES 
     // 01 funcion para validar si estan vacios los campos EMPLEADOS
@@ -784,6 +851,7 @@ public class Principal extends javax.swing.JFrame {
         }
         if (!validon) {
             error1.setVisible(true);
+           sonido("/Sonidos/error.wav");
             return false;
         } else {
             error1.setVisible(false);
@@ -799,6 +867,7 @@ public class Principal extends javax.swing.JFrame {
         }
         if (!validoc) {
             error2.setVisible(true); // Mostrar mensaje de error
+            sonido("/Sonidos/error.wav");
             return false;
         } else {
             error2.setVisible(false); // Ocultar mensaje de error
@@ -814,6 +883,7 @@ public class Principal extends javax.swing.JFrame {
         }
         if (!validocargo) {
             error3.setVisible(true);
+            sonido("/Sonidos/error.wav");
             return false;
         } else {
             error3.setVisible(false);
@@ -832,6 +902,7 @@ public class Principal extends javax.swing.JFrame {
 
         if (validonumero && tiene10Digitos) {
             error4.setVisible(false);
+            sonido("/Sonidos/error.wav");
         } else {
             error4.setVisible(true);
             return false;
@@ -853,11 +924,13 @@ public class Principal extends javax.swing.JFrame {
             }
         } catch (NumberFormatException e) {
             error6.setVisible(true); // Mostrar mensaje de error
+            sonido("/Sonidos/error.wav");
             return false;
         }
 
         if (!validosalario) {
             error6.setVisible(true); // Mostrar mensaje de error
+            sonido("/Sonidos/error.wav");
             return false;
         } else {
             error6.setVisible(false); // Ocultar mensaje de error  
@@ -880,6 +953,7 @@ public class Principal extends javax.swing.JFrame {
             }
         } catch (NumberFormatException e) {
             error7.setVisible(true); // Mostrar mensaje de error
+            sonido("/Sonidos/error.wav");
             return false;
         }
 
@@ -894,6 +968,7 @@ public class Principal extends javax.swing.JFrame {
         try {
             LocalDate fecha = LocalDate.parse(c5); // Intenta analizar la cadena como una fecha
             error5.setVisible(true);
+            sonido("/Sonidos/error.wav");
             return false;
         } catch (DateTimeParseException e) {
             error5.setVisible(false);
@@ -909,6 +984,7 @@ public class Principal extends javax.swing.JFrame {
         //Validacion Codigo
         if (c4.length() != 6) {
             error3v.setVisible(true); // Mostrar mensaje de error
+            sonido("/Sonidos/error.wav");
             return false;
         } else {
             error3v.setVisible(false); // Ocultar mensaje de error
@@ -935,6 +1011,7 @@ public class Principal extends javax.swing.JFrame {
 
         if (!validomonto) {
             error4v.setVisible(true); // Mostrar mensaje de error
+            sonido("/Sonidos/error.wav");
             return false;
         } else {
             error4v.setVisible(false); // Ocultar mensaje de error  
@@ -971,6 +1048,7 @@ public class Principal extends javax.swing.JFrame {
         LeerEmpleados(sc, "Empleados", Nombre, Cedula);
         sc.close();
         if (existeempleado == false) {//si el empleado no existe mostrar mensaje de error
+            sonido("/Sonidos/error.wav");
             JOptionPane.showMessageDialog(null, "Verifique los campos del vendedor", "Vendedor No Encontrado", JOptionPane.WARNING_MESSAGE);
             return false;
 
@@ -988,6 +1066,7 @@ public class Principal extends javax.swing.JFrame {
             System.out.println("Existe codigo es TRUE tiene que aparecer error");
             error3v.setText("(!) Codigo existente");
             error3v.setVisible(true);
+            sonido("/Sonidos/error.wav");
             return false;
         }
         return true;
@@ -1023,7 +1102,7 @@ public class Principal extends javax.swing.JFrame {
         TituloPanel.setText("|  Ventas");
         //ARCHIVO EMPLEADOS
         //Crear
-        //agregarDatosEmpleados("Empleados"); ya esta creado
+        //agregarDatosEmpleados("Empleados"); //ya esta creado
         //Mostrar Archivo Empleados
         Scanner sc = new Scanner(System.in);
         LeerNormal(sc, "Empleados", TablaEMPLEADOS);
@@ -1078,6 +1157,7 @@ public class Principal extends javax.swing.JFrame {
         header.setFont(font);
 
         //ARCHIVO VENTAS
+       
         //No visible
         FrameAgregarVenta.setVisible(false);
         FrameEliminarVenta.setVisible(false);
@@ -2571,35 +2651,8 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
         jScrollPane3.setVisible(false);
         BotonRegistrarVenta.setVisible(false);
         BotonEliminarVenta.setVisible(false);
-        DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) fvendedor.getModel();
-
-        try (BufferedReader BR = new BufferedReader(new FileReader("empleados.txt"))) {
-            String line;
-            while ((line = BR.readLine()) != null) {
-                String[] nombres = line.split("\t");
-
-                if (nombres.length > 0) {
-                    String nombre = nombres[0];
-                    String cedula = nombres[1];
-                    // Verificar si el elemento ya existe en el JComboBox antes de agregarlo
-                    // Esto evita que se duplique cada que se seleccione un elemento (nombre)
-                    boolean existe = false;
-                    for (int i = 0; i < model.getSize(); i++) {
-                        if (nombre.equals(model.getElementAt(i))) {
-                            existe = true;
-                            break;
-                        }
-                    }
-
-                    if (!existe) { // Solo se añaden los elementos (nombres) si no estaban antes
-                        model.addElement(nombre);
-                    }
-                }
-
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        cargarElementosDesdeArchivo2();
+        
 
     }//GEN-LAST:event_BotonRegistrarVentaActionPerformed
 
@@ -2724,38 +2777,16 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
     }//GEN-LAST:event_cerrareliminarActionPerformed
     String NombreEmpleado, TipoAuto;
     private void fvendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fvendedorActionPerformed
-
-        DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) fvendedor.getModel();
-        NombreEmpleado = fvendedor.getSelectedItem().toString();
-        try (BufferedReader BR = new BufferedReader(new FileReader("empleados.txt"))) {
-            String line;
-            while ((line = BR.readLine()) != null) {
-                String[] nombres = line.split("\t");
-
-                if (nombres.length > 0) {
-                    String nombre = nombres[0];
-                    String cedula = nombres[1];
-                    // Verificar si el elemento ya existe en el JComboBox antes de agregarlo
-                    // Esto evita que se duplique cada que se seleccione un elemento (nombre)
-                    boolean existe = false;
-                    for (int i = 0; i < model.getSize(); i++) {
-                        if (nombre.equalsIgnoreCase(NombreEmpleado)) {
-                            existe = true;
-                            break;
-                        }
-                    }
-
-                    if (!existe) { // Solo se añaden los elementos (nombres) si no estaban antes
-                        model.addElement(nombre);
-                    } else {
-                        fcedulav.setText(cedula);
-                    }
-                }
-
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    Object selectedItem2 = fvendedor.getSelectedItem().toString();
+        if (selectedItem2 != null) {
+            NombreEmpleado = selectedItem2.toString();
+            Scanner sc = new Scanner(System.in);
+            LeerEmpleados2(sc, "Empleados", NombreEmpleado);
+            sc.close();
+        } else {
+            
         }
+        
     }//GEN-LAST:event_fvendedorActionPerformed
 
     private void ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxActionPerformed
@@ -2775,6 +2806,14 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
         if (TipoAuto.equalsIgnoreCase("Seleccionar tipo de auto")) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un tipo de auto.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        cargarElementosDesdeArchivo2();
+        String seleccionarv = "Seleccionar empleado";
+        String seleccionarc = "Seleccionar tipo de auto";
+        fvendedor.setSelectedItem(seleccionarv);
+        ComboBox.setSelectedItem(seleccionarc);
+        fcedulav.setText("");
+        fcodigo.setText("");
+        fmonto.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
