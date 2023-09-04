@@ -277,17 +277,19 @@
                                       <Component id="jLabel37" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="fcodigo" min="-2" pref="190" max="-2" attributes="0"/>
-                                      <Component id="error3v" alignment="0" min="-2" pref="290" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="error3v" min="-2" pref="290" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="41" pref="41" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="fmonto" min="-2" pref="190" max="-2" attributes="0"/>
-                                      <Component id="error4v" min="-2" pref="312" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="41" pref="41" max="-2" attributes="0"/>
+                                          <Component id="error4v" min="-2" pref="312" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                          <Component id="fmonto" min="-2" pref="190" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -306,6 +308,7 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="ComboBox" min="-2" max="-2" attributes="0"/>
                                               <Component id="fcedulav" min="-2" pref="190" max="-2" attributes="0"/>
+                                              <Component id="fcodigo" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -864,7 +867,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="(-) Eliminar Registro"/>
+            <Property name="text" type="java.lang.String" value="(-) Eliminar Venta"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonEliminarVentaActionPerformed"/>
