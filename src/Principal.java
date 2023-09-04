@@ -767,7 +767,7 @@ public class Principal extends javax.swing.JFrame {
 private void cargarElementosDesdeArchivo2() {
     //modelV.removeAllElements(); // Limpia el modelo antes de cargar los elementos desde el archivo
     boolean hayElementos = false; // Bandera para verificar si se encontraron elementos
-    try (BufferedReader BR = new BufferedReader(new FileReader("empleados.txt"))) {
+    try (BufferedReader BR = new BufferedReader(new FileReader("empleados.txt"))) {//Leer
         String line;
         while ((line = BR.readLine()) != null) {
             String[] nombres = line.split("\t");
@@ -775,7 +775,7 @@ private void cargarElementosDesdeArchivo2() {
                 String nombre = nombres[0];
                 String cedula = nombres[1];
                 String cargo = nombres[2];
-                if (!existeEnComboBox2(nombre) && cargo.equalsIgnoreCase("Vendedor")) {
+                if (!existeEnComboBox2(nombre) && cargo.equalsIgnoreCase("Vendedor")) { //Se agregue correctamente solo el vendedor
                     modelV.addElement(nombre);
                     hayElementos = true; // Se encontraron elementos
                 }else {
