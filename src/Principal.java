@@ -2632,10 +2632,10 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
             Modo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53brillo.png")));
             URL imageURL = Principal.class.getResource("/Imagenes/borrosoclaroempleadp.png");
             ImageIcon imageIconE = new ImageIcon(imageURL);
-            LabelFondoBorroso.setIcon(imageIconE);
+        //    LabelFondoBorroso.setIcon(imageIconE);
             URL imageURLV = Principal.class.getResource("/Imagenes/ventasborrosoclaro.png");
             ImageIcon imageIconV = new ImageIcon(imageURLV);
-            fondoborrosoventas.setIcon(imageIconV);
+           // fondoborrosoventas.setIcon(imageIconV);
             TituloPanel.repaint();
             Nocturno = false;
         } else {//estaclaro
@@ -2656,11 +2656,11 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
             MostrarBusquedaVentas.setForeground(fondoclaro);
             URL imageURL1 = Principal.class.getResource("/Imagenes/borrosooscuroempleado.png");
             ImageIcon imageIcon = new ImageIcon(imageURL1);
-            LabelFondoBorroso.setIcon(imageIcon);
+           // LabelFondoBorroso.setIcon(imageIcon);
             URL imageURL2 = Principal.class.getResource("/Imagenes/ventasoscuroborroso.png");
             ImageIcon imageIcon2 = new ImageIcon(imageURL2);
             InfoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/InfoIMGoscurox1125.png")));
-            fondoborrosoventas.setIcon(imageIcon2);
+         //   fondoborrosoventas.setIcon(imageIcon2);
             Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/solsinfondpx53.png")));
             Modo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/solsinfondpx53brillo.png")));
             TituloPanel.repaint();
