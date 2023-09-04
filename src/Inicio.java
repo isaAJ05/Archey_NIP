@@ -23,6 +23,7 @@ public class Inicio extends javax.swing.JFrame {
      */
     Color fondo = Color.decode("#1C1920");
     public Inicio() {
+        this.setTitle("ARCHEYS");
         setIconImage(new ImageIcon(getClass().getResource("ICONS/iconooo.png")).getImage());
         initComponents();
         this.setSize(854,480);
