@@ -652,6 +652,7 @@ public class Principal extends javax.swing.JFrame {
 
                 while ((line = br.readLine()) != null) {
                     String temp[] = line.split("\t");
+                    RelacionAutos(temp[2],temp[4]);
                     model.addRow(temp); //Agregar datos del archivo a la tabla
                 }
 
@@ -2626,7 +2627,7 @@ public class Principal extends javax.swing.JFrame {
             EliminarRegistroVenta(sc, "Ventas", TablaVENTAS);
             sc.close();
             Scanner sc2 = new Scanner(System.in);
-            LeerVentasok(sc2, "Ventas", TablaVENTAS);
+            LeerNormal(sc2, "Ventas", TablaVENTAS);
             sc2.close();
         }
         cargarElementosDesdeArchivo();
@@ -2686,7 +2687,7 @@ public class Principal extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         AgregarVentas("Ventas");
         Scanner sc = new Scanner(System.in);
-        LeerVentasok(sc, "Ventas", TablaVENTAS);
+        LeerNormal(sc, "Ventas", TablaVENTAS);
         sc.close();
         TipoAuto = ComboBox.getSelectedItem().toString();
         NombreEmpleado = fvendedor.getSelectedItem().toString();
