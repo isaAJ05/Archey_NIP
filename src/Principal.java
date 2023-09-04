@@ -1448,31 +1448,40 @@ private boolean existeEnComboBox2(String nombre) {
         FrameAgregarVenta.setVisible(true);
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel34.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
         jLabel34.setText("Monto de la venta:");
+        jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 285, -1, -1));
 
         jLabel35.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
         jLabel35.setText("Nombre del vendedor:");
+        jPanel2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 82, -1, -1));
 
         jLabel36.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
         jLabel36.setText("Cédula:");
+        jPanel2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 134, -1, -1));
 
         jLabel37.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
         jLabel37.setText("Tipo de auto:");
+        jPanel2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 184, -1, -1));
 
         ComboBox.setBackground(new java.awt.Color(255, 102, 102));
         ComboBox.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
         ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar tipo de auto", "Toyota", "Ford", "Honda", "BMW", "Mercedes" }));
+        jPanel2.add(ComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 181, -1, -1));
 
         jLabel38.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
         jLabel38.setText("Código del auto:");
+        jPanel2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 229, -1, -1));
 
         fmonto.setBackground(new java.awt.Color(255, 102, 102));
         fmonto.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
+        jPanel2.add(fmonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 282, 190, -1));
 
         fcodigo.setBackground(new java.awt.Color(255, 102, 102));
         fcodigo.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
+        jPanel2.add(fcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 226, 190, -1));
 
         cerraragregarventa.setBackground(new java.awt.Color(255, 102, 102));
         cerraragregarventa.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
@@ -1482,6 +1491,7 @@ private boolean existeEnComboBox2(String nombre) {
                 cerraragregarventaActionPerformed(evt);
             }
         });
+        jPanel2.add(cerraragregarventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(478, 19, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(255, 102, 102));
         jButton3.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
@@ -1491,14 +1501,17 @@ private boolean existeEnComboBox2(String nombre) {
                 jButton3ActionPerformed(evt);
             }
         });
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 348, -1, -1));
 
         error3v.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
         error3v.setForeground(new java.awt.Color(255, 0, 0));
         error3v.setText("(!) El código debe contener 6 caracteres.");
+        jPanel2.add(error3v, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 254, 290, 22));
 
         error4v.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
         error4v.setForeground(new java.awt.Color(255, 0, 0));
         error4v.setText("(!)Monto debe contener solo numeros mayores a cero");
+        jPanel2.add(error4v, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 312, 312, -1));
 
         fvendedor.setBackground(new java.awt.Color(255, 102, 102));
         fvendedor.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
@@ -1508,10 +1521,12 @@ private boolean existeEnComboBox2(String nombre) {
                 fvendedorActionPerformed(evt);
             }
         });
+        jPanel2.add(fvendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 82, 194, -1));
 
         fcedulav.setEditable(false);
         fcedulav.setBackground(new java.awt.Color(255, 102, 102));
         fcedulav.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
+        jPanel2.add(fcedulav, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 134, 190, -1));
 
         AgregarVenta.setBackground(new java.awt.Color(255, 102, 102));
         AgregarVenta.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
@@ -1521,92 +1536,7 @@ private boolean existeEnComboBox2(String nombre) {
                 AgregarVentaActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel38)
-                            .addComponent(jLabel37))
-                        .addGap(52, 52, 52)
-                        .addComponent(error3v, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel34)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addComponent(error4v, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(fmonto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel35))
-                            .addComponent(jLabel36))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fvendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fcedulav, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(56, 56, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(360, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(AgregarVenta)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3))
-                    .addComponent(cerraragregarventa))
-                .addGap(24, 24, 24))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(cerraragregarventa)
-                .addGap(36, 36, 36)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel35)
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel36))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(fvendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
-                        .addComponent(fcedulav, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel37)
-                    .addComponent(ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel38))
-                .addGap(1, 1, 1)
-                .addComponent(error3v, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fmonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel34))
-                .addGap(3, 3, 3)
-                .addComponent(error4v)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(AgregarVenta))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
+        jPanel2.add(AgregarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 348, -1, -1));
 
         javax.swing.GroupLayout FrameAgregarVentaLayout = new javax.swing.GroupLayout(FrameAgregarVenta.getContentPane());
         FrameAgregarVenta.getContentPane().setLayout(FrameAgregarVentaLayout);
@@ -1870,27 +1800,27 @@ private boolean existeEnComboBox2(String nombre) {
 
         jLabel5.setFont(new java.awt.Font("Perpetua", 1, 15)); // NOI18N
         jLabel5.setText("Nombre:");
-        PanelAgregarEmpleado.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+        PanelAgregarEmpleado.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Perpetua", 1, 15)); // NOI18N
         jLabel6.setText("Cédula:");
-        PanelAgregarEmpleado.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+        PanelAgregarEmpleado.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Perpetua", 1, 15)); // NOI18N
         jLabel7.setText("Cargo:");
-        PanelAgregarEmpleado.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+        PanelAgregarEmpleado.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Perpetua", 1, 15)); // NOI18N
         jLabel8.setText("Teléfono:");
-        PanelAgregarEmpleado.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+        PanelAgregarEmpleado.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Perpetua", 1, 15)); // NOI18N
         jLabel9.setText("Fecha de Ingreso:");
-        PanelAgregarEmpleado.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+        PanelAgregarEmpleado.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Perpetua", 1, 15)); // NOI18N
         jLabel10.setText("Salario Fijo Mensual:");
-        PanelAgregarEmpleado.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+        PanelAgregarEmpleado.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Perpetua", 1, 15)); // NOI18N
         jLabel11.setText("Salario+Comisiones:");
@@ -1898,27 +1828,27 @@ private boolean existeEnComboBox2(String nombre) {
 
         fnombre.setBackground(new java.awt.Color(255, 102, 102));
         fnombre.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
-        PanelAgregarEmpleado.add(fnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 280, -1));
+        PanelAgregarEmpleado.add(fnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 280, -1));
 
         fcedula.setBackground(new java.awt.Color(255, 102, 102));
         fcedula.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
-        PanelAgregarEmpleado.add(fcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 280, -1));
+        PanelAgregarEmpleado.add(fcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 280, -1));
 
         fcargo.setBackground(new java.awt.Color(255, 102, 102));
         fcargo.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
-        PanelAgregarEmpleado.add(fcargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 280, -1));
+        PanelAgregarEmpleado.add(fcargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 280, -1));
 
         ffechaingreso.setBackground(new java.awt.Color(255, 102, 102));
         ffechaingreso.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
-        PanelAgregarEmpleado.add(ffechaingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 280, -1));
+        PanelAgregarEmpleado.add(ffechaingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 280, -1));
 
         ftelefono.setBackground(new java.awt.Color(255, 102, 102));
         ftelefono.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
-        PanelAgregarEmpleado.add(ftelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 280, -1));
+        PanelAgregarEmpleado.add(ftelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 280, -1));
 
         fsalariofijo.setBackground(new java.awt.Color(255, 102, 102));
         fsalariofijo.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
-        PanelAgregarEmpleado.add(fsalariofijo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 280, -1));
+        PanelAgregarEmpleado.add(fsalariofijo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 280, -1));
 
         fsalariocomisiones.setBackground(new java.awt.Color(255, 102, 102));
         fsalariocomisiones.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
@@ -1942,7 +1872,7 @@ private boolean existeEnComboBox2(String nombre) {
                 BotonAgregarEmpleadosActionPerformed(evt);
             }
         });
-        PanelAgregarEmpleado.add(BotonAgregarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 400, -1, -1));
+        PanelAgregarEmpleado.add(BotonAgregarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, -1, -1));
 
         BotonLimpiar.setBackground(new java.awt.Color(255, 102, 102));
         BotonLimpiar.setFont(new java.awt.Font("Perpetua", 1, 15)); // NOI18N
@@ -1952,7 +1882,7 @@ private boolean existeEnComboBox2(String nombre) {
                 BotonLimpiarActionPerformed(evt);
             }
         });
-        PanelAgregarEmpleado.add(BotonLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 400, -1, -1));
+        PanelAgregarEmpleado.add(BotonLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 390, -1, -1));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/empleado sin fondo.png"))); // NOI18N
         PanelAgregarEmpleado.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 170, 210));
@@ -1960,37 +1890,37 @@ private boolean existeEnComboBox2(String nombre) {
         error7.setFont(new java.awt.Font("Perpetua", 0, 13)); // NOI18N
         error7.setForeground(new java.awt.Color(255, 0, 0));
         error7.setText("(!) Salario debe contener solo numeros mayores a cero");
-        PanelAgregarEmpleado.add(error7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 290, -1));
+        PanelAgregarEmpleado.add(error7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 290, -1));
 
         error1.setFont(new java.awt.Font("Perpetua", 0, 13)); // NOI18N
         error1.setForeground(new java.awt.Color(255, 0, 0));
         error1.setText("(!) El nombre no debe contener números ni caracteres especiales.");
-        PanelAgregarEmpleado.add(error1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 320, -1));
+        PanelAgregarEmpleado.add(error1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 320, -1));
 
         error2.setFont(new java.awt.Font("Perpetua", 0, 13)); // NOI18N
         error2.setForeground(new java.awt.Color(255, 0, 0));
         error2.setText("(!) La cédula debe contener solo números.");
-        PanelAgregarEmpleado.add(error2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 290, 10));
+        PanelAgregarEmpleado.add(error2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 290, 10));
 
         error3.setFont(new java.awt.Font("Perpetua", 0, 13)); // NOI18N
         error3.setForeground(new java.awt.Color(255, 0, 0));
         error3.setText("(!) Este campo no debe contener números ni caracteres especiales.");
-        PanelAgregarEmpleado.add(error3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 330, -1));
+        PanelAgregarEmpleado.add(error3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 330, -1));
 
         error4.setFont(new java.awt.Font("Perpetua", 0, 13)); // NOI18N
         error4.setForeground(new java.awt.Color(255, 0, 0));
         error4.setText("(!) El telefono solo debe contener 10 digitos numéricos.");
-        PanelAgregarEmpleado.add(error4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 290, 20));
+        PanelAgregarEmpleado.add(error4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 290, 20));
 
         error5.setFont(new java.awt.Font("Perpetua", 0, 13)); // NOI18N
         error5.setForeground(new java.awt.Color(255, 0, 0));
         error5.setText("(!) Formato de fecha no válido. Recuerde (DD/MM/AA)");
-        PanelAgregarEmpleado.add(error5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 290, 20));
+        PanelAgregarEmpleado.add(error5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 290, 20));
 
         error6.setFont(new java.awt.Font("Perpetua", 0, 13)); // NOI18N
         error6.setForeground(new java.awt.Color(255, 0, 0));
         error6.setText("(!) Salario debe contener solo numeros mayores a cero");
-        PanelAgregarEmpleado.add(error6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 290, 20));
+        PanelAgregarEmpleado.add(error6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 290, 20));
 
         javax.swing.GroupLayout FrameAgregarLayout = new javax.swing.GroupLayout(FrameAgregar.getContentPane());
         FrameAgregar.getContentPane().setLayout(FrameAgregarLayout);
