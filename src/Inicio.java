@@ -4,6 +4,9 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
@@ -20,7 +23,21 @@ public class Inicio extends javax.swing.JFrame {
 
     /**
      * Creates new form Principal
+     * 
      */
+    //SUBRUTINA PARA APLICAR SONIDO
+    private void sonido(String cadena) {
+        try {
+            Clip clip = AudioSystem.getClip();
+            URL url = getClass().getResource(cadena);
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
+            clip.open(audioIn);
+            clip.start();
+        } catch (Exception e) {
+            // System.err.println(e.getMessage());
+        }
+
+    }
     Color fondo = Color.decode("#1C1920");
     public Inicio() {
         this.setTitle("ARCHEYS");
@@ -38,7 +55,7 @@ public class Inicio extends javax.swing.JFrame {
         this.setResizable(false);
         
         this.setBackground(fondo);
-        
+        sonido("/Sonidos/audiook.wav");
         Inicio thisFrame = this;
 
         Timer timer = new Timer(7200, new ActionListener() {
