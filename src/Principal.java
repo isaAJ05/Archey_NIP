@@ -135,33 +135,6 @@ public class Principal extends javax.swing.JFrame {
             }
         }
     }
-    //02.2 SUBRUTINA PARA MOSTRAR LOS CAMPOS ARCHIVO VENTAS
-
-    public void LeerVentasok(Scanner sc, String file_name, JTable tabla) {
-        boolean hay = false;
-        while (hay == false) {
-            try {
-                BufferedReader br = new BufferedReader(new FileReader(file_name + ".txt"));
-                String line = null;
-                DefaultTableModel model = (DefaultTableModel) tabla.getModel();
-                model.setRowCount(0);
-
-                while ((line = br.readLine()) != null) {
-                    String temp[] = line.split("\t");
-                    RelacionAutos(temp[2], temp[4]);//Relacionar en el inventario los autos vendidos
-                    model.addRow(temp); //Agregar datos del archivo a la tabla
-                }
-
-                br.close();
-                hay = true;
-
-            } catch (IOException ex) {
-                System.out.println("No se encontro archivo");
-                hay = false;
-                file_name = sc.nextLine(); // Archivo
-            }
-        }
-    }
 
     //03 SUBRUTINA PARA MOSTRAR LOS CAMPOS ORDENADOS DEL ARCHIVO EMPLEADOS 
     public static void LeerOrdenado(Scanner sc, String file_name, JTable tabla, String NoS) {
@@ -364,11 +337,11 @@ public class Principal extends javax.swing.JFrame {
             //Llamar a funciones de validaciones
             //Validacion1: verifica que no haya campos vacios
             //Validacion2: verifica que cada campo no tenga algun error de formato
-            if (validacionventa1(Nombre, Cedula, Tipo, Codigo, Monto)) {
-                if (validacionventa2(Nombre, Cedula, Codigo, Monto)) {
+            if (validacionventa1(Codigo, Monto)) {
+                if (validacionventa2(Codigo, Monto)) {
                     if (ValidarExistenciaEmpleado(Nombre, Cedula) && ValidarNoExistenciaCodigo(file_name, Codigo)) {//si no existe codigo y si existe empleado registrar la venta
                         registrar_ventas.println(Nombre + "\t" + Cedula + "\t" + Tipo + "\t" + Codigo + "\t" + Monto);
-
+                        RelacionAutos(Tipo, Monto);
                         if (Double.parseDouble(Monto) > 30000000) {// actualizar comision empleado si este vendio vehiculo superio a 30 millones
                             actualizarSalarioConComisiones("Empleados", Nombre, Monto, TablaEMPLEADOS);
                         }
@@ -453,6 +426,7 @@ public class Principal extends javax.swing.JFrame {
     //09 Subrutina para relacionar autos vendidos con el inventario
 
     public void RelacionAutos(String Tipo, String Monto) {
+        System.out.println("Tipo es: " + Tipo);
         switch (Tipo) {
             case "Toyota":
                 cantT++;
@@ -484,8 +458,67 @@ public class Principal extends javax.swing.JFrame {
                 MontoM += Double.parseDouble(Monto);
                 TotalMercedes.setText("$" + String.valueOf((int) MontoM));
                 break;
-            default:
 
+            default:
+                CantVendidaToyota.setText("0");
+                TotalToyota.setText("0");
+                CantVendidaFord.setText("0");
+                TotalFord.setText("0");
+                CantVendidaHonda.setText("0");
+                TotalHonda.setText("0");
+                CantVendidaBMW.setText("0");
+                TotalBMW.setText("0");
+                CantVendidaMercedes.setText("0");
+                TotalMercedes.setText("0");
+                break;
+        }
+    }
+
+    public void RelacionAutos2(String Tipo, String Monto) {
+        System.out.println("Tipo a eliminar es: " + Tipo);
+        switch (Tipo) {
+            case "Toyota":
+                cantT--;
+                CantVendidaToyota.setText(String.valueOf(cantT));
+                MontoT -= Double.parseDouble(Monto);
+                TotalToyota.setText("$" + String.valueOf((int) MontoT));
+                break;
+            case "Ford":
+                cantF--;
+                CantVendidaFord.setText(String.valueOf(cantF));
+                MontoF -= Double.parseDouble(Monto);
+                TotalFord.setText("$" + String.valueOf((int) MontoF));
+                break;
+            case "Honda":
+                cantH--;
+                CantVendidaHonda.setText(String.valueOf(cantH));
+                MontoH -= Double.parseDouble(Monto);
+                TotalHonda.setText("$" + String.valueOf((int) MontoH));
+                break;
+            case "BMW":
+                cantB--;
+                CantVendidaBMW.setText(String.valueOf(cantB));
+                MontoB -= Double.parseDouble(Monto);
+                TotalBMW.setText("$" + String.valueOf((int) MontoB));
+                break;
+            case "Mercedes":
+                cantM--;
+                CantVendidaMercedes.setText(String.valueOf(cantM));
+                MontoM -= Double.parseDouble(Monto);
+                TotalMercedes.setText("$" + String.valueOf((int) MontoM));
+                break;
+
+            default:
+                CantVendidaToyota.setText("0");
+                TotalToyota.setText("0");
+                CantVendidaFord.setText("0");
+                TotalFord.setText("0");
+                CantVendidaHonda.setText("0");
+                TotalHonda.setText("0");
+                CantVendidaBMW.setText("0");
+                TotalBMW.setText("0");
+                CantVendidaMercedes.setText("0");
+                TotalMercedes.setText("0");
                 break;
         }
     }
@@ -563,10 +596,14 @@ public class Principal extends javax.swing.JFrame {
             BufferedReader BR = new BufferedReader(FR);
             FileWriter FW = new FileWriter("VentasTemp.txt", true);
             BufferedWriter BW = new BufferedWriter(FW);
-            String linea, borrar_codigo = fcodigoE.getText();
+            String linea, borrar_codigo = CodigoE;
+            System.out.println("Borrar codigo es: " + borrar_codigo);
             boolean encontrado = false;
             while ((linea = BR.readLine()) != null) {
                 String[] campos = linea.split("\t");
+                if (campos[3].equalsIgnoreCase(borrar_codigo)) {
+                    RelacionAutos2(campos[2], campos[4]);//PARA ACTUALIZAR EL INVENTARIO
+                }
                 if (!campos[3].equalsIgnoreCase(borrar_codigo)) {
                     BW.write(linea); // si el codigo no es el que se busca, se escribe en el archivo temporal
                     BW.newLine();
@@ -602,6 +639,32 @@ public class Principal extends javax.swing.JFrame {
         }
 
     }
+    //SUBRUTINA PARA MOSTRAR LOS CAMPOS ARCHIVO VENTAS
+
+    public void LeerVentasok(Scanner sc, String file_name, JTable tabla) {
+        boolean hay = false;
+        while (hay == false) {
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(file_name + ".txt"));
+                String line = null;
+                DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+                model.setRowCount(0);
+
+                while ((line = br.readLine()) != null) {
+                    String temp[] = line.split("\t");
+                    model.addRow(temp); //Agregar datos del archivo a la tabla
+                }
+
+                br.close();
+                hay = true;
+
+            } catch (IOException ex) {
+                System.out.println("No se encontro archivo");
+                hay = false;
+                file_name = sc.nextLine(); // Archivo
+            }
+        }
+    }
 
     //11 Subrutina para limpiar campos de Empleados
     public void Limpiar() {
@@ -635,6 +698,47 @@ public class Principal extends javax.swing.JFrame {
             //System.err.println(e.getMessage());
         }
     }
+    DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+
+// Método para cargar elementos iniciales desde el archivo
+    private void cargarElementosDesdeArchivo() {
+        model.removeAllElements(); // Limpia el modelo antes de cargar los elementos desde el archivo
+        boolean hayElementos = false; // Bandera para verificar si se encontraron elementos
+        try (BufferedReader BR = new BufferedReader(new FileReader("ventas.txt"))) {
+            String line;
+            while ((line = BR.readLine()) != null) {
+                String[] campos = line.split("\t");
+                if (campos.length > 3) { // Asegúrate de que haya suficientes campos
+                    String codigo = campos[3];
+                    if (!existeEnComboBox(codigo)) {
+                        model.addElement(codigo);
+                        hayElementos = true; // Se encontraron elementos
+                    }
+                }
+            }
+            if (!hayElementos) {
+                combocodigos.setEnabled(false); // Deshabilita el JComboBox
+                BotonParaEliminarVenta.setEnabled(false);
+            } else {
+                combocodigos.setEnabled(true); // Habilita el JComboBox si hay elementos
+                BotonParaEliminarVenta.setEnabled(true);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        combocodigos.setModel(model); // Asigna el modelo al JComboBox
+    }
+
+// Método para verificar si un elemento ya existe en el JComboBox
+    private boolean existeEnComboBox(String codigo) {
+        for (int i = 0; i < model.getSize(); i++) {
+            if (codigo.equalsIgnoreCase(model.getElementAt(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 //FUNCIONES 
     // 01 funcion para validar si estan vacios los campos EMPLEADOS
@@ -648,8 +752,8 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // 01.1 funcion para validar si estan vacios los campos VENTAS
-    public boolean validacionventa1(String c1, String c2, String c3, String c4, String c5) {
-        if (!c1.isEmpty() && !c2.isEmpty() && !c3.isEmpty() && !c4.isEmpty() && !c5.isEmpty()) {
+    public boolean validacionventa1(String c4, String c5) {
+        if (!c4.isEmpty() && !c5.isEmpty()) {
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
@@ -791,47 +895,10 @@ public class Principal extends javax.swing.JFrame {
 
     //02.2 Funcion para validar campos de VENTAS
     // Nombre, Cedula, Codigo, Monto
-    public boolean validacionventa2(String c1, String c2, String c4, String c5) {
+    public boolean validacionventa2(String c4, String c5) {
 
-        // Validacion Nombre
-        boolean validon = true;
-        for (char c : c1.toCharArray()) {
-            if (!Character.isLetter(c) && !Character.isSpaceChar(c)) {
-                validon = false;
-                break;
-            }
-        }
-//        if (!validon) {
-//            error1v.setVisible(true);
-//            return false;
-//        } else {
-//            error1v.setVisible(false);
-//        }
-
-        //Validacion Cedula
-        boolean validoc = true;
-        for (char c : c2.toCharArray()) {
-            if (!Character.isDigit(c)) {
-                validoc = false;
-                break;
-            }
-        }
-//        if (!validoc) {
-//            error2v.setVisible(true); // Mostrar mensaje de error
-//            return false;
-//        } else {
-//            error2v.setVisible(false); // Ocultar mensaje de error
-//        }
         //Validacion Codigo
-        boolean validocod = true;
-        for (char c : c4.toCharArray()) {
-            if (!Character.isDigit(c)) {
-                validoc = false;
-                break;
-            }
-        }
-        if (!validocod) {
-            error3v.setText("El código debe tener solo numeros");
+        if (c4.length() != 6) {
             error3v.setVisible(true); // Mostrar mensaje de error
             return false;
         } else {
@@ -1002,7 +1069,6 @@ public class Principal extends javax.swing.JFrame {
         error3v.setVisible(false);
         error4v.setVisible(false);
         errornombre.setVisible(false);
-        errorcodigoE.setVisible(false);
         //Para Mostrar Archivo de Ventas al iniciar
         File archivo = new File("Ventas.txt");
         // Verificar si el archivo existe
@@ -1133,11 +1199,9 @@ public class Principal extends javax.swing.JFrame {
         FrameEliminarVenta = new javax.swing.JInternalFrame();
         jPanel1 = new javax.swing.JPanel();
         jLabel39 = new javax.swing.JLabel();
-        fcodigoE = new javax.swing.JTextField();
-        errorcodigoE = new javax.swing.JLabel();
         BotonParaEliminarVenta = new javax.swing.JButton();
-        LimpiarVenta = new javax.swing.JButton();
         cerrareliminar = new javax.swing.JButton();
+        combocodigos = new javax.swing.JComboBox<>();
         FrameAgregarVenta = new javax.swing.JInternalFrame();
         jPanel2 = new javax.swing.JPanel();
         jLabel34 = new javax.swing.JLabel();
@@ -1651,23 +1715,12 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel39.setText("Digite el código del auto:");
-
-        errorcodigoE.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        errorcodigoE.setForeground(new java.awt.Color(255, 0, 0));
-        errorcodigoE.setText("(!) El código debe contener 6 caracteres.");
+        jLabel39.setText("Seleccione el código:");
 
         BotonParaEliminarVenta.setText("Eliminar");
         BotonParaEliminarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonParaEliminarVentaActionPerformed(evt);
-            }
-        });
-
-        LimpiarVenta.setText("Limpiar");
-        LimpiarVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LimpiarVentaActionPerformed(evt);
             }
         });
 
@@ -1678,46 +1731,44 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        combocodigos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combocodigosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(BotonParaEliminarVenta)
-                        .addGap(18, 18, 18)
-                        .addComponent(LimpiarVenta)
-                        .addGap(53, 53, 53))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(cerrareliminar)
-                        .addGap(18, 18, 18))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel39)
                 .addGap(18, 18, 18)
+                .addComponent(combocodigos, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(197, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(errorcodigoE, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fcodigoE, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(165, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(cerrareliminar)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(BotonParaEliminarVenta)
+                        .addGap(154, 154, 154))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(cerrareliminar)
-                .addGap(64, 64, 64)
+                .addGap(61, 61, 61)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel39)
-                    .addComponent(fcodigoE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(errorcodigoE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonParaEliminarVenta)
-                    .addComponent(LimpiarVenta))
-                .addGap(48, 48, 48))
+                    .addComponent(combocodigos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(BotonParaEliminarVenta)
+                .addGap(77, 77, 77))
         );
 
         javax.swing.GroupLayout FrameEliminarVentaLayout = new javax.swing.GroupLayout(FrameEliminarVenta.getContentPane());
@@ -1770,7 +1821,7 @@ public class Principal extends javax.swing.JFrame {
 
         error3v.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         error3v.setForeground(new java.awt.Color(255, 0, 0));
-        error3v.setText("(!) Depende");
+        error3v.setText("(!) El código debe contener 6 caracteres.");
 
         error4v.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         error4v.setForeground(new java.awt.Color(255, 0, 0));
@@ -2514,7 +2565,7 @@ public class Principal extends javax.swing.JFrame {
             PanelVentas.setBackground(fondooscuro);
             PanelInfo.setBackground(fondooscuro);
             PanelInventario.setBackground(fondooscuro);
-            
+
             InventarioSubPanel.setBackground(fondooscuro);
             BotonOrdenar.setForeground(fondoclaro);
             jPanel3.setBackground(fondooscuro);
@@ -2562,29 +2613,28 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane3.setVisible(false);
         BotonRegistrarVenta.setVisible(false);
         BotonEliminarVenta.setVisible(false);
+        cargarElementosDesdeArchivo();
 
     }//GEN-LAST:event_BotonEliminarVentaActionPerformed
 
     private void BotonParaEliminarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonParaEliminarVentaActionPerformed
-        if (fcodigoE.getText().length() == 6) {
+        System.out.println("Codigo a Eliminar: " + CodigoE);
+        if (CodigoE.equalsIgnoreCase("Seleccionar empleado")) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un codigo.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
             Scanner sc = new Scanner(System.in);
             EliminarRegistroVenta(sc, "Ventas", TablaVENTAS);
-            LeerVentasok(sc, "Ventas", TablaVENTAS);
             sc.close();
-
-        } else {
-            errorcodigoE.setVisible(true);
+            Scanner sc2 = new Scanner(System.in);
+            LeerVentasok(sc2, "Ventas", TablaVENTAS);
+            sc2.close();
         }
+        cargarElementosDesdeArchivo();
+
     }//GEN-LAST:event_BotonParaEliminarVentaActionPerformed
 
-    private void LimpiarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarVentaActionPerformed
-        fcodigoE.setText("");
-        errorcodigoE.setVisible(false);
-    }//GEN-LAST:event_LimpiarVentaActionPerformed
-
     private void cerrareliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrareliminarActionPerformed
-        fcodigoE.setText("");
-        errorcodigoE.setVisible(false);
+
         FrameEliminarVenta.setVisible(false);
         fondoborrosoventas.setVisible(false);
         TablaVENTAS.setVisible(true);
@@ -2841,6 +2891,17 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BuscadorVentasActionPerformed
 
+    String CodigoE;
+
+    private void combocodigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combocodigosActionPerformed
+        Object selectedItem = combocodigos.getSelectedItem();
+        if (selectedItem != null) {
+            CodigoE = selectedItem.toString();
+        } else {
+            
+        }
+    }//GEN-LAST:event_combocodigosActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -2920,7 +2981,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel InfoLabel;
     private javax.swing.JPanel InventarioSubPanel;
     private javax.swing.JLabel LabelFondoBorroso;
-    private javax.swing.JButton LimpiarVenta;
     private javax.swing.JButton Modo;
     private javax.swing.JLabel MostrarBusquedaEmple;
     private javax.swing.JLabel MostrarBusquedaVentas;
@@ -2947,6 +3007,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton cerrar1;
     private javax.swing.JButton cerraragregarventa;
     private javax.swing.JButton cerrareliminar;
+    private javax.swing.JComboBox<String> combocodigos;
     private javax.swing.JLabel error1;
     private javax.swing.JLabel error2;
     private javax.swing.JLabel error3;
@@ -2956,13 +3017,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel error5;
     private javax.swing.JLabel error6;
     private javax.swing.JLabel error7;
-    private javax.swing.JLabel errorcodigoE;
     private javax.swing.JLabel errornombre;
     private javax.swing.JTextField fcargo;
     private javax.swing.JTextField fcedula;
     private javax.swing.JTextField fcedulav;
     private javax.swing.JTextField fcodigo;
-    private javax.swing.JTextField fcodigoE;
     private javax.swing.JTextField ffechaingreso;
     private javax.swing.JTextField fmonto;
     private javax.swing.JTextField fnombre;
