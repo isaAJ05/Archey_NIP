@@ -477,6 +477,7 @@ public class Principal extends javax.swing.JFrame {
                 TotalMercedes.setText("0");
                 break;
         }
+       
     }
 
     public void RelacionAutos2(String Tipo, String Monto) {
@@ -526,6 +527,7 @@ public class Principal extends javax.swing.JFrame {
                 TotalMercedes.setText("0");
                 break;
         }
+       
     }
 //10 Subrutina para actualizar el salario+comisiones
 
@@ -2710,7 +2712,7 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
             sc2.close();
         }
         cargarElementosDesdeArchivo();
-
+        
     }//GEN-LAST:event_BotonParaEliminarVentaActionPerformed
 
     private void cerrareliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrareliminarActionPerformed
@@ -2761,12 +2763,13 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
     private void ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboBoxActionPerformed
-
+    //Boton agregar venta
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         AgregarVentas("Ventas");
         Scanner sc = new Scanner(System.in);
         LeerNormal(sc, "Ventas", TablaVENTAS);
         sc.close();
+       
         TipoAuto = ComboBox.getSelectedItem().toString();
         NombreEmpleado = fvendedor.getSelectedItem().toString();
         if (NombreEmpleado.equalsIgnoreCase("Seleccionar empleado")) {
@@ -2775,6 +2778,7 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
         if (TipoAuto.equalsIgnoreCase("Seleccionar tipo de auto")) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un tipo de auto.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -2800,7 +2804,8 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
         CambiaEstadoPANEL(GrafiPanel);
         CambiaEstadoPANEL(jScrollPane2);
         TituloPanel.repaint();
-        //llamar libreria
+        
+       // llamar libreria
         DefaultPieDataset datos = new DefaultPieDataset();
         //Establecer valores
         datos.setValue("Toyota ", cantT);
@@ -2808,19 +2813,19 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
         datos.setValue("Honda", cantH);
         datos.setValue("BMW", cantB);
         datos.setValue("Mercedes - Benz", cantM);
-        //Crear objeto para grafico
+      //  Crear objeto para grafico
 
-        //Graficos 2D
-//        JFreeChart grafico_circular=ChartFactory.createPieChart(
-//              //Argumentos
-//                "Cantidad Vendida",//Nombre Grafico 
-//                datos,//datos
-//                true,//categorias
-//                true,//herramientas
-//                false//url
-//        );
-        //Grafico 3D REDONDO
-        JFreeChart grafico_circular = ChartFactory.createPieChart3D("Cantidad De Autos Vendida", datos, true, true, false);
+       // Graficos 2D
+        JFreeChart grafico_circular=ChartFactory.createPieChart(
+              //Argumentos
+                "Cantidad Vendida",//Nombre Grafico 
+                datos,//datos
+                true,//categorias
+                true,//herramientas
+                false//url
+        );
+      //  Grafico 3D REDONDO
+        grafico_circular = ChartFactory.createPieChart3D("Cantidad De Autos Vendida", datos, true, true, false);
         PiePlot piePlot = (PiePlot) grafico_circular.getPlot();
         piePlot.setBackgroundPaint(fondoclaro);
 
@@ -2859,6 +2864,7 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
         repaint();
     }//GEN-LAST:event_BTNgrafiActionPerformed
 
+    
     private void BuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscadorActionPerformed
         String valorBuscado = EmpleBuscador.getText().toLowerCase();
         DefaultTableModel modelo = (DefaultTableModel) TablaEMPLEADOS.getModel();
