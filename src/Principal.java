@@ -1286,11 +1286,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel13.setOpaque(true);
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 80, 660));
 
-        TituloPanel.setFont(new java.awt.Font("Adobe Gothic Std B", 0, 48)); // NOI18N
+        TituloPanel.setFont(new java.awt.Font("Footlight MT Light", 1, 50)); // NOI18N
         TituloPanel.setForeground(new java.awt.Color(51, 0, 0));
         TituloPanel.setText("|      Empleados");
         TituloPanel.setAlignmentY(0.0F);
-        getContentPane().add(TituloPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
+        getContentPane().add(TituloPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 450, -1));
 
         PanelEmpleados.setBackground(new java.awt.Color(255, 255, 255));
         PanelEmpleados.setPreferredSize(new java.awt.Dimension(1240, 700));
@@ -1302,9 +1302,11 @@ public class Principal extends javax.swing.JFrame {
         PanelEliminarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
         PanelEliminarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel32.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         jLabel32.setText("Nombre:");
         PanelEliminarEmpleado.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
 
+        fnombreE.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
         fnombreE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fnombreEActionPerformed(evt);
@@ -1312,6 +1314,7 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelEliminarEmpleado.add(fnombreE, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 280, -1));
 
+        cerrar1.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         cerrar1.setText("Cerrar");
         cerrar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1320,6 +1323,7 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelEliminarEmpleado.add(cerrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, -1, -1));
 
+        BotonEliminarEmpleados.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         BotonEliminarEmpleados.setText("Eliminar");
         BotonEliminarEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1328,6 +1332,7 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelEliminarEmpleado.add(BotonEliminarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 404, -1, -1));
 
+        BotonLimpiar1.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         BotonLimpiar1.setText("Limpiar");
         BotonLimpiar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1339,10 +1344,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/empleado sin fondo.png"))); // NOI18N
         PanelEliminarEmpleado.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 170, 210));
 
-        errornombre.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        errornombre.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
         errornombre.setForeground(new java.awt.Color(255, 0, 0));
         errornombre.setText("(!) El nombre no debe contener números ni caracteres especiales.");
-        PanelEliminarEmpleado.add(errornombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 290, -1));
+        PanelEliminarEmpleado.add(errornombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 320, -1));
 
         FrameEliminar.getContentPane().add(PanelEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 440));
 
@@ -1353,40 +1358,61 @@ public class Principal extends javax.swing.JFrame {
         PanelAgregarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
         PanelAgregarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel5.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         jLabel5.setText("Nombre:");
-        PanelAgregarEmpleado.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 89, -1, -1));
+        PanelAgregarEmpleado.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         jLabel6.setText("Cédula:");
-        PanelAgregarEmpleado.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 135, -1, -1));
+        PanelAgregarEmpleado.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         jLabel7.setText("Cargo:");
-        PanelAgregarEmpleado.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 175, -1, -1));
+        PanelAgregarEmpleado.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
+        jLabel8.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         jLabel8.setText("Teléfono:");
-        PanelAgregarEmpleado.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 215, -1, -1));
+        PanelAgregarEmpleado.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
 
+        jLabel9.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         jLabel9.setText("Fecha de Ingreso:");
-        PanelAgregarEmpleado.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 258, -1, -1));
+        PanelAgregarEmpleado.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
 
+        jLabel10.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         jLabel10.setText("Salario Fijo Mensual:");
-        PanelAgregarEmpleado.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 298, -1, -1));
+        PanelAgregarEmpleado.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
+        jLabel11.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         jLabel11.setText("Salario+Comisiones:");
-        PanelAgregarEmpleado.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 335, -1, 22));
+        PanelAgregarEmpleado.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, 22));
 
+        fnombre.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
         fnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fnombreActionPerformed(evt);
             }
         });
-        PanelAgregarEmpleado.add(fnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 86, 280, -1));
-        PanelAgregarEmpleado.add(fcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 132, 280, -1));
-        PanelAgregarEmpleado.add(fcargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 172, 280, -1));
-        PanelAgregarEmpleado.add(ffechaingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 255, 280, -1));
-        PanelAgregarEmpleado.add(ftelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 212, 280, -1));
-        PanelAgregarEmpleado.add(fsalariofijo, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 295, 280, -1));
-        PanelAgregarEmpleado.add(fsalariocomisiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 335, 280, -1));
+        PanelAgregarEmpleado.add(fnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 280, -1));
 
+        fcedula.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        PanelAgregarEmpleado.add(fcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 280, -1));
+
+        fcargo.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        PanelAgregarEmpleado.add(fcargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 280, -1));
+
+        ffechaingreso.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        PanelAgregarEmpleado.add(ffechaingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 280, -1));
+
+        ftelefono.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        PanelAgregarEmpleado.add(ftelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 280, -1));
+
+        fsalariofijo.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        PanelAgregarEmpleado.add(fsalariofijo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 280, -1));
+
+        fsalariocomisiones.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        PanelAgregarEmpleado.add(fsalariocomisiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 280, -1));
+
+        cerrar.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         cerrar.setText("Cerrar");
         cerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1395,59 +1421,61 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelAgregarEmpleado.add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, -1, -1));
 
+        BotonAgregarEmpleados.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         BotonAgregarEmpleados.setText("Agregar");
         BotonAgregarEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonAgregarEmpleadosActionPerformed(evt);
             }
         });
-        PanelAgregarEmpleado.add(BotonAgregarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 404, -1, -1));
+        PanelAgregarEmpleado.add(BotonAgregarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, -1, -1));
 
+        BotonLimpiar.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         BotonLimpiar.setText("Limpiar");
         BotonLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonLimpiarActionPerformed(evt);
             }
         });
-        PanelAgregarEmpleado.add(BotonLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 404, -1, -1));
+        PanelAgregarEmpleado.add(BotonLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 400, -1, -1));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/empleado sin fondo.png"))); // NOI18N
         PanelAgregarEmpleado.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 170, 210));
 
-        error7.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error7.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
         error7.setForeground(new java.awt.Color(255, 0, 0));
         error7.setText("(!) Salario debe contener solo numeros mayores a cero");
-        PanelAgregarEmpleado.add(error7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 290, -1));
+        PanelAgregarEmpleado.add(error7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 290, -1));
 
-        error1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error1.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
         error1.setForeground(new java.awt.Color(255, 0, 0));
         error1.setText("(!) El nombre no debe contener números ni caracteres especiales.");
-        PanelAgregarEmpleado.add(error1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 290, -1));
+        PanelAgregarEmpleado.add(error1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 290, -1));
 
-        error2.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error2.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
         error2.setForeground(new java.awt.Color(255, 0, 0));
         error2.setText("(!) La cédula debe contener solo números.");
-        PanelAgregarEmpleado.add(error2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 158, 290, 10));
+        PanelAgregarEmpleado.add(error2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 290, 10));
 
-        error3.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error3.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
         error3.setForeground(new java.awt.Color(255, 0, 0));
         error3.setText("(!) Este campo no debe contener números ni caracteres especiales.");
-        PanelAgregarEmpleado.add(error3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 194, 300, -1));
+        PanelAgregarEmpleado.add(error3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 300, -1));
 
-        error4.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error4.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
         error4.setForeground(new java.awt.Color(255, 0, 0));
         error4.setText("(!) El telefono solo debe contener 10 digitos numéricos.");
-        PanelAgregarEmpleado.add(error4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 290, 20));
+        PanelAgregarEmpleado.add(error4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 290, 20));
 
-        error5.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error5.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
         error5.setForeground(new java.awt.Color(255, 0, 0));
         error5.setText("(!) Formato de fecha no válido. Recuerde (DD/MM/AA)");
-        PanelAgregarEmpleado.add(error5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 290, 10));
+        PanelAgregarEmpleado.add(error5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 290, 10));
 
-        error6.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        error6.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
         error6.setForeground(new java.awt.Color(255, 0, 0));
         error6.setText("(!) Salario debe contener solo numeros mayores a cero");
-        PanelAgregarEmpleado.add(error6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 290, 10));
+        PanelAgregarEmpleado.add(error6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 290, 10));
 
         javax.swing.GroupLayout FrameAgregarLayout = new javax.swing.GroupLayout(FrameAgregar.getContentPane());
         FrameAgregar.getContentPane().setLayout(FrameAgregarLayout);
@@ -1480,7 +1508,7 @@ public class Principal extends javax.swing.JFrame {
         TablaEMPLEADOS.setAutoCreateRowSorter(true);
         TablaEMPLEADOS.setBackground(new java.awt.Color(255, 204, 204));
         TablaEMPLEADOS.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
-        TablaEMPLEADOS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        TablaEMPLEADOS.setFont(new java.awt.Font("Poor Richard", 1, 18)); // NOI18N
         TablaEMPLEADOS.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null}
@@ -1518,6 +1546,7 @@ public class Principal extends javax.swing.JFrame {
         PanelEmpleados.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 180, 1101, -1));
         jScrollPane1.getAccessibleContext().setAccessibleName("");
 
+        EmpleBuscador.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
         EmpleBuscador.setText("Buscar...");
         EmpleBuscador.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1539,7 +1568,7 @@ public class Principal extends javax.swing.JFrame {
         PanelEmpleados.add(MostrarBusquedaEmple, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 1060, 30));
 
         BotonparaAgregar.setBackground(new java.awt.Color(204, 0, 0));
-        BotonparaAgregar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonparaAgregar.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         BotonparaAgregar.setForeground(new java.awt.Color(255, 255, 255));
         BotonparaAgregar.setText("+ (Nuevo Registro)");
         BotonparaAgregar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1552,7 +1581,7 @@ public class Principal extends javax.swing.JFrame {
         PanelEmpleados.add(BotonparaAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 140, 40));
 
         BotonparaEliminar.setBackground(new java.awt.Color(204, 0, 0));
-        BotonparaEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonparaEliminar.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         BotonparaEliminar.setForeground(new java.awt.Color(255, 255, 255));
         BotonparaEliminar.setText("- (Eliminar Registro)");
         BotonparaEliminar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1565,7 +1594,7 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelEmpleados.add(BotonparaEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 80, 140, 40));
 
-        BotonOrdenarSalario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonOrdenarSalario.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
         BotonOrdenarSalario.setText("Ordenar por Salario");
         BotonOrdenarSalario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1574,7 +1603,7 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelEmpleados.add(BotonOrdenarSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 60, -1, -1));
 
-        BotonOrdenar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonOrdenar.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
         BotonOrdenar.setText("Ordenar por nombre");
         BotonOrdenar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1583,7 +1612,7 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelEmpleados.add(BotonOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 20, -1, -1));
 
-        BotonSinOrdenar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonSinOrdenar.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
         BotonSinOrdenar.setText("Sin ordenar");
         PanelEmpleados.add(BotonSinOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 100, -1, -1));
 
