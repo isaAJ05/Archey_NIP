@@ -2421,7 +2421,7 @@ public class Principal extends javax.swing.JFrame {
     JPanel Actual;
 
     private void Boton_EmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_EmpleadosActionPerformed
-
+        sonido("/Sonidos/boop.wav");
         if (Actual != PanelEmpleados) {
             PanelEmpleados.setVisible(true);
             PanelEmpleados.setEnabled(true);
@@ -2444,6 +2444,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton_EmpleadosActionPerformed
 
     private void Boton_VentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_VentasActionPerformed
+        sonido("/Sonidos/boop.wav");
         if (Actual != PanelVentas) {
             PanelVentas.setVisible(true);
             PanelVentas.setEnabled(true);
@@ -2458,6 +2459,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton_VentasActionPerformed
 
     private void Boton_InventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_InventarioActionPerformed
+        sonido("/Sonidos/boop.wav");
         if (Actual != PanelInventario) {
             PanelInventario.setVisible(true);
             PanelInventario.setEnabled(true);
@@ -2471,6 +2473,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton_InventarioActionPerformed
 
     private void InfoBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoBTNActionPerformed
+        sonido("/Sonidos/boop.wav");
         if (Actual != PanelInfo) {
             PanelInfo.setVisible(true);
             PanelInfo.setEnabled(true);
@@ -2630,6 +2633,7 @@ public class Principal extends javax.swing.JFrame {
     Color rojooscuro = Color.decode("#330000");
     Color negro = Color.decode("000000");
     private void ModoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModoActionPerformed
+        sonido("/Sonidos/boop.wav");
         if (Nocturno == true) {//esta oscuro
             System.out.println("Pasar Modo claro");
             TituloPanel.setForeground(rojooscuro);
