@@ -2405,7 +2405,7 @@ public class Principal extends javax.swing.JFrame {
             PanelInfo.setEnabled(true);
             CambiaEstadoPANEL(Actual);
             Actual = PanelInfo;
-            TituloPanel.setText("|  Guia Informativa");
+            TituloPanel.setText("|  Guía Informativa");
             CambiarBotones("PanelInfo");
 //           
             //System.out.println(Actual);
