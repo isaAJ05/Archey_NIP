@@ -986,7 +986,13 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         //INTERFAZ
-        setIconImage(new ImageIcon(getClass().getResource("ICONS/iconooo.png")).getImage());
+        ImageIcon icono = new ImageIcon(getClass().getResource("ICONS/iconooo.png"));
+                setIconImage((icono).getImage());
+                
+                FrameEliminar.setFrameIcon(icono);
+                FrameAgregar.setFrameIcon(icono);
+                FrameEliminarVenta.setFrameIcon(icono);
+                FrameAgregarVenta.setFrameIcon(icono);
         //this.setTitle(" ");
         this.setLocationRelativeTo(null); //centrar ventana
         PanelEmpleados.setVisible(false);
@@ -1628,7 +1634,7 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelEmpleados.add(BTNBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 50, 50));
 
-        MostrarBusquedaEmple.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        MostrarBusquedaEmple.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
         PanelEmpleados.add(MostrarBusquedaEmple, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 1060, 30));
 
         BotonparaAgregar.setBackground(new java.awt.Color(204, 0, 0));
@@ -2070,7 +2076,7 @@ public class Principal extends javax.swing.JFrame {
         PanelInventario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BTNgrafi.setBackground(new java.awt.Color(204, 0, 0));
-        BTNgrafi.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
+        BTNgrafi.setFont(new java.awt.Font("Poor Richard", 3, 18)); // NOI18N
         BTNgrafi.setForeground(new java.awt.Color(255, 255, 255));
         BTNgrafi.setText("Gráficas");
         BTNgrafi.addActionListener(new java.awt.event.ActionListener() {
@@ -2377,7 +2383,7 @@ public class Principal extends javax.swing.JFrame {
             PanelInfo.setEnabled(true);
             CambiaEstadoPANEL(Actual);
             Actual = PanelInfo;
-            TituloPanel.setText("|  Guia Informativa");
+            TituloPanel.setText("|  Guía Informativa");
             CambiarBotones("PanelInfo");
 //           
             //System.out.println(Actual);
