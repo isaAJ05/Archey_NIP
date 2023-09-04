@@ -1508,7 +1508,7 @@ public class Principal extends javax.swing.JFrame {
         TablaEMPLEADOS.setAutoCreateRowSorter(true);
         TablaEMPLEADOS.setBackground(new java.awt.Color(255, 204, 204));
         TablaEMPLEADOS.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
-        TablaEMPLEADOS.setFont(new java.awt.Font("Poor Richard", 1, 18)); // NOI18N
+        TablaEMPLEADOS.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
         TablaEMPLEADOS.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null}
