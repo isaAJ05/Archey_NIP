@@ -1371,14 +1371,17 @@ public class Principal extends javax.swing.JFrame {
         FrameEliminar.setVisible(true);
         FrameEliminar.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PanelEliminarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+        PanelEliminarEmpleado.setBackground(new java.awt.Color(255, 204, 204));
         PanelEliminarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel32.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        jLabel32.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(0, 0, 0));
         jLabel32.setText("Nombre:");
         PanelEliminarEmpleado.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
 
-        fnombreE.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        fnombreE.setBackground(new java.awt.Color(255, 102, 102));
+        fnombreE.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
+        fnombreE.setForeground(new java.awt.Color(0, 0, 0));
         fnombreE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fnombreEActionPerformed(evt);
@@ -1386,7 +1389,9 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelEliminarEmpleado.add(fnombreE, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 280, -1));
 
-        cerrar1.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        cerrar1.setBackground(new java.awt.Color(255, 102, 102));
+        cerrar1.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        cerrar1.setForeground(new java.awt.Color(0, 0, 0));
         cerrar1.setText("Cerrar");
         cerrar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1395,16 +1400,20 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelEliminarEmpleado.add(cerrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, -1, -1));
 
-        BotonEliminarEmpleados.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        BotonEliminarEmpleados.setBackground(new java.awt.Color(255, 102, 102));
+        BotonEliminarEmpleados.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        BotonEliminarEmpleados.setForeground(new java.awt.Color(0, 0, 0));
         BotonEliminarEmpleados.setText("Eliminar");
         BotonEliminarEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonEliminarEmpleadosActionPerformed(evt);
             }
         });
-        PanelEliminarEmpleado.add(BotonEliminarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 404, -1, -1));
+        PanelEliminarEmpleado.add(BotonEliminarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 400, -1, -1));
 
-        BotonLimpiar1.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        BotonLimpiar1.setBackground(new java.awt.Color(255, 102, 102));
+        BotonLimpiar1.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        BotonLimpiar1.setForeground(new java.awt.Color(0, 0, 0));
         BotonLimpiar1.setText("Limpiar");
         BotonLimpiar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1413,13 +1422,14 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelEliminarEmpleado.add(BotonLimpiar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 404, -1, -1));
 
+        jLabel33.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
         jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/empleado sin fondo.png"))); // NOI18N
         PanelEliminarEmpleado.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 170, 210));
 
-        errornombre.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
+        errornombre.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
         errornombre.setForeground(new java.awt.Color(255, 0, 0));
         errornombre.setText("(!) El nombre no debe contener números ni caracteres especiales.");
-        PanelEliminarEmpleado.add(errornombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 320, -1));
+        PanelEliminarEmpleado.add(errornombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 400, -1));
 
         FrameEliminar.getContentPane().add(PanelEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 440));
 
@@ -1427,38 +1437,47 @@ public class Principal extends javax.swing.JFrame {
 
         FrameAgregar.setVisible(true);
 
-        PanelAgregarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+        PanelAgregarEmpleado.setBackground(new java.awt.Color(255, 204, 204));
         PanelAgregarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Perpetua", 1, 15)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Nombre:");
-        PanelAgregarEmpleado.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+        PanelAgregarEmpleado.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Perpetua", 1, 15)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Cédula:");
-        PanelAgregarEmpleado.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+        PanelAgregarEmpleado.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Perpetua", 1, 15)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Cargo:");
-        PanelAgregarEmpleado.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+        PanelAgregarEmpleado.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Perpetua", 1, 15)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Teléfono:");
-        PanelAgregarEmpleado.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+        PanelAgregarEmpleado.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Perpetua", 1, 15)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Fecha de Ingreso:");
-        PanelAgregarEmpleado.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
+        PanelAgregarEmpleado.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Perpetua", 1, 15)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Salario Fijo Mensual:");
-        PanelAgregarEmpleado.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
+        PanelAgregarEmpleado.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Perpetua", 1, 15)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Salario+Comisiones:");
-        PanelAgregarEmpleado.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, 22));
+        PanelAgregarEmpleado.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, 22));
 
-        fnombre.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        fnombre.setBackground(new java.awt.Color(255, 102, 102));
+        fnombre.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
+        fnombre.setForeground(new java.awt.Color(0, 0, 0));
         fnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fnombreActionPerformed(evt);
@@ -1466,25 +1485,39 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelAgregarEmpleado.add(fnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 280, -1));
 
-        fcedula.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        fcedula.setBackground(new java.awt.Color(255, 102, 102));
+        fcedula.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
+        fcedula.setForeground(new java.awt.Color(0, 0, 0));
         PanelAgregarEmpleado.add(fcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 280, -1));
 
-        fcargo.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        fcargo.setBackground(new java.awt.Color(255, 102, 102));
+        fcargo.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
+        fcargo.setForeground(new java.awt.Color(0, 0, 0));
         PanelAgregarEmpleado.add(fcargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 280, -1));
 
-        ffechaingreso.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        ffechaingreso.setBackground(new java.awt.Color(255, 102, 102));
+        ffechaingreso.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
+        ffechaingreso.setForeground(new java.awt.Color(0, 0, 0));
         PanelAgregarEmpleado.add(ffechaingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 280, -1));
 
-        ftelefono.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        ftelefono.setBackground(new java.awt.Color(255, 102, 102));
+        ftelefono.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
+        ftelefono.setForeground(new java.awt.Color(0, 0, 0));
         PanelAgregarEmpleado.add(ftelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 280, -1));
 
-        fsalariofijo.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        fsalariofijo.setBackground(new java.awt.Color(255, 102, 102));
+        fsalariofijo.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
+        fsalariofijo.setForeground(new java.awt.Color(0, 0, 0));
         PanelAgregarEmpleado.add(fsalariofijo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 280, -1));
 
-        fsalariocomisiones.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        fsalariocomisiones.setBackground(new java.awt.Color(255, 102, 102));
+        fsalariocomisiones.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
+        fsalariocomisiones.setForeground(new java.awt.Color(0, 0, 0));
         PanelAgregarEmpleado.add(fsalariocomisiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 280, -1));
 
-        cerrar.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        cerrar.setBackground(new java.awt.Color(255, 102, 102));
+        cerrar.setFont(new java.awt.Font("Perpetua", 1, 15)); // NOI18N
+        cerrar.setForeground(new java.awt.Color(0, 0, 0));
         cerrar.setText("Cerrar");
         cerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1493,16 +1526,20 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelAgregarEmpleado.add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, -1, -1));
 
-        BotonAgregarEmpleados.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        BotonAgregarEmpleados.setBackground(new java.awt.Color(255, 102, 102));
+        BotonAgregarEmpleados.setFont(new java.awt.Font("Perpetua", 1, 15)); // NOI18N
+        BotonAgregarEmpleados.setForeground(new java.awt.Color(0, 0, 0));
         BotonAgregarEmpleados.setText("Agregar");
         BotonAgregarEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonAgregarEmpleadosActionPerformed(evt);
             }
         });
-        PanelAgregarEmpleado.add(BotonAgregarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, -1, -1));
+        PanelAgregarEmpleado.add(BotonAgregarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 400, -1, -1));
 
-        BotonLimpiar.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        BotonLimpiar.setBackground(new java.awt.Color(255, 102, 102));
+        BotonLimpiar.setFont(new java.awt.Font("Perpetua", 1, 15)); // NOI18N
+        BotonLimpiar.setForeground(new java.awt.Color(0, 0, 0));
         BotonLimpiar.setText("Limpiar");
         BotonLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1514,40 +1551,40 @@ public class Principal extends javax.swing.JFrame {
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/empleado sin fondo.png"))); // NOI18N
         PanelAgregarEmpleado.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 170, 210));
 
-        error7.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
+        error7.setFont(new java.awt.Font("Perpetua", 0, 13)); // NOI18N
         error7.setForeground(new java.awt.Color(255, 0, 0));
         error7.setText("(!) Salario debe contener solo numeros mayores a cero");
-        PanelAgregarEmpleado.add(error7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 290, -1));
+        PanelAgregarEmpleado.add(error7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 290, -1));
 
-        error1.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
+        error1.setFont(new java.awt.Font("Perpetua", 0, 13)); // NOI18N
         error1.setForeground(new java.awt.Color(255, 0, 0));
         error1.setText("(!) El nombre no debe contener números ni caracteres especiales.");
-        PanelAgregarEmpleado.add(error1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 290, -1));
+        PanelAgregarEmpleado.add(error1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 320, -1));
 
-        error2.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
+        error2.setFont(new java.awt.Font("Perpetua", 0, 13)); // NOI18N
         error2.setForeground(new java.awt.Color(255, 0, 0));
         error2.setText("(!) La cédula debe contener solo números.");
-        PanelAgregarEmpleado.add(error2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 290, 10));
+        PanelAgregarEmpleado.add(error2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 290, 10));
 
-        error3.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
+        error3.setFont(new java.awt.Font("Perpetua", 0, 13)); // NOI18N
         error3.setForeground(new java.awt.Color(255, 0, 0));
         error3.setText("(!) Este campo no debe contener números ni caracteres especiales.");
-        PanelAgregarEmpleado.add(error3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 300, -1));
+        PanelAgregarEmpleado.add(error3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 330, -1));
 
-        error4.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
+        error4.setFont(new java.awt.Font("Perpetua", 0, 13)); // NOI18N
         error4.setForeground(new java.awt.Color(255, 0, 0));
         error4.setText("(!) El telefono solo debe contener 10 digitos numéricos.");
-        PanelAgregarEmpleado.add(error4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 290, 20));
+        PanelAgregarEmpleado.add(error4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 290, 20));
 
-        error5.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
+        error5.setFont(new java.awt.Font("Perpetua", 0, 13)); // NOI18N
         error5.setForeground(new java.awt.Color(255, 0, 0));
         error5.setText("(!) Formato de fecha no válido. Recuerde (DD/MM/AA)");
-        PanelAgregarEmpleado.add(error5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 290, 10));
+        PanelAgregarEmpleado.add(error5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 290, 20));
 
-        error6.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
+        error6.setFont(new java.awt.Font("Perpetua", 0, 13)); // NOI18N
         error6.setForeground(new java.awt.Color(255, 0, 0));
         error6.setText("(!) Salario debe contener solo numeros mayores a cero");
-        PanelAgregarEmpleado.add(error6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 290, 10));
+        PanelAgregarEmpleado.add(error6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 290, 20));
 
         javax.swing.GroupLayout FrameAgregarLayout = new javax.swing.GroupLayout(FrameAgregar.getContentPane());
         FrameAgregar.getContentPane().setLayout(FrameAgregarLayout);
@@ -1727,12 +1764,15 @@ public class Principal extends javax.swing.JFrame {
 
         FrameEliminarVenta.setVisible(true);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
-        jLabel39.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        jLabel39.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(0, 0, 0));
         jLabel39.setText("Seleccione el código:");
 
-        BotonParaEliminarVenta.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        BotonParaEliminarVenta.setBackground(new java.awt.Color(255, 102, 102));
+        BotonParaEliminarVenta.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        BotonParaEliminarVenta.setForeground(new java.awt.Color(0, 0, 0));
         BotonParaEliminarVenta.setText("Eliminar");
         BotonParaEliminarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1740,7 +1780,9 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        cerrareliminar.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        cerrareliminar.setBackground(new java.awt.Color(255, 102, 102));
+        cerrareliminar.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        cerrareliminar.setForeground(new java.awt.Color(0, 0, 0));
         cerrareliminar.setText("Cerrar");
         cerrareliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1748,7 +1790,9 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        combocodigos.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        combocodigos.setBackground(new java.awt.Color(255, 102, 102));
+        combocodigos.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
+        combocodigos.setForeground(new java.awt.Color(0, 0, 0));
         combocodigos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combocodigosActionPerformed(evt);
@@ -1764,7 +1808,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jLabel39)
                 .addGap(18, 18, 18)
                 .addComponent(combocodigos, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addContainerGap(146, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1784,7 +1828,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel39)
                     .addComponent(combocodigos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(BotonParaEliminarVenta)
                 .addGap(77, 77, 77))
         );
@@ -1804,21 +1848,27 @@ public class Principal extends javax.swing.JFrame {
 
         FrameAgregarVenta.setVisible(true);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 204, 204));
 
-        jLabel34.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        jLabel34.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(0, 0, 0));
         jLabel34.setText("Monto de la venta:");
 
-        jLabel35.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        jLabel35.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(0, 0, 0));
         jLabel35.setText("Nombre del vendedor:");
 
-        jLabel36.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        jLabel36.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(0, 0, 0));
         jLabel36.setText("Cédula:");
 
-        jLabel37.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        jLabel37.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(0, 0, 0));
         jLabel37.setText("Tipo de auto:");
 
-        ComboBox.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        ComboBox.setBackground(new java.awt.Color(255, 102, 102));
+        ComboBox.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
+        ComboBox.setForeground(new java.awt.Color(0, 0, 0));
         ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar tipo de auto", "Toyota", "Ford", "Honda", "BMW", "Mercedes" }));
         ComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1826,14 +1876,21 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jLabel38.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        jLabel38.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(0, 0, 0));
         jLabel38.setText("Código del auto:");
 
-        fmonto.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        fmonto.setBackground(new java.awt.Color(255, 102, 102));
+        fmonto.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
+        fmonto.setForeground(new java.awt.Color(0, 0, 0));
 
-        fcodigo.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        fcodigo.setBackground(new java.awt.Color(255, 102, 102));
+        fcodigo.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
+        fcodigo.setForeground(new java.awt.Color(0, 0, 0));
 
-        cerraragregarventa.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        cerraragregarventa.setBackground(new java.awt.Color(255, 102, 102));
+        cerraragregarventa.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        cerraragregarventa.setForeground(new java.awt.Color(0, 0, 0));
         cerraragregarventa.setText("Cerrar");
         cerraragregarventa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1841,7 +1898,9 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        jButton3.setBackground(new java.awt.Color(255, 102, 102));
+        jButton3.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setText("Limpiar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1849,15 +1908,17 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        error3v.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
+        error3v.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
         error3v.setForeground(new java.awt.Color(255, 0, 0));
         error3v.setText("(!) El código debe contener 6 caracteres.");
 
-        error4v.setFont(new java.awt.Font("Poor Richard", 0, 13)); // NOI18N
+        error4v.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
         error4v.setForeground(new java.awt.Color(255, 0, 0));
         error4v.setText("(!)Monto debe contener solo numeros mayores a cero");
 
-        fvendedor.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        fvendedor.setBackground(new java.awt.Color(255, 102, 102));
+        fvendedor.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
+        fvendedor.setForeground(new java.awt.Color(0, 0, 0));
         fvendedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar empleado" }));
         fvendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1866,9 +1927,13 @@ public class Principal extends javax.swing.JFrame {
         });
 
         fcedulav.setEditable(false);
-        fcedulav.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        fcedulav.setBackground(new java.awt.Color(255, 102, 102));
+        fcedulav.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
+        fcedulav.setForeground(new java.awt.Color(0, 0, 0));
 
-        jButton2.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        jButton2.setBackground(new java.awt.Color(255, 102, 102));
+        jButton2.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Agregar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1895,8 +1960,8 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabel34)
                         .addGap(41, 41, 41)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(error4v, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fmonto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(fmonto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(error4v, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -1911,9 +1976,9 @@ public class Principal extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(fcedulav, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(78, 78, Short.MAX_VALUE))
+                .addGap(56, 56, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(326, Short.MAX_VALUE)
+                .addContainerGap(337, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton2)
@@ -1946,8 +2011,8 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(fcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel38))
                 .addGap(1, 1, 1)
-                .addComponent(error3v, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(error3v, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fmonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel34))
@@ -1957,7 +2022,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton2))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout FrameAgregarVentaLayout = new javax.swing.GroupLayout(FrameAgregarVenta.getContentPane());
