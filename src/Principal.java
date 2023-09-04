@@ -1868,6 +1868,7 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane3.setForeground(new java.awt.Color(51, 0, 0));
         jScrollPane3.setAutoscrolls(true);
         jScrollPane3.setFont(new java.awt.Font("Adobe Gothic Std B", 1, 14)); // NOI18N
+        jScrollPane3.setOpaque(false);
 
         TablaVENTAS.setBackground(new java.awt.Color(255, 204, 204));
         TablaVENTAS.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
@@ -1899,9 +1900,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         TablaVENTAS.setDoubleBuffered(true);
-        TablaVENTAS.setGridColor(new java.awt.Color(255, 255, 255));
-        TablaVENTAS.setOpaque(false);
-        TablaVENTAS.setRequestFocusEnabled(false);
         TablaVENTAS.setRowHeight(40);
         TablaVENTAS.setSelectionBackground(new java.awt.Color(255, 153, 153));
         TablaVENTAS.setSelectionForeground(new java.awt.Color(153, 0, 0));
@@ -2471,7 +2469,6 @@ public class Principal extends javax.swing.JFrame {
             InfoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/InfoIMGclarox1125.png")));
             Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53.png")));
             Modo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/Nightx53brillo.png")));
-
             URL imageURL = Principal.class.getResource("/Imagenes/borrosoclaroempleadp.png");
             ImageIcon imageIconE = new ImageIcon(imageURL);
             LabelFondoBorroso.setIcon(imageIconE);
@@ -2488,6 +2485,7 @@ public class Principal extends javax.swing.JFrame {
             PanelVentas.setBackground(fondooscuro);
             PanelInfo.setBackground(fondooscuro);
             PanelInventario.setBackground(fondooscuro);
+            
             InventarioSubPanel.setBackground(fondooscuro);
             BotonOrdenar.setForeground(fondoclaro);
             jPanel3.setBackground(fondooscuro);
@@ -2502,7 +2500,6 @@ public class Principal extends javax.swing.JFrame {
             ImageIcon imageIcon2 = new ImageIcon(imageURL2);
             InfoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/InfoIMGoscurox1125.png")));
             fondoborrosoventas.setIcon(imageIcon2);
-
             Modo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/solsinfondpx53.png")));
             Modo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONS/solsinfondpx53brillo.png")));
             TituloPanel.repaint();
