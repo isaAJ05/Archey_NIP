@@ -2427,7 +2427,8 @@ public class Principal extends javax.swing.JFrame {
             PanelEmpleados.setEnabled(true);
             CambiaEstadoPANEL(Actual);
             Actual = PanelEmpleados;
-
+            EmpleBuscador.setText("Buscar...");
+            MostrarBusquedaEmple.setText(null);
             //System.out.println(Actual); } *
             TituloPanel.setText("|  Empleados");
 //            
@@ -2448,10 +2449,10 @@ public class Principal extends javax.swing.JFrame {
             PanelVentas.setEnabled(true);
             CambiaEstadoPANEL(Actual);
             Actual = PanelVentas;
-
+            BuscadorVentas.setText("Buscar ...");
             TituloPanel.setText("|  Ventas");
             CambiarBotones("PanelVentas");
-//            
+            MostrarBusquedaVentas.setText(null);
             //System.out.println(Actual);
         }
     }//GEN-LAST:event_Boton_VentasActionPerformed
@@ -2930,10 +2931,13 @@ public class Principal extends javax.swing.JFrame {
 
     private void BuscadorVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscadorVentasMouseClicked
         BuscadorVentas.setText(null);
+        MostrarBusquedaVentas.setText(null);
+        
     }//GEN-LAST:event_BuscadorVentasMouseClicked
 
     private void EmpleBuscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmpleBuscadorMouseClicked
         EmpleBuscador.setText(null);
+        MostrarBusquedaEmple.setText(null);
     }//GEN-LAST:event_EmpleBuscadorMouseClicked
 
     private void BTNBuscarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNBuscarVentasActionPerformed
