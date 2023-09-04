@@ -1655,7 +1655,7 @@ public class Principal extends javax.swing.JFrame {
         PanelEmpleados.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 180, 1101, -1));
         jScrollPane1.getAccessibleContext().setAccessibleName("");
 
-        EmpleBuscador.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        EmpleBuscador.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
         EmpleBuscador.setText("Buscar...");
         EmpleBuscador.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1678,11 +1678,11 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelEmpleados.add(BTNBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 50, 50));
 
-        MostrarBusquedaEmple.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        MostrarBusquedaEmple.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
         PanelEmpleados.add(MostrarBusquedaEmple, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 1060, 30));
 
         BotonparaAgregar.setBackground(new java.awt.Color(204, 0, 0));
-        BotonparaAgregar.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        BotonparaAgregar.setFont(new java.awt.Font("Perpetua", 1, 15)); // NOI18N
         BotonparaAgregar.setForeground(new java.awt.Color(255, 255, 255));
         BotonparaAgregar.setText("+ (Nuevo Registro)");
         BotonparaAgregar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1695,7 +1695,7 @@ public class Principal extends javax.swing.JFrame {
         PanelEmpleados.add(BotonparaAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 140, 40));
 
         BotonparaEliminar.setBackground(new java.awt.Color(204, 0, 0));
-        BotonparaEliminar.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
+        BotonparaEliminar.setFont(new java.awt.Font("Perpetua", 1, 15)); // NOI18N
         BotonparaEliminar.setForeground(new java.awt.Color(255, 255, 255));
         BotonparaEliminar.setText("- (Eliminar Registro)");
         BotonparaEliminar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1708,7 +1708,7 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelEmpleados.add(BotonparaEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 80, 140, 40));
 
-        BotonOrdenarSalario.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        BotonOrdenarSalario.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
         BotonOrdenarSalario.setText("Ordenar por Salario");
         BotonOrdenarSalario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1717,7 +1717,7 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelEmpleados.add(BotonOrdenarSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 60, -1, -1));
 
-        BotonOrdenar.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        BotonOrdenar.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
         BotonOrdenar.setText("Ordenar por nombre");
         BotonOrdenar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1726,7 +1726,7 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelEmpleados.add(BotonOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 20, -1, -1));
 
-        BotonSinOrdenar.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        BotonSinOrdenar.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
         BotonSinOrdenar.setText("Sin ordenar");
         PanelEmpleados.add(BotonSinOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 100, -1, -1));
 
@@ -1736,7 +1736,7 @@ public class Principal extends javax.swing.JFrame {
         PanelVentas.setPreferredSize(new java.awt.Dimension(1240, 700));
         PanelVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BuscadorVentas.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        BuscadorVentas.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
         BuscadorVentas.setText("Buscar...");
         BuscadorVentas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1759,7 +1759,7 @@ public class Principal extends javax.swing.JFrame {
         });
         PanelVentas.add(BTNBuscarVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 50, 50));
 
-        MostrarBusquedaVentas.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        MostrarBusquedaVentas.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
         PanelVentas.add(MostrarBusquedaVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 1090, 30));
 
         FrameEliminarVenta.setVisible(true);
@@ -2090,7 +2090,7 @@ public class Principal extends javax.swing.JFrame {
         PanelVentas.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 176, 1101, -1));
 
         BotonEliminarVenta.setBackground(new java.awt.Color(204, 0, 0));
-        BotonEliminarVenta.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        BotonEliminarVenta.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
         BotonEliminarVenta.setForeground(new java.awt.Color(255, 255, 255));
         BotonEliminarVenta.setText("(-) Eliminar Registro");
         BotonEliminarVenta.addActionListener(new java.awt.event.ActionListener() {
@@ -2101,7 +2101,7 @@ public class Principal extends javax.swing.JFrame {
         PanelVentas.add(BotonEliminarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 70, -1, 30));
 
         BotonRegistrarVenta.setBackground(new java.awt.Color(204, 0, 0));
-        BotonRegistrarVenta.setFont(new java.awt.Font("Poor Richard", 0, 15)); // NOI18N
+        BotonRegistrarVenta.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
         BotonRegistrarVenta.setForeground(new java.awt.Color(255, 255, 255));
         BotonRegistrarVenta.setText("(+) Registrar Venta");
         BotonRegistrarVenta.addActionListener(new java.awt.event.ActionListener() {
