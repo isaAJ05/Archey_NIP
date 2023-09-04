@@ -118,7 +118,7 @@ public class Principal extends javax.swing.JFrame {
                 String line = null;
                 DefaultTableModel model = (DefaultTableModel) tabla.getModel();
                 model.setRowCount(0);
-
+ 
                 while ((line = br.readLine()) != null) {
                     String temp[] = line.split("\t");
 
@@ -170,21 +170,7 @@ public class Principal extends javax.swing.JFrame {
                         }
                     }
                 } else {
-                    /**
-                     * ESTO ES INTERESANTE ES ALGO PROPIO DE LA TABLA
-                     * TableRowSorter<DefaultTableModel> sorter = new
-                     * TableRowSorter<>(model); tabla.setRowSorter(sorter);
-                     *
-                     * // Ordenar por la columna de salario de mayor a menor
-                     * int salarioColumna = 6;
-                     * sorter.setComparator(salarioColumna, new
-                     * Comparator<String>() {
-                     *
-                     * @Override public int compare(String o1, String o2) {
-                     * double salario1 = Double.parseDouble(o1); double salario2
-                     * = Double.parseDouble(o2); return Double.compare(salario2,
-                     * salario1); } }); *
-                     */
+                    
                     //Ordenamiento Burbuja
                     int salarioColumna = 6;
                     int contador = model.getRowCount();
@@ -452,7 +438,8 @@ public class Principal extends javax.swing.JFrame {
             }
         }
     }
-    //Variables Globales
+    
+//Variables Globales                                                    ////////////////////////////////////
     int cantT, cantF, cantH, cantB, cantM;//contador de autos
     double MontoT, MontoF, MontoH, MontoB, MontoM;//contador de monto
     //09 Subrutina para relacionar autos vendidos con el inventario
@@ -774,7 +761,7 @@ public class Principal extends javax.swing.JFrame {
         return false;
     }
     
-    DefaultComboBoxModel<String> modelV = new DefaultComboBoxModel<>();
+    DefaultComboBoxModel<String> modelV = new DefaultComboBoxModel<>(); ///////////////////////////////////
 
 // Método para cargar elementos iniciales desde el archivo
 private void cargarElementosDesdeArchivo2() {
@@ -804,7 +791,7 @@ private void cargarElementosDesdeArchivo2() {
     fvendedor.setModel(modelV); // Asigna el modelo al JComboBox
 }
 
-// Método para verificar si un elemento ya existe en el JComboBox
+// Método para verificar si un elemento ya existe en el JComboBox       
 private boolean existeEnComboBox2(String nombre) {
     for (int i = 0; i < modelV.getSize(); i++) {
         if (nombre.equalsIgnoreCase(modelV.getElementAt(i))) {
@@ -948,7 +935,7 @@ private boolean existeEnComboBox2(String nombre) {
 
         try {
             double salariofijo = Double.parseDouble(c7);
-            if (salariofijo < 0) {
+            if (salariofijo < 0) { //Si es negatico
                 error7.setVisible(false);
             }
         } catch (NumberFormatException e) {
@@ -982,7 +969,7 @@ private boolean existeEnComboBox2(String nombre) {
     public boolean validacionventa2(String c4, String c5) {
 
         //Validacion Codigo
-        if (c4.length() != 6) {
+        if (c4.length() != 6) { //6 DIGITOS 
             error3v.setVisible(true); // Mostrar mensaje de error
             sonido("/Sonidos/error.wav");
             return false;
@@ -2521,7 +2508,7 @@ private boolean existeEnComboBox2(String nombre) {
     private void BotonOrdenarSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonOrdenarSalarioActionPerformed
 
     }//GEN-LAST:event_BotonOrdenarSalarioActionPerformed
-
+///////////////////////////////////////
     private void BotonparaAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonparaAgregarActionPerformed
         sonido("/Sonidos/ficha.wav");
         FrameAgregar.setVisible(true);
@@ -2533,7 +2520,6 @@ private boolean existeEnComboBox2(String nombre) {
         BotonOrdenar.setVisible(false);
         BotonOrdenarSalario.setVisible(false);
         BotonSinOrdenar.setVisible(false);
-
 
     }//GEN-LAST:event_BotonparaAgregarActionPerformed
 
@@ -2804,8 +2790,8 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
         fmonto.setText("");
         sonido("/Sonidos/ficha.wav");
     }//GEN-LAST:event_jButton3ActionPerformed
-
-
+/////////////////////////////////////////////////////////////////
+    //Graficas
     private void BTNgrafiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNgrafiActionPerformed
         sonido("/Sonidos/boop.wav");
         //cambiar nombre boton
@@ -2932,8 +2918,7 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
 
     private void BuscadorVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscadorVentasMouseClicked
         BuscadorVentas.setText(null);
-        MostrarBusquedaVentas.setText(null);
-        
+        MostrarBusquedaVentas.setText(null); 
     }//GEN-LAST:event_BuscadorVentasMouseClicked
 
     private void EmpleBuscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmpleBuscadorMouseClicked
@@ -2984,7 +2969,6 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
                 }
             }
         }
-
         if (coincidenciaEncontrada == true) {
             MostrarBusquedaVentas.setVisible(true);
             MostrarBusquedaVentas.setText("Venta encontrada");
