@@ -816,12 +816,12 @@
         <Component class="javax.swing.JLabel" name="LabelFondoBorroso">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/fondorojo.png"/>
+              <Image iconType="3" name="/Imagenes/rojofondo1.png"/>
             </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="-130" width="1480" height="890"/>
+              <AbsoluteConstraints x="0" y="-120" width="1480" height="890"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -1578,7 +1578,7 @@
         <Component class="javax.swing.JLabel" name="fondoborrosoventas">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/fondorojo.png"/>
+              <Image iconType="3" name="/Imagenes/rojofondo.png"/>
             </Property>
           </Properties>
           <Constraints>
