@@ -1508,7 +1508,7 @@ public class Principal extends javax.swing.JFrame {
         TablaEMPLEADOS.setAutoCreateRowSorter(true);
         TablaEMPLEADOS.setBackground(new java.awt.Color(255, 204, 204));
         TablaEMPLEADOS.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
-        TablaEMPLEADOS.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
+        TablaEMPLEADOS.setFont(new java.awt.Font("Palatino Linotype", 0, 18)); // NOI18N
         TablaEMPLEADOS.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null}
@@ -1901,7 +1901,7 @@ public class Principal extends javax.swing.JFrame {
 
         TablaVENTAS.setBackground(new java.awt.Color(255, 204, 204));
         TablaVENTAS.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
-        TablaVENTAS.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        TablaVENTAS.setFont(new java.awt.Font("Palatino Linotype", 0, 18)); // NOI18N
         TablaVENTAS.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
