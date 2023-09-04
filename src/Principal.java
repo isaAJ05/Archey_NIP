@@ -141,9 +141,9 @@ public class Principal extends javax.swing.JFrame {
         boolean hay = false;
         while (hay == false) {
             try {
-                BufferedReader br = new BufferedReader(new FileReader(file_name + ".txt"));
+                BufferedReader br = new BufferedReader(new FileReader(file_name + ".txt")); //Leer
                 String line = null;
-                DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+                DefaultTableModel model = (DefaultTableModel) tabla.getModel(); //Tabla
                 model.setRowCount(0);
 
                 while ((line = br.readLine()) != null) {
@@ -533,12 +533,12 @@ public class Principal extends javax.swing.JFrame {
 
     public void actualizarSalarioConComisiones(String file_name, String NombreVendedor, String Monto, JTable tabla) {
         try {
-            File archivoOriginal = new File(file_name + ".txt");
-            File archivoTemporal = new File("EmpleadosTemp.txt");
+            File archivoOriginal = new File(file_name + ".txt"); 
+            File archivoTemporal = new File("EmpleadosTemp.txt"); //Se crear una copia Empleados
 
-            FileReader fr = new FileReader(archivoOriginal);
+            FileReader fr = new FileReader(archivoOriginal); //leer original
             BufferedReader br = new BufferedReader(fr);
-            FileWriter fw = new FileWriter(archivoTemporal);
+            FileWriter fw = new FileWriter(archivoTemporal);//Escribe en la copia
             BufferedWriter bw = new BufferedWriter(fw);
 
             DefaultTableModel model = (DefaultTableModel) tabla.getModel();
@@ -547,14 +547,14 @@ public class Principal extends javax.swing.JFrame {
             String linea;
             boolean cambiosRealizados = false; // Variable para rastrear si se realizaron cambios
 
-            while ((linea = br.readLine()) != null) {
+            while ((linea = br.readLine()) != null) { //Original
                 String[] campos = linea.split("\t");
-                String nombre = campos[0];
-                double SalarioF = Double.parseDouble(campos[5]); // Índice del salario fijo+comisiones
+                String nombre = campos[0];//Campo nombre
+                double SalarioF = Double.parseDouble(campos[5]); // Índice del salario Fijo
                 double SalarioC = Double.parseDouble(campos[6]); // Índice del salario fijo+comisiones
 
                 // Solo calcular comisiones y actualizar salario si el nombre coincide
-                if (nombre.equalsIgnoreCase(NombreVendedor)) {
+                if (nombre.equalsIgnoreCase(NombreVendedor)) {//Verificacion
                     double comisiones = Double.parseDouble(Monto) * 0.02;
                     // Calcular el salario total
                     double salarioTotal;
@@ -576,7 +576,6 @@ public class Principal extends javax.swing.JFrame {
                 bw.write(nuevaLinea);
                 bw.newLine();
             }
-
             br.close();
             bw.close();
 
@@ -1229,7 +1228,7 @@ public class Principal extends javax.swing.JFrame {
         error4v = new javax.swing.JLabel();
         fvendedor = new javax.swing.JComboBox<>();
         fcedulav = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        AgregarVenta = new javax.swing.JButton();
         FrameEliminarVenta = new javax.swing.JInternalFrame();
         jPanel1 = new javax.swing.JPanel();
         jLabel39 = new javax.swing.JLabel();
@@ -1392,11 +1391,6 @@ public class Principal extends javax.swing.JFrame {
 
         fnombreE.setBackground(new java.awt.Color(255, 102, 102));
         fnombreE.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
-        fnombreE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fnombreEActionPerformed(evt);
-            }
-        });
         PanelEliminarEmpleado.add(fnombreE, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 280, -1));
 
         cerrar1.setBackground(new java.awt.Color(255, 102, 102));
@@ -1477,11 +1471,6 @@ public class Principal extends javax.swing.JFrame {
 
         fnombre.setBackground(new java.awt.Color(255, 102, 102));
         fnombre.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
-        fnombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fnombreActionPerformed(evt);
-            }
-        });
         PanelAgregarEmpleado.add(fnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 280, -1));
 
         fcedula.setBackground(new java.awt.Color(255, 102, 102));
@@ -1700,20 +1689,10 @@ public class Principal extends javax.swing.JFrame {
 
         BotonOrdenarSalario.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
         BotonOrdenarSalario.setText("Ordenar por Salario");
-        BotonOrdenarSalario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonOrdenarSalarioActionPerformed(evt);
-            }
-        });
         PanelEmpleados.add(BotonOrdenarSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 60, -1, -1));
 
         BotonOrdenar.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
         BotonOrdenar.setText("Ordenar por nombre");
-        BotonOrdenar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonOrdenarActionPerformed(evt);
-            }
-        });
         PanelEmpleados.add(BotonOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 20, -1, -1));
 
         BotonSinOrdenar.setFont(new java.awt.Font("Perpetua", 0, 15)); // NOI18N
@@ -1745,11 +1724,6 @@ public class Principal extends javax.swing.JFrame {
         ComboBox.setBackground(new java.awt.Color(255, 102, 102));
         ComboBox.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
         ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar tipo de auto", "Toyota", "Ford", "Honda", "BMW", "Mercedes" }));
-        ComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBoxActionPerformed(evt);
-            }
-        });
 
         jLabel38.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
         jLabel38.setText("Código del auto:");
@@ -1799,12 +1773,12 @@ public class Principal extends javax.swing.JFrame {
         fcedulav.setBackground(new java.awt.Color(255, 102, 102));
         fcedulav.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
 
-        jButton2.setBackground(new java.awt.Color(255, 102, 102));
-        jButton2.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
-        jButton2.setText("Agregar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        AgregarVenta.setBackground(new java.awt.Color(255, 102, 102));
+        AgregarVenta.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        AgregarVenta.setText("Agregar");
+        AgregarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                AgregarVentaActionPerformed(evt);
             }
         });
 
@@ -1848,7 +1822,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(337, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(AgregarVenta)
                         .addGap(39, 39, 39)
                         .addComponent(jButton3))
                     .addComponent(cerraragregarventa))
@@ -1888,7 +1862,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
-                    .addComponent(jButton2))
+                    .addComponent(AgregarVenta))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -2392,7 +2366,7 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     JPanel Actual;
-
+    //Botones de paneles
     private void Boton_EmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_EmpleadosActionPerformed
         sonido("/Sonidos/boop.wav");
         if (Actual != PanelEmpleados) {
@@ -2458,18 +2432,10 @@ public class Principal extends javax.swing.JFrame {
             //System.out.println(Actual);
         }
     }//GEN-LAST:event_InfoBTNActionPerformed
-
-    private void BotonOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonOrdenarActionPerformed
-
-    }//GEN-LAST:event_BotonOrdenarActionPerformed
-
-    private void BotonOrdenarSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonOrdenarSalarioActionPerformed
-
-    }//GEN-LAST:event_BotonOrdenarSalarioActionPerformed
-
+    //Frames Emergentes
     private void BotonparaAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonparaAgregarActionPerformed
         sonido("/Sonidos/ficha.wav");
-        FrameAgregar.setVisible(true);
+        FrameAgregar.setVisible(true);//Visualizar frame 
         TablaEMPLEADOS.setVisible(false);
         jScrollPane1.setVisible(false);
         LabelFondoBorroso.setVisible(true);
@@ -2478,8 +2444,6 @@ public class Principal extends javax.swing.JFrame {
         BotonOrdenar.setVisible(false);
         BotonOrdenarSalario.setVisible(false);
         BotonSinOrdenar.setVisible(false);
-
-
     }//GEN-LAST:event_BotonparaAgregarActionPerformed
 
     private void cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarActionPerformed
@@ -2496,21 +2460,17 @@ public class Principal extends javax.swing.JFrame {
         Limpiar();
         TituloPanel.repaint();
     }//GEN-LAST:event_cerrarActionPerformed
-
-    private void fnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fnombreActionPerformed
-
+//BOTON AGREGAR EMPLEADOS - USO DE SUBRUTINAS Y FUNCIONES
     private void BotonAgregarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarEmpleadosActionPerformed
-        AgregarEmpleados("Empleados");
+        AgregarEmpleados("Empleados"); //Se llama a la subrutina
         Scanner sc = new Scanner(System.in);
-        LeerNormal(sc, "Empleados", TablaEMPLEADOS);
+        LeerNormal(sc, "Empleados", TablaEMPLEADOS); //Se llama a la subrutina
         sc.close();
     }//GEN-LAST:event_BotonAgregarEmpleadosActionPerformed
 
     private void BotonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonLimpiarActionPerformed
 sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST:event_BotonLimpiarActionPerformed
-
+//Frames Emergentes
     private void BotonparaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonparaEliminarActionPerformed
         sonido("/Sonidos/ficha.wav");
         FrameEliminar.setVisible(true);
@@ -2524,10 +2484,6 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
         BotonSinOrdenar.setVisible(false);
 
     }//GEN-LAST:event_BotonparaEliminarActionPerformed
-
-    private void fnombreEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnombreEActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fnombreEActionPerformed
 
     private void cerrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrar1ActionPerformed
         LabelFondoBorroso.setVisible(false);
@@ -2564,7 +2520,7 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
         sonido("/Sonidos/ficha.wav");
 
     }//GEN-LAST:event_BotonLimpiar1ActionPerformed
-
+//Frames Emergentes Y VALIDACIONEs
     private void BotonRegistrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarVentaActionPerformed
         sonido("/Sonidos/ficha.wav");
         FrameAgregarVenta.setVisible(true);
@@ -2602,7 +2558,6 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }//GEN-LAST:event_BotonRegistrarVentaActionPerformed
 
     boolean Nocturno;
@@ -2610,6 +2565,8 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
     Color fondooscuro = Color.decode("#2A2333");
     Color rojooscuro = Color.decode("#330000");
     Color negro = Color.decode("000000");
+    //decoracion
+    //Modo noctuno
     private void ModoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModoActionPerformed
         sonido("/Sonidos/boop.wav");
         if (Nocturno == true) {//esta oscuro
@@ -2670,10 +2627,11 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
 //       
     }//GEN-LAST:event_ModoActionPerformed
 
+//Frames Emergentes
     private void cerraragregarventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerraragregarventaActionPerformed
         FrameAgregarVenta.setVisible(false);
         fondoborrosoventas.setVisible(false);
-        LimpiarCamposVentas();
+        LimpiarCamposVentas(); 
         TablaVENTAS.setVisible(true);
         jScrollPane3.setVisible(true);
         BotonRegistrarVenta.setVisible(true);
@@ -2685,7 +2643,7 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
     private void limpiarventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarventasActionPerformed
         LimpiarCamposVentas();
     }//GEN-LAST:event_limpiarventasActionPerformed
-
+//Subrutinas usadas
     private void BotonEliminarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarVentaActionPerformed
         sonido("/Sonidos/ficha.wav");
         FrameEliminarVenta.setVisible(true);
@@ -2694,27 +2652,26 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
         jScrollPane3.setVisible(false);
         BotonRegistrarVenta.setVisible(false);
         BotonEliminarVenta.setVisible(false);
-        cargarElementosDesdeArchivo();
+        cargarElementosDesdeArchivo(); //Subrutina
 
     }//GEN-LAST:event_BotonEliminarVentaActionPerformed
-
+//Validaciones cODIGO AUTO
     private void BotonParaEliminarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonParaEliminarVentaActionPerformed
         System.out.println("Codigo a Eliminar: " + CodigoE);
-        if (CodigoE.equalsIgnoreCase("Seleccionar empleado")) {
+        if (CodigoE.equalsIgnoreCase("Seleccionar empleado")) { //vALIDACION
                         sonido("/Sonidos/error.wav");
             JOptionPane.showMessageDialog(null, "Debe seleccionar un codigo.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             Scanner sc = new Scanner(System.in);
-            EliminarRegistroVenta(sc, "Ventas", TablaVENTAS);
+            EliminarRegistroVenta(sc, "Ventas", TablaVENTAS); //SUBRUTINA
             sc.close();
             Scanner sc2 = new Scanner(System.in);
-            LeerNormal(sc2, "Ventas", TablaVENTAS);
+            LeerNormal(sc2, "Ventas", TablaVENTAS);//SUBRUTINA
             sc2.close();
         }
-        cargarElementosDesdeArchivo();
-        
+        cargarElementosDesdeArchivo();//sUBRUTINA
     }//GEN-LAST:event_BotonParaEliminarVentaActionPerformed
-
+ //Frames Emergentes
     private void cerrareliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrareliminarActionPerformed
         FrameEliminarVenta.setVisible(false);
         fondoborrosoventas.setVisible(false);
@@ -2725,6 +2682,8 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
         TituloPanel.repaint();
     }//GEN-LAST:event_cerrareliminarActionPerformed
     String NombreEmpleado, TipoAuto;
+    
+    //vALIDACIONES
     private void fvendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fvendedorActionPerformed
 
         DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) fvendedor.getModel();
@@ -2759,17 +2718,14 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
             e.printStackTrace();
         }
     }//GEN-LAST:event_fvendedorActionPerformed
-
-    private void ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBoxActionPerformed
-    //Boton agregar venta
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        AgregarVentas("Ventas");
+    
+//Boton agregar venta
+    private void AgregarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarVentaActionPerformed
+        AgregarVentas("Ventas");//Subrutina
         Scanner sc = new Scanner(System.in);
-        LeerNormal(sc, "Ventas", TablaVENTAS);
+        LeerNormal(sc, "Ventas", TablaVENTAS);//Subrutina
         sc.close();
-       
+       //Visualizacion
         TipoAuto = ComboBox.getSelectedItem().toString();
         NombreEmpleado = fvendedor.getSelectedItem().toString();
         if (NombreEmpleado.equalsIgnoreCase("Seleccionar empleado")) {
@@ -2779,7 +2735,7 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
             JOptionPane.showMessageDialog(null, "Debe seleccionar un tipo de auto.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_AgregarVentaActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         String seleccionarv = "Seleccionar empleado";
@@ -2791,8 +2747,7 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
         fmonto.setText("");
         sonido("/Sonidos/ficha.wav");
     }//GEN-LAST:event_jButton3ActionPerformed
-
-
+    //gRAFICOS INVENTARIO
     private void BTNgrafiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNgrafiActionPerformed
         sonido("/Sonidos/boop.wav");
         //cambiar nombre boton
@@ -2863,8 +2818,8 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
         pack();
         repaint();
     }//GEN-LAST:event_BTNgrafiActionPerformed
-
-    
+ 
+//BuscadorES
     private void BuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscadorActionPerformed
         String valorBuscado = EmpleBuscador.getText().toLowerCase();
         DefaultTableModel modelo = (DefaultTableModel) TablaEMPLEADOS.getModel();
@@ -2880,7 +2835,6 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
                 }
             }
         }
-
         if (coincidenciaEncontrada == true) {
             MostrarBusquedaEmple.setVisible(true);
             MostrarBusquedaEmple.setText("Empleado encontrado");
@@ -3064,6 +3018,7 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AgregarVenta;
     private javax.swing.JButton BTNBuscar;
     private javax.swing.JButton BTNBuscarVentas;
     private javax.swing.JButton BTNgrafi;
@@ -3151,7 +3106,6 @@ sonido("/Sonidos/ficha.wav");        Limpiar();        Limpiar();    }//GEN-LAST
     private javax.swing.JTextField fsalariofijo;
     private javax.swing.JTextField ftelefono;
     private javax.swing.JComboBox<String> fvendedor;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
