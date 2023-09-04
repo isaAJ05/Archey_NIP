@@ -1505,7 +1505,7 @@ public class Principal extends javax.swing.JFrame {
         TablaEMPLEADOS.setAutoCreateRowSorter(true);
         TablaEMPLEADOS.setBackground(new java.awt.Color(255, 204, 204));
         TablaEMPLEADOS.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
-        TablaEMPLEADOS.setFont(new java.awt.Font("Poor Richard", 1, 18)); // NOI18N
+        TablaEMPLEADOS.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
         TablaEMPLEADOS.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null}
@@ -1921,7 +1921,7 @@ public class Principal extends javax.swing.JFrame {
 
         TablaVENTAS.setBackground(new java.awt.Color(255, 204, 204));
         TablaVENTAS.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
-        TablaVENTAS.setFont(new java.awt.Font("Poor Richard", 1, 18)); // NOI18N
+        TablaVENTAS.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
         TablaVENTAS.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -2039,7 +2039,7 @@ public class Principal extends javax.swing.JFrame {
         PanelInventario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BTNgrafi.setBackground(new java.awt.Color(204, 0, 0));
-        BTNgrafi.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
+        BTNgrafi.setFont(new java.awt.Font("Poor Richard", 1, 15)); // NOI18N
         BTNgrafi.setForeground(new java.awt.Color(255, 255, 255));
         BTNgrafi.setText("Gráficas");
         BTNgrafi.addActionListener(new java.awt.event.ActionListener() {
@@ -2106,127 +2106,127 @@ public class Principal extends javax.swing.JFrame {
         InventarioSubPanel.setBackground(new java.awt.Color(255, 255, 255));
         InventarioSubPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel27.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
+        jLabel27.setFont(new java.awt.Font("Poor Richard", 2, 24)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 204, 204));
         jLabel27.setText("Valor Total: ");
         InventarioSubPanel.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 1190, -1, -1));
 
-        jLabel26.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Poor Richard", 2, 24)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 204, 204));
         jLabel26.setText("Valor Total: ");
         InventarioSubPanel.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 910, -1, -1));
 
-        jLabel25.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Poor Richard", 2, 24)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 204, 204));
         jLabel25.setText("Vendidos :");
         InventarioSubPanel.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 1190, -1, -1));
 
-        jLabel24.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
+        jLabel24.setFont(new java.awt.Font("Poor Richard", 2, 24)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 204, 204));
         jLabel24.setText("Vendidos :");
         InventarioSubPanel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 910, -1, -1));
 
-        jLabel23.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
+        jLabel23.setFont(new java.awt.Font("Poor Richard", 2, 24)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 204, 204));
         jLabel23.setText("Valor Total: ");
         InventarioSubPanel.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 640, -1, -1));
 
-        jLabel22.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Poor Richard", 2, 24)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 204, 204));
         jLabel22.setText("Vendidos :");
         InventarioSubPanel.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 640, -1, -1));
 
-        jLabel21.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Poor Richard", 2, 24)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 204, 204));
         jLabel21.setText("Valor Total: ");
         InventarioSubPanel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 370, -1, -1));
 
-        jLabel20.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Poor Richard", 2, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 204, 204));
         jLabel20.setText("Vendidos :");
         InventarioSubPanel.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 370, -1, -1));
 
-        jLabel19.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Poor Richard", 2, 24)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 204, 204));
         jLabel19.setText("Valor Total: ");
         InventarioSubPanel.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 100, -1, -1));
 
-        jLabel18.setFont(new java.awt.Font("Tekton Pro Ext", 2, 18)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Poor Richard", 2, 24)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 204, 204));
         jLabel18.setText("Vendidos :");
         InventarioSubPanel.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, -1, -1));
 
-        CantVendidaMercedes.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
+        CantVendidaMercedes.setFont(new java.awt.Font("Footlight MT Light", 1, 45)); // NOI18N
         CantVendidaMercedes.setForeground(new java.awt.Color(255, 255, 255));
         CantVendidaMercedes.setText("0");
         InventarioSubPanel.add(CantVendidaMercedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 1230, 130, 60));
 
-        CantVendidaBMW.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
+        CantVendidaBMW.setFont(new java.awt.Font("Footlight MT Light", 1, 45)); // NOI18N
         CantVendidaBMW.setForeground(new java.awt.Color(255, 255, 255));
         CantVendidaBMW.setText("0");
         InventarioSubPanel.add(CantVendidaBMW, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 950, 130, 60));
 
-        CantVendidaHonda.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
+        CantVendidaHonda.setFont(new java.awt.Font("Footlight MT Light", 1, 45)); // NOI18N
         CantVendidaHonda.setForeground(new java.awt.Color(255, 255, 255));
         CantVendidaHonda.setText("0");
         InventarioSubPanel.add(CantVendidaHonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 680, 150, 60));
 
-        CantVendidaFord.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
+        CantVendidaFord.setFont(new java.awt.Font("Footlight MT Light", 1, 45)); // NOI18N
         CantVendidaFord.setForeground(new java.awt.Color(255, 255, 255));
         CantVendidaFord.setText("0");
         InventarioSubPanel.add(CantVendidaFord, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, 130, 70));
 
-        CantVendidaToyota.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
+        CantVendidaToyota.setFont(new java.awt.Font("Footlight MT Light", 1, 45)); // NOI18N
         CantVendidaToyota.setForeground(new java.awt.Color(255, 255, 255));
         CantVendidaToyota.setText("0");
         InventarioSubPanel.add(CantVendidaToyota, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 130, 70));
 
-        TotalMercedes.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
+        TotalMercedes.setFont(new java.awt.Font("Footlight MT Light", 1, 45)); // NOI18N
         TotalMercedes.setForeground(new java.awt.Color(255, 255, 255));
         TotalMercedes.setText("$0");
         InventarioSubPanel.add(TotalMercedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 1230, 440, 60));
 
-        TotalBMW.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
+        TotalBMW.setFont(new java.awt.Font("Footlight MT Light", 1, 45)); // NOI18N
         TotalBMW.setForeground(new java.awt.Color(255, 255, 255));
         TotalBMW.setText("$0");
         InventarioSubPanel.add(TotalBMW, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 950, 430, 60));
 
-        TotalHonda.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
+        TotalHonda.setFont(new java.awt.Font("Footlight MT Light", 1, 45)); // NOI18N
         TotalHonda.setForeground(new java.awt.Color(255, 255, 255));
         TotalHonda.setText("$0");
         InventarioSubPanel.add(TotalHonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 680, 420, 60));
 
-        TotalFord.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
+        TotalFord.setFont(new java.awt.Font("Footlight MT Light", 1, 45)); // NOI18N
         TotalFord.setForeground(new java.awt.Color(255, 255, 255));
         TotalFord.setText("$0");
         InventarioSubPanel.add(TotalFord, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 420, 440, 60));
 
-        TotalToyota.setFont(new java.awt.Font("Orator Std", 1, 48)); // NOI18N
+        TotalToyota.setFont(new java.awt.Font("Footlight MT Light", 1, 45)); // NOI18N
         TotalToyota.setForeground(new java.awt.Color(255, 255, 255));
         TotalToyota.setText("$0");
         InventarioSubPanel.add(TotalToyota, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 140, 440, 70));
 
-        TitMercedes.setFont(new java.awt.Font("Orator Std", 1, 36)); // NOI18N
+        TitMercedes.setFont(new java.awt.Font("Footlight MT Light", 1, 40)); // NOI18N
         TitMercedes.setForeground(new java.awt.Color(255, 255, 255));
         TitMercedes.setText("MERCEDES - BENS");
         InventarioSubPanel.add(TitMercedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 1110, -1, -1));
 
-        TitToyota.setFont(new java.awt.Font("Orator Std", 1, 36)); // NOI18N
+        TitToyota.setFont(new java.awt.Font("Footlight MT Light", 1, 40)); // NOI18N
         TitToyota.setForeground(new java.awt.Color(255, 255, 255));
         TitToyota.setText("TOYOTA");
         InventarioSubPanel.add(TitToyota, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, -1, -1));
 
-        TitBMW.setFont(new java.awt.Font("Orator Std", 1, 36)); // NOI18N
+        TitBMW.setFont(new java.awt.Font("Footlight MT Light", 1, 40)); // NOI18N
         TitBMW.setForeground(new java.awt.Color(255, 255, 255));
         TitBMW.setText("BMW");
         InventarioSubPanel.add(TitBMW, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 850, -1, -1));
 
-        TitFord.setFont(new java.awt.Font("Orator Std", 1, 36)); // NOI18N
+        TitFord.setFont(new java.awt.Font("Footlight MT Light", 1, 40)); // NOI18N
         TitFord.setForeground(new java.awt.Color(255, 255, 255));
         TitFord.setText("FORD");
         InventarioSubPanel.add(TitFord, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, -1, -1));
 
-        TitHonda.setFont(new java.awt.Font("Orator Std", 1, 36)); // NOI18N
+        TitHonda.setFont(new java.awt.Font("Footlight MT Light", 1, 40)); // NOI18N
         TitHonda.setForeground(new java.awt.Color(255, 255, 255));
         TitHonda.setText("HONDA");
         InventarioSubPanel.add(TitHonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 570, -1, -1));
