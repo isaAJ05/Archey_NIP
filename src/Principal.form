@@ -829,7 +829,7 @@
                   </Border>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Palatino Linotype" size="18" style="0"/>
+                  <Font name="Poor Richard" size="18" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="7" rowCount="1">
@@ -939,7 +939,7 @@
         <Component class="javax.swing.JLabel" name="MostrarBusquedaEmple">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
+              <Font name="Poor Richard" size="15" style="0"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1008,7 +1008,7 @@
         <Component class="javax.swing.JRadioButton" name="BotonOrdenarSalario">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Poor Richard" size="15" style="0"/>
+              <Font name="Poor Richard" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Ordenar por Salario"/>
           </Properties>
@@ -1024,7 +1024,7 @@
         <Component class="javax.swing.JRadioButton" name="BotonOrdenar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Poor Richard" size="15" style="0"/>
+              <Font name="Poor Richard" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Ordenar por nombre"/>
           </Properties>
@@ -1040,7 +1040,7 @@
         <Component class="javax.swing.JRadioButton" name="BotonSinOrdenar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Poor Richard" size="15" style="0"/>
+              <Font name="Poor Richard" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Sin ordenar"/>
           </Properties>
@@ -1073,6 +1073,9 @@
       <SubComponents>
         <Component class="javax.swing.JTextField" name="BuscadorVentas">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Poor Richard" size="15" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Buscar..."/>
           </Properties>
           <Events>
@@ -1087,6 +1090,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="BTNBuscarVentas">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Poor Richard" size="15" style="1"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/lupita.png"/>
             </Property>
@@ -1104,7 +1110,7 @@
         <Component class="javax.swing.JLabel" name="MostrarBusquedaVentas">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
+              <Font name="Poor Richard" size="15" style="0"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1169,7 +1175,7 @@
                               <Component id="errorcodigoE" alignment="0" min="-2" pref="290" max="-2" attributes="0"/>
                               <Component id="fcodigoE" alignment="0" min="-2" pref="293" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="165" max="32767" attributes="0"/>
+                          <EmptySpace pref="145" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1185,7 +1191,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="errorcodigoE" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="66" max="32767" attributes="0"/>
+                          <EmptySpace pref="59" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="BotonParaEliminarVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="LimpiarVenta" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1198,15 +1204,23 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jLabel39">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poor Richard" size="15" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Digite el c&#xf3;digo del auto:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fcodigoE">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poor Richard" size="15" style="0"/>
+                    </Property>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="errorcodigoE">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="10" style="0"/>
+                      <Font name="Poor Richard" size="13" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="ff" type="rgb"/>
@@ -1216,6 +1230,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="BotonParaEliminarVenta">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poor Richard" size="15" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Eliminar"/>
                   </Properties>
                   <Events>
@@ -1224,6 +1241,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="LimpiarVenta">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poor Richard" size="15" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Limpiar"/>
                   </Properties>
                   <Events>
@@ -1232,6 +1252,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="cerrareliminar">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poor Richard" size="15" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Cerrar"/>
                   </Properties>
                   <Events>
@@ -1321,7 +1344,7 @@
                           <EmptySpace min="152" pref="78" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="331" max="32767" attributes="0"/>
+                          <EmptySpace pref="326" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="jButton2" min="-2" max="-2" attributes="0"/>
@@ -1376,7 +1399,7 @@
                               <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="56" max="32767" attributes="0"/>
+                          <EmptySpace pref="41" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1384,26 +1407,41 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jLabel34">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poor Richard" size="15" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Monto de la venta:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel35">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poor Richard" size="15" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Nombre del vendedor:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel36">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poor Richard" size="15" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="C&#xe9;dula:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel37">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poor Richard" size="15" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Tipo de auto:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="ComboBox">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poor Richard" size="15" style="0"/>
+                    </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="6">
                         <StringItem index="0" value="Seleccionar tipo de auto"/>
@@ -1424,15 +1462,31 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel38">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poor Richard" size="15" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="C&#xf3;digo del auto:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fmonto">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poor Richard" size="15" style="0"/>
+                    </Property>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fcodigo">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poor Richard" size="15" style="0"/>
+                    </Property>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="cerraragregarventa">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poor Richard" size="15" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Cerrar"/>
                   </Properties>
                   <Events>
@@ -1441,6 +1495,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton3">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poor Richard" size="15" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Limpiar"/>
                   </Properties>
                   <Events>
@@ -1450,7 +1507,7 @@
                 <Component class="javax.swing.JLabel" name="error3v">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="10" style="0"/>
+                      <Font name="Poor Richard" size="13" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="ff" type="rgb"/>
@@ -1461,7 +1518,7 @@
                 <Component class="javax.swing.JLabel" name="error4v">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="10" style="0"/>
+                      <Font name="Poor Richard" size="13" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="ff" type="rgb"/>
@@ -1471,6 +1528,9 @@
                 </Component>
                 <Component class="javax.swing.JComboBox" name="fvendedor">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poor Richard" size="15" style="0"/>
+                    </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
                         <StringItem index="0" value="Seleccionar empleado"/>
@@ -1487,10 +1547,16 @@
                 <Component class="javax.swing.JTextField" name="fcedulav">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poor Richard" size="15" style="0"/>
+                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton2">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poor Richard" size="15" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Agregar"/>
                   </Properties>
                   <Events>
@@ -1558,7 +1624,7 @@
                   </Border>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Palatino Linotype" size="18" style="0"/>
+                  <Font name="Poor Richard" size="18" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="5" rowCount="4">
@@ -1625,7 +1691,7 @@
               <Color blue="0" green="0" red="cc" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="12" style="1"/>
+              <Font name="Poor Richard" size="15" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1647,7 +1713,7 @@
               <Color blue="0" green="0" red="cc" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="12" style="1"/>
+              <Font name="Poor Richard" size="15" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1783,7 +1849,7 @@
               <Color blue="0" green="0" red="cc" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="18" style="2"/>
+              <Font name="Poor Richard" size="18" style="3"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1906,7 +1972,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel27">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tekton Pro Ext" size="18" style="2"/>
+                      <Font name="Poor Richard" size="24" style="2"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -1922,7 +1988,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel26">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tekton Pro Ext" size="18" style="2"/>
+                      <Font name="Poor Richard" size="24" style="2"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -1938,7 +2004,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel25">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tekton Pro Ext" size="18" style="2"/>
+                      <Font name="Poor Richard" size="24" style="2"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -1954,7 +2020,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel24">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tekton Pro Ext" size="18" style="2"/>
+                      <Font name="Poor Richard" size="24" style="2"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -1970,7 +2036,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel23">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tekton Pro Ext" size="18" style="2"/>
+                      <Font name="Poor Richard" size="24" style="2"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -1986,7 +2052,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel22">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tekton Pro Ext" size="18" style="2"/>
+                      <Font name="Poor Richard" size="24" style="2"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -2002,7 +2068,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel21">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tekton Pro Ext" size="18" style="2"/>
+                      <Font name="Poor Richard" size="24" style="2"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -2018,7 +2084,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel20">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tekton Pro Ext" size="18" style="2"/>
+                      <Font name="Poor Richard" size="24" style="2"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -2034,7 +2100,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel19">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tekton Pro Ext" size="18" style="2"/>
+                      <Font name="Poor Richard" size="24" style="2"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -2050,7 +2116,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel18">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tekton Pro Ext" size="18" style="2"/>
+                      <Font name="Poor Richard" size="24" style="2"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -2066,7 +2132,7 @@
                 <Component class="javax.swing.JLabel" name="CantVendidaMercedes">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Orator Std" size="48" style="1"/>
+                      <Font name="Footlight MT Light" size="50" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2082,7 +2148,7 @@
                 <Component class="javax.swing.JLabel" name="CantVendidaBMW">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Orator Std" size="48" style="1"/>
+                      <Font name="Footlight MT Light" size="50" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2098,7 +2164,7 @@
                 <Component class="javax.swing.JLabel" name="CantVendidaHonda">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Orator Std" size="48" style="1"/>
+                      <Font name="Footlight MT Light" size="50" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2114,7 +2180,7 @@
                 <Component class="javax.swing.JLabel" name="CantVendidaFord">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Orator Std" size="48" style="1"/>
+                      <Font name="Footlight MT Light" size="50" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2130,7 +2196,7 @@
                 <Component class="javax.swing.JLabel" name="CantVendidaToyota">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Orator Std" size="48" style="1"/>
+                      <Font name="Footlight MT Light" size="50" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2146,7 +2212,7 @@
                 <Component class="javax.swing.JLabel" name="TotalMercedes">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Orator Std" size="48" style="1"/>
+                      <Font name="Footlight MT Light" size="50" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2162,7 +2228,7 @@
                 <Component class="javax.swing.JLabel" name="TotalBMW">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Orator Std" size="48" style="1"/>
+                      <Font name="Footlight MT Light" size="50" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2178,7 +2244,7 @@
                 <Component class="javax.swing.JLabel" name="TotalHonda">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Orator Std" size="48" style="1"/>
+                      <Font name="Footlight MT Light" size="50" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2194,7 +2260,7 @@
                 <Component class="javax.swing.JLabel" name="TotalFord">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Orator Std" size="48" style="1"/>
+                      <Font name="Footlight MT Light" size="50" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2210,7 +2276,7 @@
                 <Component class="javax.swing.JLabel" name="TotalToyota">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Orator Std" size="48" style="1"/>
+                      <Font name="Footlight MT Light" size="50" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2226,7 +2292,7 @@
                 <Component class="javax.swing.JLabel" name="TitMercedes">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Orator Std" size="36" style="1"/>
+                      <Font name="Footlight MT Light" size="40" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2242,7 +2308,7 @@
                 <Component class="javax.swing.JLabel" name="TitToyota">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Orator Std" size="36" style="1"/>
+                      <Font name="Footlight MT Light" size="40" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2258,7 +2324,7 @@
                 <Component class="javax.swing.JLabel" name="TitBMW">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Orator Std" size="36" style="1"/>
+                      <Font name="Footlight MT Light" size="40" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2274,7 +2340,7 @@
                 <Component class="javax.swing.JLabel" name="TitFord">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Orator Std" size="36" style="1"/>
+                      <Font name="Footlight MT Light" size="40" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2290,7 +2356,7 @@
                 <Component class="javax.swing.JLabel" name="TitHonda">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Orator Std" size="36" style="1"/>
+                      <Font name="Footlight MT Light" size="40" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
