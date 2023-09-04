@@ -816,7 +816,7 @@
         <Component class="javax.swing.JLabel" name="LabelFondoBorroso">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/borrosoclaroempleadp.png"/>
+              <Image iconType="3" name="/Imagenes/fondorojo.png"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1578,7 +1578,7 @@
         <Component class="javax.swing.JLabel" name="fondoborrosoventas">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/ventasborrosoclaro.png"/>
+              <Image iconType="3" name="/Imagenes/fondorojo.png"/>
             </Property>
           </Properties>
           <Constraints>
